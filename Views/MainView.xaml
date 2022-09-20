@@ -1,0 +1,385 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:Unbroken.LaunchBox.Windows.Desktop;assembly=LaunchBox"
+    xmlns:transitions="clr-namespace:Unbroken.LaunchBox.Windows.Transitions;assembly=Unbroken.LaunchBox.Windows"
+    mc:Ignorable="d"
+    Title="LaunchBox"
+    Height="1000"
+    Width="1500"
+    WindowStyle="None"
+    AllowsTransparency="True">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="20" ResizeBorderThickness="5" />
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <Style x:Key="GridSplitterStyle" TargetType="GridSplitter">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="Background" Value="#551B6BED" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridSplitter}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisualStyle">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle StrokeThickness="1" Stroke="{Binding ForegroundBrush}" SnapsToDevicePixels="true">
+                            <Rectangle.Effect>
+                                <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
+                            </Rectangle.Effect>
+                        </Rectangle>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.Resources>
+            <local:DoubleGridLengthConverter x:Key="DoubleGridLengthConverter" />
+        </Grid.Resources>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1">
+                <GradientStop Color="#FF1B6BED"/>
+                <GradientStop Color="#FF3336CE" Offset="0.26"/>
+                <GradientStop Color="#FF6728DC" Offset="1"/>
+                <GradientStop Color="#FF4446E3" Offset="0.543"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding Path=SideBarWidth, Mode=TwoWay, Converter={StaticResource DoubleGridLengthConverter}}"  MinWidth="{Binding Path=SideBarMinWidth}" MaxWidth="{Binding Path=SideBarMaxWidth}" />
+            <ColumnDefinition Width="{Binding Path=SideBarGridSplitterWidth}" />
+            <ColumnDefinition Width="*" MinWidth="300" />
+            <ColumnDefinition Width="{Binding Path=GameDetailsGridSplitterWidth}" />
+            <ColumnDefinition Width="{Binding Path=GameDetailsWidth, Mode=TwoWay, Converter={StaticResource DoubleGridLengthConverter}}" MinWidth="{Binding Path=GameDetailsMinWidth}" MaxWidth="{Binding Path=SideBarMaxWidth}" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/arcade-bg.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
+
+        <!--<TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Padding}" TextAlignment="Center" Foreground="Yellow" Panel.ZIndex="999" />-->
+
+        <!-- THEME SPECIFIC BORDERS -->
+        <!--<Border Grid.ColumnSpan="5" Background="red"/>
+        <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
+            <Border.Background>
+                <SolidColorBrush Color="Yellow" Opacity="1"/>
+            </Border.Background>
+        </Border>-->
+        <!-- PROCESSING PROGRESS. TODO: TEST -->
+        <Grid Grid.Row="2" Grid.Column="2" Height="3" Panel.ZIndex="99" HorizontalAlignment="Stretch" VerticalAlignment="Top" Visibility="{Binding ProcessingVisibility}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding ProcessingWidth}" />
+                <ColumnDefinition Width="{Binding ProcessingWidthLeft}" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="#FF6728DC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        </Grid>
+
+        <!-- SIDE BAR VIEW -->
+        <ContentControl Name="SideBarViewModel" Grid.RowSpan="3" Focusable="False" Visibility="{Binding SideBarVisibility}" />
+        <!-- SIDE BAR RESIZER -->
+        <GridSplitter Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource GridSplitterStyle}" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}" Visibility="{Binding SideBarVisibility}"/>
+   
+        <!-- CONTENT VIEW -->
+        <transitions:TransitionPresenter TransitionSelector="{Binding ContentTransitionSelector}" Content="{Binding ContentView}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,0" Focusable="False" />
+        <!-- GAME DETAILS RESIZER -->
+        <GridSplitter Grid.Column="3" Grid.Row="2" Style="{StaticResource GridSplitterStyle}" Panel.ZIndex="100" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}" Visibility="{Binding GameDetailsVisibility}"/>
+        
+            <!-- GAME DETAILS VIEW -->
+        <transitions:TransitionPresenter TransitionSelector="{Binding GameDetailsTransitionSelector}" Content="{Binding GameDetailsView}" Grid.Column="4" Grid.Row="2" Visibility="{Binding GameDetailsVisibility}" />
+        <!-- WORKING VIEW -->
+        <ContentControl Name="WorkingViewModel" Grid.Row="3" Grid.ColumnSpan="5" Visibility="{Binding WorkingVisibility}" Focusable="False" />
+        <!-- bottom controls -->
+        <ContentControl Name="ControlsViewModel" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3" Focusable="False" Visibility="{Binding ControlsVisibility}" />
+
+
+
+        <!--<ToolBarTray Background="#FF2C0D65" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Panel.ZIndex="0" />-->
+
+        <!-- APPLICATION MENU -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right"
+            WindowChrome.IsHitTestVisibleInChrome="True" Height="25">
+            <Button Name="ImageGroupDropDown" Height="25" Background="Transparent" BorderThickness="0" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <StackPanel Orientation="Horizontal" Margin="10, 6, 10, 0">
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding ImageGroupText}" />
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding DownArrowText}" FontFamily="Segoe UI Symbol" Margin="7,-1,0,0" />
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
+                </Button.Effect>
+            </Button>
+            <Button Name="ArrangeByDropDown" Height="25" Background="Transparent" BorderThickness="0" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <StackPanel Orientation="Horizontal" Margin="10, 6, 10, 0">
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding ArrangeByText}" />
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding DownArrowText}" FontFamily="Segoe UI Symbol" Margin="7,-1,0,0" />
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
+                </Button.Effect>
+            </Button>
+            <Button Name="ViewDropDown" Height="25" Background="Transparent" BorderThickness="0" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <StackPanel Orientation="Horizontal" Margin="10, 6, 10, 0">
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding ViewText}" />
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding DownArrowText}" FontFamily="Segoe UI Symbol" Margin="7,-1,0,0" />
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
+                </Button.Effect>
+            </Button>
+            <Button Name="ToolsDropDown" Height="25" Background="Transparent" BorderThickness="0" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <StackPanel Orientation="Horizontal" Margin="10, 6, 10, 0">
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding ToolsText}" />
+                    <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Text="{Binding DownArrowText}" FontFamily="Segoe UI Symbol" Margin="7,-1,0,0" />
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
+                </Button.Effect>
+            </Button>
+            <!-- PLEASE NOTE: Below is the portion of the theme that displays the licensed user name. It is required that this info
+                 is displayed in the title bar for licensing reasons. Themes that attempt to hide or alter the licensed user name
+                 will not be permitted; they will be removed from the forums and banned from future releases of LaunchBox. -->
+            <Button Name="License" Height="25" Background="Transparent" BorderThickness="0" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <TextBlock Foreground="{Binding ForegroundBrush}" FontSize="10" Margin="10, 6, 10, 0" Text="{Binding LicenseText}" />
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
+                </Button.Effect>
+            </Button>
+            <Button Name="Minimize" ToolTip="Minimize" Width="34" Height="25" Background="Transparent" BorderThickness="0" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <Grid Width="34" Height="25">
+                    <Grid.Effect>
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
+                    </Grid.Effect>
+                    <Polygon Points="13,15 22,15, 22,17, 13,17" StrokeThickness="0" Fill="White" />
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
+                </Button.Effect>
+            </Button>
+            <Button Name="Maximize" ToolTip="Maximize" Width="34" Height="25" Background="Transparent" BorderThickness="0"
+                Visibility="{Binding MaximizeVisibility}" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <Grid Width="34" Height="25">
+                    <Grid.Effect>
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
+                    </Grid.Effect>
+                    <Polygon Points="13,9 22,9 22,12, 13,12" StrokeThickness="0" Fill="White" />
+                    <Line X1="14" Y1="9" X2="14" Y2="18" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                    <Line X1="22" Y1="9" X2="22" Y2="18" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                    <Line X1="14" Y1="18" X2="22" Y2="18" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
+                </Button.Effect>
+            </Button>
+            <Button Name="Restore" ToolTip="Restore" Width="34" Height="25" Background="Transparent" BorderThickness="0"
+                Visibility="{Binding RestoreVisibility}" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <Grid Width="34" Height="25">
+                    <Grid.Effect>
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
+                    </Grid.Effect>
+                    <Polygon Points="15,9 22,9 22,11 15,11" StrokeThickness="0" Fill="White" />
+                    <Polygon Points="12,12 19,12 19,14 12,14" StrokeThickness="0" Fill="White" />
+                    <Line X1="16" Y1="9" X2="16" Y2="13" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                    <Line X1="22" Y1="9" X2="22" Y2="16" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                    <Line X1="18" Y1="16" X2="22" Y2="16" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                    <Line X1="19" Y1="12" X2="19" Y2="19" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                    <Line X1="13" Y1="12" X2="13" Y2="19" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                    <Line X1="13" Y1="19" X2="19" Y2="19" Stroke="White" StrokeThickness="1" SnapsToDevicePixels="True" RenderOptions.EdgeMode="Aliased" />
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
+                </Button.Effect>
+            </Button>
+            <Button Name="Close" ToolTip="Close" Width="34" Height="25" Background="Transparent" BorderThickness="0" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}">
+                <Grid Width="34" Height="25">
+                    <Grid.Effect>
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="2" />
+                    </Grid.Effect>
+                    <Polygon Points="11,9 13,9 16,12 19,9 21,9 17,13 21,17 19,17 16,14 13,17 11,17 15,13"
+                        StrokeThickness="0" Fill="White">
+                    </Polygon>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Name="Border" BorderThickness="0" Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <Button.Effect>
+                    <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.65" BlurRadius="2" />
+                </Button.Effect>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

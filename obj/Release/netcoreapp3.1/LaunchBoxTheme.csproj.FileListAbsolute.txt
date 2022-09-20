@@ -1,0 +1,8 @@
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\LaunchBoxTheme.csproj.AssemblyReference.cache
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\Views\BoxesContentView.baml
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\Views\ContentBackgroundView.baml
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\Views\ListContentView.baml
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\Views\MainView.baml
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\Views\SideBarView.baml
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\Views\WorkingView.baml
+G:\games\LaunchBox\LBThemes\Dandi\obj\Release\netcoreapp3.1\LaunchBoxTheme_MarkupCompile.cache
