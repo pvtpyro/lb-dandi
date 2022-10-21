@@ -33,7 +33,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#FF3336CE">
+    <Grid Background="Orange">
         <Grid.Style>
             <Style TargetType="Grid">
                 <Setter Property="Margin" Value="0,0,0,0"/>
@@ -44,17 +44,86 @@
                 </Style.Triggers>
             </Style>
         </Grid.Style>
-        <Grid Height="500" VerticalAlignment="Top" Background="#FFff0099">
-            <Grid.OpacityMask>
+        <Grid Height="200" VerticalAlignment="Top">
+            
+            <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding GameBackgroundImage}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Image VerticalAlignment="Top" Source="{Binding GameBackgroundImage}" Stretch="UniformToFill" />
+            <Viewbox MaxHeight="200" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" StretchDirection="Both">
+                <TextBlock Margin="50,0,50,0" VerticalAlignment="Center" Text="{Binding Game.Title}" TextTrimming="CharacterEllipsis">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="1" BlurRadius="5" />
+                    </TextBlock.Effect>
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding GameBackgroundImage}" Value="{x:Null}" />
+                                        <Condition Binding="{Binding Game.ClearLogoImagePath}" Value="{x:Null}" />
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Viewbox>
+            <Image MaxWidth="250" MaxHeight="150" Margin="0,40,0,0" HorizontalAlignment="center" Source="{Binding Game.ClearLogoImagePath}" RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="5">
+                <!--<Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding GameBackgroundImage}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>-->
+            </Image>
+
+            <!--<Grid.OpacityMask>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#61ffffff" Offset="0"/>
                     <GradientStop Color="#e0ffffff" Offset="0.45"/>
                     <GradientStop Color="#e0ffffff" Offset="0.55"/>
                     <GradientStop Color="#00ffffff" Offset="1"/>
                 </LinearGradientBrush>
-            </Grid.OpacityMask>
-            <Image Source="{Binding GameBackgroundImage}" Stretch="UniformToFill" HorizontalAlignment="Center" ClipToBounds="True" UseLayoutRounding="True" VerticalAlignment="Top" Width="Auto" />
-            <Rectangle Fill="#000000" Opacity="0.8" />
+            </Grid.OpacityMask>-->
+
+            <!--<Grid.Background>
+                <RadialGradientBrush GradientOrigin="0.2,0.5" Center="0.5,0.5" RadiusX="0.5" RadiusY="0.5">
+                    <GradientStop Color="yellow"/>
+                    <GradientStop Color="yellow" Offset="0.20"/>
+                    <GradientStop Color="orange" Offset="0.20"/>
+                    <GradientStop Color="orange" Offset="0.50"/>
+                    <GradientStop Color="red" Offset="0.50"/>
+                    <GradientStop Color="red" Offset="1"/>
+                </RadialGradientBrush>
+            </Grid.Background>-->
+            <!--<Rectangle Fill="red" />-->
+            
+            <Grid>
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#99404041"/>
+                        <GradientStop Color="#99404041" Offset="0.20"/>
+                        <GradientStop Color="#4d404041" Offset="0.30"/>
+                        <GradientStop Color="#4d404041" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
         </Grid>
         
         <Grid Margin="5 5 5 10">
@@ -63,7 +132,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="200" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -71,7 +140,11 @@
             <!-- star rating-->
             <Grid Name="StarRatingGrid" Grid.Row="0" Grid.Column="0" Margin="0,-3,0,0" Visibility="{Binding StarRatingVisibility}" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="{Binding StarRatingText}">
                 <TextBlock Name="StarRatingFaded" HorizontalAlignment="Left" Text="★★★★★" Foreground="#33FFFFFF" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" FontStyle="Normal" />
-                <TextBlock Name="StarRating" HorizontalAlignment="Left" Text="★★★★★" Foreground="HotPink" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" FontStyle="Normal" Width="{Binding StarRatingWidth}" />
+                <TextBlock Name="StarRating" HorizontalAlignment="Left" Text="★★★★★" Foreground="#00BDBF" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" FontStyle="Normal" Width="{Binding StarRatingWidth}">
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#00BDBF" BlurRadius="10" ShadowDepth="0"/>
+                    </TextBlock.Effect>
+                </TextBlock>
             </Grid>
             
             <!-- mark complete, fav, edit, close buttons-->
@@ -207,10 +280,10 @@
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True" Margin="12 10 18 0">
                 <panel:OutlinedTextBlock Text="{Binding Title}" Fill="{Binding ForegroundBrush}" FontFamily="{Binding TitleFontFamily}"
                     FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
-                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#FF3336CE" StrokeThickness="2" />
+                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#F6A801" StrokeThickness="2" />
                 <panel:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding PlatformReleaseDate}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap"
                     FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold"
-                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#FF3336CE" StrokeThickness="1" />
+                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#F6A801" StrokeThickness="1" />
             </StackPanel>
             
             <TabControl Grid.ColumnSpan="2" Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0 15 0 15"

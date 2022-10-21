@@ -18,7 +18,7 @@
         <Style x:Key="GridSplitterStyle" TargetType="GridSplitter">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="Background" Value="#551B6BED" />
+            <Setter Property="Background" Value="#404041" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type GridSplitter}">
@@ -43,18 +43,22 @@
     </Window.Resources>
 
 
-    <Grid>
+    <Grid Background="#FFDE16">
         <Grid.Resources>
             <local:DoubleGridLengthConverter x:Key="DoubleGridLengthConverter" />
         </Grid.Resources>
-        <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0.5,1">
-                <GradientStop Color="#FF1B6BED"/>
-                <GradientStop Color="#FF3336CE" Offset="0.26"/>
-                <GradientStop Color="#FF6728DC" Offset="1"/>
-                <GradientStop Color="#FF4446E3" Offset="0.543"/>
+        <!--<Grid.Background>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,0.5">
+                <GradientStop Color="#FFDE16"/>
+                <GradientStop Color="#FFDE16" Offset="0.015"/>
+                <GradientStop Color="#FAC102" Offset="0.015"/>
+                <GradientStop Color="#FAC102" Offset="0.08"/>
+                <GradientStop Color="#F5A800" Offset="0.08"/>
+                <GradientStop Color="#F5A800" Offset="0.20"/>
+                <GradientStop Color="#FFDE16" Offset="0.20"/>
+                <GradientStop Color="#FFDE16" Offset="1"/>
             </LinearGradientBrush>
-        </Grid.Background>
+        </Grid.Background>-->
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Path=SideBarWidth, Mode=TwoWay, Converter={StaticResource DoubleGridLengthConverter}}"  MinWidth="{Binding Path=SideBarMinWidth}" MaxWidth="{Binding Path=SideBarMaxWidth}" />
@@ -70,17 +74,25 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/arcade-bg.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Grid.ColumnSpan="5" Grid.RowSpan="4"/>
+        <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
+            <!--<Image.Effect>
+                <BlurEffect Radius="7" KernelType="Box"/>
+            </Image.Effect>-->
+        </Image>
 
-        <!--<TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Padding}" TextAlignment="Center" Foreground="Yellow" Panel.ZIndex="999" />-->
+        <!--<TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Path=GameDetailsWidth}" TextAlignment="Center" Foreground="red" Panel.ZIndex="999" >
+            <TextBlock.Effect>
+                <DropShadowEffect Color="#FFE88C1C" BlurRadius="6" ShadowDepth="6"/>
+            </TextBlock.Effect>
+        </TextBlock>-->
 
         <!-- THEME SPECIFIC BORDERS -->
-        <!--<Border Grid.ColumnSpan="5" Background="red"/>
+        <Border Grid.ColumnSpan="5" Background="#404041"/>
         <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
             <Border.Background>
-                <SolidColorBrush Color="Yellow" Opacity="1"/>
+                <SolidColorBrush Color="#74777B" Opacity="1"/>
             </Border.Background>
-        </Border>-->
+        </Border>
         <!-- PROCESSING PROGRESS. TODO: TEST -->
         <Grid Grid.Row="2" Grid.Column="2" Height="3" Panel.ZIndex="99" HorizontalAlignment="Stretch" VerticalAlignment="Top" Visibility="{Binding ProcessingVisibility}">
             <Grid.ColumnDefinitions>
@@ -91,16 +103,16 @@
         </Grid>
 
         <!-- SIDE BAR VIEW -->
-        <ContentControl Name="SideBarViewModel" Grid.RowSpan="3" Focusable="False" Visibility="{Binding SideBarVisibility}" />
+        <ContentControl Name="SideBarViewModel" Grid.Row="1" Grid.RowSpan="2" Focusable="False" Visibility="{Binding SideBarVisibility}" />
         <!-- SIDE BAR RESIZER -->
         <GridSplitter Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Style="{StaticResource GridSplitterStyle}" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}" Visibility="{Binding SideBarVisibility}"/>
-   
+
         <!-- CONTENT VIEW -->
         <transitions:TransitionPresenter TransitionSelector="{Binding ContentTransitionSelector}" Content="{Binding ContentView}" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,0" Focusable="False" />
         <!-- GAME DETAILS RESIZER -->
         <GridSplitter Grid.Column="3" Grid.Row="2" Style="{StaticResource GridSplitterStyle}" Panel.ZIndex="100" Focusable="True" FocusVisualStyle="{StaticResource ResourceKey=FocusVisualStyle}" Visibility="{Binding GameDetailsVisibility}"/>
-        
-            <!-- GAME DETAILS VIEW -->
+
+        <!-- GAME DETAILS VIEW -->
         <transitions:TransitionPresenter TransitionSelector="{Binding GameDetailsTransitionSelector}" Content="{Binding GameDetailsView}" Grid.Column="4" Grid.Row="2" Visibility="{Binding GameDetailsVisibility}" />
         <!-- WORKING VIEW -->
         <ContentControl Name="WorkingViewModel" Grid.Row="3" Grid.ColumnSpan="5" Visibility="{Binding WorkingVisibility}" Focusable="False" />

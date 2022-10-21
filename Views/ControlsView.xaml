@@ -78,9 +78,14 @@
 
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#394F63" Offset="0.0" />
-                <GradientStop Color="#263543" Offset="1.0" />
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#D5D7D8" Offset="0.0" />
+                <GradientStop Color="#D5D7D8" Offset="0.1" />
+                <GradientStop Color="#A7A9AD" Offset="0.1" />
+                <GradientStop Color="#A7A9AD" Offset="0.9" />
+                <GradientStop Color="#74787B" Offset="0.9" />
+                <GradientStop Color="#74787B" Offset="1.0" />
+                
             </LinearGradientBrush>
         </Grid.Background>
         

@@ -142,7 +142,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid x:Name="Grid">
+    <Grid x:Name="Grid" Background="#74777B">
         <Grid.RowDefinitions>
             <RowDefinition Height="85" />
             <RowDefinition Height="Auto" />
