@@ -114,12 +114,18 @@
 
         <!-- GAME DETAILS VIEW -->
         <transitions:TransitionPresenter TransitionSelector="{Binding GameDetailsTransitionSelector}" Content="{Binding GameDetailsView}" Grid.Column="4" Grid.Row="2" Visibility="{Binding GameDetailsVisibility}" />
-        <!-- WORKING VIEW -->
-        <ContentControl Name="WorkingViewModel" Grid.Row="3" Grid.ColumnSpan="5" Visibility="{Binding WorkingVisibility}" Focusable="False" />
-        <!-- bottom controls -->
-        <ContentControl Name="ControlsViewModel" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="3" Focusable="False" Visibility="{Binding ControlsVisibility}" />
 
-
+		<!-- bottom area -->
+		<Grid Grid.Row="3" Grid.ColumnSpan="5">
+			<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+			<!-- Working view / loading -->
+			<ContentControl Name="WorkingViewModel" Grid.Row="0" Focusable="False" Panel.ZIndex="50" Visibility="{Binding WorkingVisibility}"/>
+			<!-- bottom controls -->
+			<ContentControl Name="ControlsViewModel" Grid.Row="1" Focusable="False" Visibility="{Binding ControlsVisibility}" />
+		</Grid>
 
         <!--<ToolBarTray Background="#FF2C0D65" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Panel.ZIndex="0" />-->
 

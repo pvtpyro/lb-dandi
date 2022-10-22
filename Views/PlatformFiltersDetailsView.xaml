@@ -27,10 +27,11 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid Background="#88111111">
+
+    <Grid Background="Orange">
         <Grid.Style>
             <Style TargetType="Grid">
-                <Setter Property="Margin" Value="0,76,24,24"/>
+                <Setter Property="Margin" Value="0,0,0,0"/>
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding IsInWindow}" Value="True">
                         <Setter Property="Margin" Value="0"/>
@@ -38,8 +39,24 @@
                 </Style.Triggers>
             </Style>
         </Grid.Style>
-        <Grid Height="500" VerticalAlignment="Top">
-            <Grid.OpacityMask>
+
+        <Grid Height="200" VerticalAlignment="Top">
+			<Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
+                <Image.Style>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding GameBackgroundImage}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+			
+			<Image Source="{Binding PlatformBackgroundImage}" Stretch="UniformToFill" HorizontalAlignment="Center" ClipToBounds="True" UseLayoutRounding="True" VerticalAlignment="Top" Width="Auto" />
+
+            <!-- <Grid.OpacityMask>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                     <GradientStop Color="#61ffffff" Offset="0"/>
                     <GradientStop Color="#e0ffffff" Offset="0.45"/>
@@ -48,9 +65,10 @@
                 </LinearGradientBrush>
             </Grid.OpacityMask>
             <Image Source="{Binding PlatformBackgroundImage}" Stretch="UniformToFill" HorizontalAlignment="Center" ClipToBounds="True" UseLayoutRounding="True" VerticalAlignment="Top" Width="Auto" />
-            <Rectangle Fill="#000000" Opacity="0.4" />
+            <Rectangle Fill="#000000" Opacity="0.4" /> -->
         </Grid>
-        <Grid Margin="16,3">
+
+        <Grid Margin="5 5 5 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
