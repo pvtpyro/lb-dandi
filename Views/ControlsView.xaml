@@ -41,19 +41,19 @@
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Style.Triggers>
                 <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="Background" Value="#263543" />
+                    <Setter Property="Background" Value="#22FFFFFF" />
                     <Setter Property="Foreground" Value="{Binding ButtonForegroundBrush}" />
-                    <Setter Property="BorderBrush" Value="#FFFFFF" />
+                    <Setter Property="BorderBrush" Value="#22FFFFFF" />
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#263543" />
+                    <Setter Property="Background" Value="#33FFFFFF" />
                     <Setter Property="Foreground" Value="{Binding HoverButtonForegroundBrush}" />
-                    <Setter Property="BorderBrush" Value="#FFFFFF" />
+                    <Setter Property="BorderBrush" Value="#33FFFFFF" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="#263543" />
+                    <Setter Property="Background" Value="#11FFFFFF" />
                     <Setter Property="Foreground" Value="{Binding DisabledButtonForegroundBrush}" />
-                    <Setter Property="BorderBrush" Value="#FFFFFF" />
+                    <Setter Property="BorderBrush" Value="#11FFFFFF" />
                 </Trigger>
             </Style.Triggers>
             <Setter Property="Background" Value="#22FFFFFF" />
@@ -76,8 +76,8 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid>
-        <Grid.Background>
+    <Grid Background="#2b2b2b">
+        <!-- <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                 <GradientStop Color="#D5D7D8" Offset="0.0" />
                 <GradientStop Color="#D5D7D8" Offset="0.1" />
@@ -85,9 +85,8 @@
                 <GradientStop Color="#A7A9AD" Offset="0.9" />
                 <GradientStop Color="#74787B" Offset="0.9" />
                 <GradientStop Color="#74787B" Offset="1.0" />
-                
             </LinearGradientBrush>
-        </Grid.Background>
+        </Grid.Background> -->
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -99,13 +98,15 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
+
         <StackPanel Orientation="Horizontal" Grid.Column="0">
-            <Button Name="PlayGame" Content="{Binding PlayLabel}" IsEnabled="{Binding PlayGameEnabled}" Style="{StaticResource ButtonStyle}" />
-            <Button Name="Configure" Content="{Binding ConfigureLabel}" IsEnabled="{Binding ConfigureEnabled}" Style="{StaticResource ButtonStyle}" />
-            <Button Name="Edit" Content="{Binding EditLabel}" IsEnabled="{Binding EditEnabled}" Style="{StaticResource ButtonStyle}" />
-            <Button Name="Delete" Content="{Binding DeleteLabel}" IsEnabled="{Binding DeleteEnabled}" Style="{StaticResource ButtonStyle}" />
+            <Button Name="PlayGame" Content="&#xE768;" IsEnabled="{Binding PlayGameEnabled}" Style="{StaticResource ButtonStyle}" FontFamily="Segoe MDL2 Assets" />
+            <Button Name="Configure" Content="&#xE713;" IsEnabled="{Binding ConfigureEnabled}" Style="{StaticResource ButtonStyle}" FontFamily="Segoe MDL2 Assets" />
+            <Button Name="Edit" Content="&#xE70F;" IsEnabled="{Binding EditEnabled}" Style="{StaticResource ButtonStyle}" FontFamily="Segoe MDL2 Assets" />
+            <Button Name="Delete" Content="&#xE74D;" IsEnabled="{Binding DeleteEnabled}" Style="{StaticResource ButtonStyle}" FontFamily="Segoe MDL2 Assets" />
             <TextBlock Foreground="#FFCCCCCC" FontSize="14" Margin="15,5,10,10" VerticalAlignment="Center" Text="{Binding StatusText}" />
         </StackPanel>
+
         <Slider Grid.Column="1" VerticalAlignment="Center" Margin="0,0,40,5" Maximum="1.0" Minimum="0.039" Value="{Binding Path=BoxSize, Mode=TwoWay}"
             SmallChange="0.001" LargeChange="0.01"
             cal:Message.Attach="[Event ValueChanged] = [Action OnSliderValueChanged()];">
@@ -133,6 +134,7 @@
                 </Style>
             </Slider.FocusVisualStyle>
         </Slider>
+
         <Button Name="Previous" Content="Previous" Grid.Column="2" IsEnabled="{Binding PreviousEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
@@ -163,6 +165,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+
         <Button Name="Play" Content="Play" Grid.Column="3" IsEnabled="{Binding PlayEnabled}" Visibility="{Binding PlayVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
@@ -248,6 +251,7 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+		
         <Rectangle x:Name="KeyRectangle" Grid.Column="5" Fill="{Binding SelectionBackgroundBrush, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Visibility="Collapsed">
             <Rectangle.Triggers>
                 <EventTrigger RoutedEvent="Binding.TargetUpdated">
