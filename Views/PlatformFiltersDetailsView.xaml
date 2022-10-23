@@ -28,44 +28,9 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="Orange">
-        <Grid.Style>
-            <Style TargetType="Grid">
-                <Setter Property="Margin" Value="0,0,0,0"/>
-                <Style.Triggers>
-                    <DataTrigger Binding="{Binding IsInWindow}" Value="True">
-                        <Setter Property="Margin" Value="0"/>
-                    </DataTrigger>
-                </Style.Triggers>
-            </Style>
-        </Grid.Style>
-
-        <Grid Height="200" VerticalAlignment="Top">
-			<Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
-                <Image.Style>
-                    <Style TargetType="{x:Type Image}">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding GameBackgroundImage}" Value="{x:Null}">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Image.Style>
-            </Image>
-			
-			<Image Source="{Binding PlatformBackgroundImage}" Stretch="UniformToFill" HorizontalAlignment="Center" ClipToBounds="True" UseLayoutRounding="True" VerticalAlignment="Top" Width="Auto" />
-
-            <!-- <Grid.OpacityMask>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                    <GradientStop Color="#61ffffff" Offset="0"/>
-                    <GradientStop Color="#e0ffffff" Offset="0.45"/>
-                    <GradientStop Color="#e0ffffff" Offset="0.55"/>
-                    <GradientStop Color="#00ffffff" Offset="1"/>
-                </LinearGradientBrush>
-            </Grid.OpacityMask>
+    <Grid Background="#222222">
+        <Grid>
             <Image Source="{Binding PlatformBackgroundImage}" Stretch="UniformToFill" HorizontalAlignment="Center" ClipToBounds="True" UseLayoutRounding="True" VerticalAlignment="Top" Width="Auto" />
-            <Rectangle Fill="#000000" Opacity="0.4" /> -->
         </Grid>
 
         <Grid Margin="5 5 5 10">
@@ -74,14 +39,16 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 0 -6 0">
+
+			<!-- edit/close buttons -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
                 <Button Name="Edit" ToolTip="{Binding EditLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" Visibility="{Binding EditVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="34" Height="31" VerticalAlignment="Center" HorizontalAlignment="Center">
-                        <Grid.Effect>
+                        <!-- <Grid.Effect>
                             <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
-                        </Grid.Effect>
-                        <Path Width="13" Height="13" Stretch="Fill" Fill="{Binding ForegroundBrush}"
-                            Data="F1 M 53.2929,21.2929L 54.7071,22.7071C 56.4645,24.4645 56.4645,27.3137 54.7071,29.0711L 52.2323,31.5459L 44.4541,23.7677L 46.9289,21.2929C 48.6863,19.5355 51.5355,19.5355 53.2929,21.2929 Z M 31.7262,52.052L 23.948,44.2738L 43.0399,25.182L 50.818,32.9601L 31.7262,52.052 Z M 23.2409,47.1023L 28.8977,52.7591L 21.0463,54.9537L 23.2409,47.1023 Z " />
+                        </Grid.Effect> -->
+                        <Path Width="13" Height="13" Stretch="Uniform" Fill="{Binding ForegroundBrush}"
+                            Data="M0 512L32 352 292.7 91.3l128 128L160 480 0 512zM443.3 196.7l-128-128L384 0 512 128l-68.7 68.7z" />
                     </Grid>
                     <Button.Style>
                         <Style TargetType="Button">
@@ -107,11 +74,13 @@
                 </Button>
                 <Button Name="Close" ToolTip="{Binding CloseLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="35" Height="31" VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <Grid.Effect>
+                        <!-- <Grid.Effect>
                             <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
-                        </Grid.Effect>
-                        <Polygon Points="11,9 13,9 16,12 19,9 21,9 17,13 21,17 19,17 16,14 13,17 11,17 15,13"
-                                StrokeThickness="0" Fill="White" Width="30" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Grid.Effect> -->
+						<Path Width="13" Height="13" Stretch="Uniform" Fill="{Binding ForegroundBrush}"
+                            Data="M294.6 166.6L317.3 144 272 98.7l-22.6 22.6L160 210.7 70.6 121.4 48 98.7 2.7 144l22.6 22.6L114.7 256 25.4 345.4 2.7 368 48 413.3l22.6-22.6L160 301.3l89.4 89.4L272 413.3 317.3 368l-22.6-22.6L205.3 256l89.4-89.4z" />
+                        <!-- <Polygon Points="11,9 13,9 16,12 19,9 21,9 17,13 21,17 19,17 16,14 13,17 11,17 15,13"
+                                StrokeThickness="0" Fill="White" Width="30" Height="26" HorizontalAlignment="Center" VerticalAlignment="Center" /> -->
                     </Grid>
                     <Button.Style>
                         <Style TargetType="Button">
@@ -143,7 +112,9 @@
                     </Button.Effect>
                 </Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True" Margin="12 10 18 0">
+
+			<!-- clear logo & release date-->
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True">
                 <Grid>
                     <Grid.Style>
                         <Style TargetType="Grid">
@@ -162,7 +133,7 @@
                                               FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
                                               TextWrapping="Wrap" TextAlignment="Center" Stroke="#333333" StrokeThickness="2" />
                 </Grid>
-                <Image Height="100" Source="{Binding PlatformClearLogoImage}" RenderOptions.BitmapScalingMode="HighQuality" StretchDirection="Both" Stretch="Uniform">
+                <Image Source="{Binding PlatformClearLogoImage}" RenderOptions.BitmapScalingMode="HighQuality" StretchDirection="Both" Stretch="Uniform" MaxHeight="100" MaxWidth="250" >
                     <Image.Style>
                         <Style TargetType="Image">
                             <Setter Property="Visibility" Value="Visible"/>
@@ -174,12 +145,11 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <winCon:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding ReleasedOnString}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                          FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold"
-                                          FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#333333" StrokeThickness="1" />
+                <winCon:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding ReleasedOnString}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap" FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold" FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" StrokeThickness="1" />
             </StackPanel>
-            <Grid Grid.Row="2" Margin="0,20,0,6">
-                <ScrollViewer Grid.Row="0" Margin="0,0,0,9">
+
+            <Grid Grid.Row="2" Margin="0 15 0 0">
+                <ScrollViewer Grid.Row="0" Margin="10 5 0 5">
                     <ScrollViewer.Template>
                         <ControlTemplate TargetType="{x:Type ScrollViewer}">
                             <Grid>
@@ -195,7 +165,7 @@
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="ScrollBar">
-                                        <Track Name="PART_Track" IsDirectionReversed="true" Margin="0,0,0,-9" ViewportSize="15">
+                                        <Track Name="PART_Track" IsDirectionReversed="true" ViewportSize="15">
                                             <Track.Resources>
                                                 <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">120</system:Double>
                                             </Track.Resources>
@@ -259,7 +229,8 @@
                         </Style>
                         <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">7</system:Double>
                     </ScrollViewer.Resources>
-                    <StackPanel Orientation="Vertical" Margin="0,6,16,0">
+                    <!-- platform info -->
+                    <StackPanel Orientation="Vertical" Margin="0,0,15,0">
                         <controls:Carousel Margin="0 0 0 25" Padding="0" MaxWidth="700" DataContext="{Binding Platform}" VerticalAlignment="Top" HorizontalAlignment="Center"
                                         Background="Transparent" PreviewBackground="Black" ItemSelectionBrush="Cornsilk" ItemMouseOverBrush="#30FFFFFF" ItemScale="0.8"
                                         ForceVideoPreview16X9="True">
