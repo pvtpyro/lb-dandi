@@ -89,13 +89,13 @@
             </Border.Background> -->
         </Border>
 		
-        <!-- PROCESSING PROGRESS. TODO: TEST -->
+        <!-- PROCESSING PROGRESS -->
         <Grid Grid.Row="2" Grid.Column="2" Height="3" Panel.ZIndex="99" HorizontalAlignment="Stretch" VerticalAlignment="Top" Visibility="{Binding ProcessingVisibility}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="{Binding ProcessingWidth}" />
                 <ColumnDefinition Width="{Binding ProcessingWidthLeft}" />
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="#FFff0099" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Grid Grid.Column="0" Background="#7B69F0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </Grid>
 
         <!-- SIDE BAR VIEW -->

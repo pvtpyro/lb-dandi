@@ -145,7 +145,7 @@
 
     <Grid x:Name="Grid" Background="#0e0d1d">
         <Grid.RowDefinitions>
-            <RowDefinition Height="85" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
@@ -156,12 +156,12 @@
         <Border Grid.Row="0" x:Name="HoverBorder" Background="#332C63" Visibility="Collapsed" />
         <Border Grid.Row="0" x:Name="TreeViewToggleButtonWidthBorder" Width="{Binding TreeViewToggleButtonWidth}" Visibility="Collapsed" />
         <Border Grid.Row="0" x:Name="ComboHoverBorder" Background="#332C63" Visibility="Collapsed" />
-        <DockPanel Grid.Row="0" Margin="23,18,23,0" HorizontalAlignment="Stretch">
 
-
+        <!-- logo, name, menu -->
+        <DockPanel Grid.Row="0" Margin="23,10,23,10" HorizontalAlignment="Stretch">
             <!--<Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/small.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>-->
             <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Source="pack://application:,,,/LaunchBox;component/WpfResources/Logo.png" />
-            <TextBlock Margin="15, 8, 0, 0" Foreground="{Binding ForegroundBrush}" FontSize="20" FontFamily="Oswald" FontWeight="Normal" FontStyle="Normal">Dandi LaunchBox</TextBlock>
+            <TextBlock Margin="15, 0, 0, 0" Foreground="{Binding ForegroundBrush}" FontSize="24" FontFamily="Oswald" FontWeight="Normal" FontStyle="Normal">Dandi LaunchBox</TextBlock>
             <Button Name="Menu" HorizontalAlignment="Right" Focusable="True">
                 <Button.FocusVisualStyle>
                     <Style>
@@ -193,7 +193,7 @@
                 </Button.Style>
                 <Button.Template>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="22" Margin="0,18,0,0" DockPanel.Dock="Right">
+                        <Grid Width="22" Margin="0,15,0,0" DockPanel.Dock="Right">
                             <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Transparent" />
                             <Border Background="{TemplateBinding Foreground}" Margin="0, 0, 0, 0" Height="2" VerticalAlignment="Top" />
                             <Border Background="{TemplateBinding Foreground}" Margin="0, 5, 0, 0" Height="2" VerticalAlignment="Top" />
@@ -203,6 +203,7 @@
                 </Button.Template>
             </Button>
         </DockPanel>
+
         <Grid Grid.Row="1" Grid.Column="0" Margin="20, 0, 20, 0" Background="Transparent">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

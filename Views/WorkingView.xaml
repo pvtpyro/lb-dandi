@@ -57,7 +57,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Border Background="#fc2b2b2b">
+    <Border Background="#fc1f1d40">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -84,11 +84,11 @@
                 </Hyperlink>
             </TextBlock>
 
-            <ProgressBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Maximum="{Binding Maximum}" Value="{Binding Value}" Margin="0" Background="#121212" BorderBrush="#1e1e1e" IsIndeterminate="{Binding Indeterminate}" Opacity="1" Height="5" >
+            <ProgressBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Maximum="{Binding Maximum}" Value="{Binding Value}" Margin="0" Background="#1f1d40" IsIndeterminate="{Binding Indeterminate}" Opacity="1" Height="5" >
                 <ProgressBar.Foreground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#ff0099"/>
-                        <GradientStop Color="#FFB70971" Offset="1"/>
+                        <GradientStop Color="#7B69F0"/>
+                        <GradientStop Color="#7B69F0" Offset="1"/>
                     </LinearGradientBrush>
                 </ProgressBar.Foreground>
             </ProgressBar>
