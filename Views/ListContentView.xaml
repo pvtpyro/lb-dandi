@@ -154,484 +154,482 @@
         </Label>
 
         <Border Visibility="{Binding CollectionVisibility}" Grid.Row="1" Background="#17152e" Margin="15 20 15 5">
-            <Border BorderThickness="0" BorderBrush="#22FFFFFF" Background="Transparent">
-                <DataGrid Name="Items" BorderThickness="0"
-                    ScrollViewer.VerticalScrollBarVisibility="{Binding ScrollBarVisibility}" ColumnWidth="Auto"
-                    ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollBarVisibility}"
-                    SelectionMode="Extended" VirtualizingStackPanel.VirtualizationMode="Recycling"
-                    Foreground="{Binding ForegroundBrush}" GridLinesVisibility="None" IsReadOnly="True" CanUserResizeRows="False"
-                    AlternatingRowBackground="{Binding ContentAlternateBackgroundBrush}" RowBackground="Transparent"
-                    RowHeaderWidth="0" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserResizeColumns="True" ScrollViewer.PanningMode="Both"
-                    cal:Message.Attach="
-                        [Event SelectionChanged] = [Action OnSelectionChanged($source, $eventArgs)];
-                        [Event Loaded] = [Action OnDataGridLoaded($source, $eventArgs)]">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Game.Title}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.TitleLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Platform}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlatformLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Developer}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.DevelopersLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Publisher}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PublishersLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding ReleaseDate}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="ReleaseDateSortValue">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ReleaseDateLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Rating}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.RatingLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Genres}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.GenresLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Series}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SeriesLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Region}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.RegionLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.PlayMode}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlayModeLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Version}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.VersionLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Status}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.StatusLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.Source}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SourceLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding LastPlayed}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="LastPlayedSortValue">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.LastPlayedLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding DateAdded}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="DateAddedSortValue">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.AddedLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding DateModified}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="DateModifiedSortValue">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ModifiedLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.PlayCount}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlayCountLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Favorite}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.FavoriteLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Completed}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.CompletedLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Broken}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.BrokenLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Portable}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PortableLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Hide}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.HideLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding StarRating}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.StarRatingLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding CommunityStarRating}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.CommunityStarRatingLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.CommunityStarRatingTotalVotes}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.CommunityStarRatingCountLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="AlternateNames">
-                            <DataGridTemplateColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.AltNamesLabel}" />
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding AlternateNames}" TextTrimming="WordEllipsis" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="WikipediaUrl">
-                            <DataGridTemplateColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WikipediaUrlLabel}" />
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                        <Hyperlink Foreground="{Binding ForegroundBrush}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WebLinkCommand}"
-                                                   CommandParameter="{Binding Game.WikipediaUrl}">
-                                            <TextBlock Text="{Binding Game.WikipediaUrl}" />
-                                        </Hyperlink>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Binding="{Binding Game.MaxPlayers}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.MaxPlayersLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.ReleaseType}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ReleaseTypeLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="VideoUrl">
-                            <DataGridTemplateColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.VideoUrlLabel}" />
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                        <Hyperlink Foreground="{Binding ForegroundBrush}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WebLinkCommand}"
-                                                   CommandParameter="{Binding Game.VideoUrl}">
-                                            <TextBlock Text="{Binding Game.VideoUrl}" />
-                                        </Hyperlink>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Binding="{Binding Installed}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.InstalledLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTextColumn Binding="{Binding Game.ApplicationPath}" CellStyle="{StaticResource DataGridCellStyle}">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ApplicationPathLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                        <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="LaunchBoxDbId">
-                            <DataGridTemplateColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.LaunchboxDbIdLabel}" />
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                        <Hyperlink Foreground="{Binding ForegroundBrush}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WebLinkCommand}"
-                                                   CommandParameter="{Binding LaunchBoxDbUrl}">
-                                            <TextBlock Text="{Binding LaunchBoxDbId}" />
-                                        </Hyperlink>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" SortMemberPath="Badges.Count">
-                            <DataGridTemplateColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.BadgesLabel}" />
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <DataTemplate.Resources>
-                                        <windows:ImageToSourceConverter x:Key="ImageToSourceConverter" x:Name="ImageToSourceConverter"/>
-                                    </DataTemplate.Resources>
-                                    <ListView ItemsSource="{Binding Badges}" Background="Transparent" BorderThickness="0" VerticalAlignment="Center"
-                                              HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
-                                        <ListView.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal"/>
-                                            </ItemsPanelTemplate>
-                                        </ListView.ItemsPanel>
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <Image x:Name="BadgeImage" Source="{Binding Path=Icon, Converter={StaticResource ImageToSourceConverter}, Mode=OneTime}"
-                                                        Width="20" Margin="0,0,6,0" RenderOptions.BitmapScalingMode="HighQuality" ToolTip="{Binding Name, Mode=OneTime}" />
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                        <ListView.ItemContainerStyle>
-                                            <Style TargetType="ListViewItem">
-                                                <Setter Property="SnapsToDevicePixels" Value="True" />
-                                                <Setter Property="Margin" Value="0" />
-                                                <Setter Property="Padding" Value="0" />
-                                                <Setter Property="Background" Value="Transparent" />
-                                                <Setter Property="BorderThickness" Value="0" />
-                                                <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-                                                <Setter Property="Background" Value="Transparent" />
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                                            <ContentPresenter x:Name="ContentPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </ListView.ItemContainerStyle>
-                                    </ListView>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTextColumn Binding="{Binding Game.PlayTimeHms}" CellStyle="{StaticResource DataGridCellStyle}" SortMemberPath="Game.PlayTime">
-                            <DataGridTextColumn.Header>
-                                <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlayTimeLabel}" />
-                            </DataGridTextColumn.Header>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                    <DataGrid.CellStyle>
-                        <Style TargetType="DataGridCell">
-                            <Style.Triggers>
-                                <Trigger Property="DataGridCell.IsSelected" Value="True">
-                                    <Setter Property="Background" Value="{Binding DataContext.SelectionBackgroundBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
-                                    <Setter Property="BorderBrush" Value="{Binding DataContext.SelectionBackgroundBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
-                                </Trigger>
-                            </Style.Triggers>
-                            <Setter Property="Padding" Value="10" />
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type DataGridCell}">
-                                        <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}"
-                                            BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
-                                            SnapsToDevicePixels="True">
-                                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </DataGrid.CellStyle>
-                    <DataGrid.ColumnHeaderStyle>
-                        <Style TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="Padding" Value="10" />
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="Foreground" Value="#bfffffff" />
-                            <Setter Property="Background" Value="#17152e" />
-                            <Setter Property="cal:Message.Attach" Value="[Event PreviewMouseRightButtonUp] = [Action OnHeaderRightClick($eventArgs)]" />
-                        </Style>
-                    </DataGrid.ColumnHeaderStyle>
-                    <DataGrid.Template>
-                        <ControlTemplate TargetType="{x:Type DataGrid}">
-                            <Border x:Name="border" SnapsToDevicePixels="True" BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
-                                <ScrollViewer x:Name="DG_ScrollViewer" Focusable="false" Background="Black">
-                                    <ScrollViewer.Template>
-                                        <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="*" />
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
-                                                <Button Focusable="false" Command="{x:Static DataGrid.SelectAllCommand}"
-                                                    Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}"
-                                                    Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, 
-                                                        Converter={x:Static DataGrid.HeadersVisibilityConverter},
-                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
-                                                    Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                                <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Grid.Row="0"
-                                                    Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, 
-                                                        Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                                <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0"
-                                                    CanContentScroll="{TemplateBinding CanContentScroll}" />
-                                                <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="2" Grid.Row="1" Orientation="Vertical"
-                                                    ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}"
-                                                    Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Margin="10,-39,0,0"
-                                                    Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                                    Focusable="False">
-                                                    <ScrollBar.Template>
-                                                        <ControlTemplate TargetType="ScrollBar">
-                                                            <Track Name="PART_Track" IsDirectionReversed="true" ViewportSize="120">
-                                                                <Track.Resources>
-                                                                    <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">120</system:Double>
-                                                                </Track.Resources>
-                                                                <Track.DecreaseRepeatButton>
-                                                                    <RepeatButton Name="DecreaseRepeatButton" Command="ScrollBar.PageUpCommand"
-                                                                        Background="{Binding ControlsBackgroundBrush}" Focusable="False">
-                                                                        <RepeatButton.Template>
-                                                                            <ControlTemplate TargetType="RepeatButton">
-                                                                                <Grid>
-                                                                                    <Border Name="Border" Background="#00000000" BorderThickness="0" />
-                                                                                </Grid>
-                                                                                <ControlTemplate.Triggers>
-                                                                                    <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                        <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
-                                                                                    </Trigger>
-                                                                                </ControlTemplate.Triggers>
-                                                                            </ControlTemplate>
-                                                                        </RepeatButton.Template>
-                                                                    </RepeatButton>
-                                                                </Track.DecreaseRepeatButton>
-                                                                <Track.IncreaseRepeatButton>
-                                                                    <RepeatButton Name="IncreaseRepeatButton" Command="ScrollBar.PageDownCommand"
-                                                                        Background="{Binding ControlsBackgroundBrush}" Focusable="False">
-                                                                        <RepeatButton.Template>
-                                                                            <ControlTemplate TargetType="RepeatButton">
-                                                                                <Grid>
-                                                                                    <Border Name="Border" Background="#00000000" BorderThickness="0" />
-                                                                                </Grid>
-                                                                                <ControlTemplate.Triggers>
-                                                                                    <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                        <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
-                                                                                    </Trigger>
-                                                                                </ControlTemplate.Triggers>
-                                                                            </ControlTemplate>
-                                                                        </RepeatButton.Template>
-                                                                    </RepeatButton>
-                                                                </Track.IncreaseRepeatButton>
-                                                                <Track.Thumb>
-                                                                    <Thumb Focusable="False">
-                                                                        <Thumb.Template>
-                                                                            <ControlTemplate TargetType="Thumb">
-                                                                                <Border Name="Border"  Background="{Binding FadedForegroundBrush}" BorderThickness="0" />
-                                                                                <ControlTemplate.Triggers>
-                                                                                    <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                        <Setter TargetName="Border" Property="Background" Value="#99FFFFFF" />
-                                                                                    </Trigger>
-                                                                                </ControlTemplate.Triggers>
-                                                                            </ControlTemplate>
-                                                                        </Thumb.Template>
-                                                                    </Thumb>
-                                                                </Track.Thumb>
-                                                            </Track>
-                                                            <ControlTemplate.Triggers>
-                                                                <Trigger SourceName="PART_Track" Property="IsEnabled" Value="false">
-                                                                    <Setter TargetName="PART_Track" Property="Visibility" Value="Hidden"/>
-                                                                </Trigger>
-                                                            </ControlTemplate.Triggers>
-                                                        </ControlTemplate>
-                                                    </ScrollBar.Template>
-                                                </ScrollBar>
-                                                <Grid Grid.Column="1" Grid.Row="2">
-                                                    <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
-                                                        <ColumnDefinition Width="*" />
-                                                    </Grid.ColumnDefinitions>
-                                                    <ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Orientation="Horizontal"
-                                                        ViewportSize="{TemplateBinding ViewportWidth}" Maximum="{TemplateBinding ScrollableWidth}"
-                                                        Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Margin="0,10,0,0"
-                                                        Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                                        Focusable="False">
-                                                        <ScrollBar.Template>
-                                                            <ControlTemplate TargetType="ScrollBar">
-                                                                <Track Name="PART_Track" ViewportSize="120">
-                                                                    <Track.Resources>
-                                                                        <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">120</system:Double>
-                                                                    </Track.Resources>
-                                                                    <Track.DecreaseRepeatButton>
-                                                                        <RepeatButton Name="DecreaseRepeatButton" Command="ScrollBar.PageLeftCommand"
-                                                                            Background="{Binding ControlsBackgroundBrush}" Focusable="False">
-                                                                            <RepeatButton.Template>
-                                                                                <ControlTemplate TargetType="RepeatButton">
-                                                                                    <Grid>
-                                                                                        <Border Name="Border" Background="#00000000" BorderThickness="0" />
-                                                                                    </Grid>
-                                                                                    <ControlTemplate.Triggers>
-                                                                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                            <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
-                                                                                        </Trigger>
-                                                                                    </ControlTemplate.Triggers>
-                                                                                </ControlTemplate>
-                                                                            </RepeatButton.Template>
-                                                                        </RepeatButton>
-                                                                    </Track.DecreaseRepeatButton>
-                                                                    <Track.IncreaseRepeatButton>
-                                                                        <RepeatButton Name="IncreaseRepeatButton" Command="ScrollBar.PageRightCommand"
-                                                                            Background="{Binding ControlsBackgroundBrush}" Focusable="False">
-                                                                            <RepeatButton.Template>
-                                                                                <ControlTemplate TargetType="RepeatButton">
-                                                                                    <Grid>
-                                                                                        <Border Name="Border" Background="#00000000" BorderThickness="0" />
-                                                                                    </Grid>
-                                                                                    <ControlTemplate.Triggers>
-                                                                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                            <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
-                                                                                        </Trigger>
-                                                                                    </ControlTemplate.Triggers>
-                                                                                </ControlTemplate>
-                                                                            </RepeatButton.Template>
-                                                                        </RepeatButton>
-                                                                    </Track.IncreaseRepeatButton>
-                                                                    <Track.Thumb>
-                                                                        <Thumb Focusable="False">
-                                                                            <Thumb.Template>
-                                                                                <ControlTemplate TargetType="Thumb">
-                                                                                    <Border Name="Border"  Background="{Binding FadedForegroundBrush}" BorderThickness="0" />
-                                                                                    <ControlTemplate.Triggers>
-                                                                                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                            <Setter TargetName="Border" Property="Background" Value="#99FFFFFF" />
-                                                                                        </Trigger>
-                                                                                    </ControlTemplate.Triggers>
-                                                                                </ControlTemplate>
-                                                                            </Thumb.Template>
-                                                                        </Thumb>
-                                                                    </Track.Thumb>
-                                                                </Track>
-                                                                <ControlTemplate.Triggers>
-                                                                    <Trigger SourceName="PART_Track" Property="IsEnabled" Value="false">
-                                                                        <Setter TargetName="PART_Track" Property="Visibility" Value="Hidden"/>
-                                                                    </Trigger>
-                                                                </ControlTemplate.Triggers>
-                                                            </ControlTemplate>
-                                                        </ScrollBar.Template>
-                                                    </ScrollBar>
-                                                </Grid>
-                                            </Grid>
-                                        </ControlTemplate>
-                                    </ScrollViewer.Template>
-                                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                </ScrollViewer>
-                            </Border>
-                        </ControlTemplate>
-                    </DataGrid.Template>
-                    <DataGrid.Resources>
-                        <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">7</system:Double>
-                        <system:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">7</system:Double>
-                    </DataGrid.Resources>
-                </DataGrid>
-            </Border>
+			<DataGrid Name="Items" BorderThickness="0"
+				ScrollViewer.VerticalScrollBarVisibility="{Binding ScrollBarVisibility}" ColumnWidth="Auto"
+				ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollBarVisibility}"
+				SelectionMode="Extended" VirtualizingStackPanel.VirtualizationMode="Recycling"
+				Foreground="{Binding ForegroundBrush}" GridLinesVisibility="None" IsReadOnly="True" CanUserResizeRows="False"
+				AlternatingRowBackground="{Binding ContentAlternateBackgroundBrush}" RowBackground="Transparent"
+				RowHeaderWidth="0" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserResizeColumns="True" ScrollViewer.PanningMode="Both"
+				cal:Message.Attach="
+					[Event SelectionChanged] = [Action OnSelectionChanged($source, $eventArgs)];
+					[Event Loaded] = [Action OnDataGridLoaded($source, $eventArgs)]">
+				<DataGrid.Columns>
+					<DataGridTextColumn Binding="{Binding Game.Title}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.TitleLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Platform}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlatformLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Developer}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.DevelopersLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Publisher}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PublishersLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding ReleaseDate}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="ReleaseDateSortValue">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ReleaseDateLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Rating}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.RatingLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Genres}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.GenresLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Series}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SeriesLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Region}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.RegionLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.PlayMode}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlayModeLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Version}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.VersionLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Status}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.StatusLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.Source}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.SourceLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding LastPlayed}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="LastPlayedSortValue">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.LastPlayedLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding DateAdded}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="DateAddedSortValue">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.AddedLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding DateModified}" CellStyle="{StaticResource RightAlignDataGridCellStyle}" SortMemberPath="DateModifiedSortValue">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ModifiedLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.PlayCount}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlayCountLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Favorite}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.FavoriteLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Completed}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.CompletedLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Broken}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.BrokenLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Portable}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PortableLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Hide}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.HideLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding StarRating}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.StarRatingLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding CommunityStarRating}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.CommunityStarRatingLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.CommunityStarRatingTotalVotes}" CellStyle="{StaticResource RightAlignDataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.CommunityStarRatingCountLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="AlternateNames">
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.AltNamesLabel}" />
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding AlternateNames}" TextTrimming="WordEllipsis" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="WikipediaUrl">
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WikipediaUrlLabel}" />
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock>
+									<Hyperlink Foreground="{Binding ForegroundBrush}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WebLinkCommand}"
+												CommandParameter="{Binding Game.WikipediaUrl}">
+										<TextBlock Text="{Binding Game.WikipediaUrl}" />
+									</Hyperlink>
+								</TextBlock>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTextColumn Binding="{Binding Game.MaxPlayers}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.MaxPlayersLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.ReleaseType}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ReleaseTypeLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="VideoUrl">
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.VideoUrlLabel}" />
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock>
+									<Hyperlink Foreground="{Binding ForegroundBrush}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WebLinkCommand}"
+												CommandParameter="{Binding Game.VideoUrl}">
+										<TextBlock Text="{Binding Game.VideoUrl}" />
+									</Hyperlink>
+								</TextBlock>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTextColumn Binding="{Binding Installed}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.InstalledLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTextColumn Binding="{Binding Game.ApplicationPath}" CellStyle="{StaticResource DataGridCellStyle}">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ApplicationPathLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+					<DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" CanUserSort="True" SortMemberPath="LaunchBoxDbId">
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.LaunchboxDbIdLabel}" />
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock>
+									<Hyperlink Foreground="{Binding ForegroundBrush}" Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.WebLinkCommand}"
+												CommandParameter="{Binding LaunchBoxDbUrl}">
+										<TextBlock Text="{Binding LaunchBoxDbId}" />
+									</Hyperlink>
+								</TextBlock>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTemplateColumn CellStyle="{StaticResource DataGridCellStyle}" SortMemberPath="Badges.Count">
+						<DataGridTemplateColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.BadgesLabel}" />
+						</DataGridTemplateColumn.Header>
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<DataTemplate.Resources>
+									<windows:ImageToSourceConverter x:Key="ImageToSourceConverter" x:Name="ImageToSourceConverter"/>
+								</DataTemplate.Resources>
+								<ListView ItemsSource="{Binding Badges}" Background="Transparent" BorderThickness="0" VerticalAlignment="Center"
+											HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+									<ListView.ItemsPanel>
+										<ItemsPanelTemplate>
+											<StackPanel Orientation="Horizontal"/>
+										</ItemsPanelTemplate>
+									</ListView.ItemsPanel>
+									<ListView.ItemTemplate>
+										<DataTemplate>
+											<Image x:Name="BadgeImage" Source="{Binding Path=Icon, Converter={StaticResource ImageToSourceConverter}, Mode=OneTime}"
+													Width="20" Margin="0,0,6,0" RenderOptions.BitmapScalingMode="HighQuality" ToolTip="{Binding Name, Mode=OneTime}" />
+										</DataTemplate>
+									</ListView.ItemTemplate>
+									<ListView.ItemContainerStyle>
+										<Style TargetType="ListViewItem">
+											<Setter Property="SnapsToDevicePixels" Value="True" />
+											<Setter Property="Margin" Value="0" />
+											<Setter Property="Padding" Value="0" />
+											<Setter Property="Background" Value="Transparent" />
+											<Setter Property="BorderThickness" Value="0" />
+											<Setter Property="FocusVisualStyle" Value="{x:Null}" />
+											<Setter Property="Background" Value="Transparent" />
+											<Setter Property="Template">
+												<Setter.Value>
+													<ControlTemplate TargetType="{x:Type ListViewItem}">
+														<ContentPresenter x:Name="ContentPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+													</ControlTemplate>
+												</Setter.Value>
+											</Setter>
+										</Style>
+									</ListView.ItemContainerStyle>
+								</ListView>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTextColumn Binding="{Binding Game.PlayTimeHms}" CellStyle="{StaticResource DataGridCellStyle}" SortMemberPath="Game.PlayTime">
+						<DataGridTextColumn.Header>
+							<TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.PlayTimeLabel}" />
+						</DataGridTextColumn.Header>
+					</DataGridTextColumn>
+				</DataGrid.Columns>
+				<DataGrid.CellStyle>
+					<Style TargetType="DataGridCell">
+						<Style.Triggers>
+							<Trigger Property="DataGridCell.IsSelected" Value="True">
+								<Setter Property="Background" Value="{Binding DataContext.SelectionBackgroundBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+								<Setter Property="BorderBrush" Value="{Binding DataContext.SelectionBackgroundBrush, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+							</Trigger>
+						</Style.Triggers>
+						<Setter Property="Padding" Value="10" />
+						<Setter Property="Template">
+							<Setter.Value>
+								<ControlTemplate TargetType="{x:Type DataGridCell}">
+									<Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}"
+										BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+										SnapsToDevicePixels="True">
+										<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+									</Border>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</DataGrid.CellStyle>
+				<DataGrid.ColumnHeaderStyle>
+					<Style TargetType="{x:Type DataGridColumnHeader}">
+						<Setter Property="Padding" Value="10" />
+						<Setter Property="FontWeight" Value="Bold" />
+						<Setter Property="Foreground" Value="#bfffffff" />
+						<Setter Property="Background" Value="#17152e" />
+						<Setter Property="cal:Message.Attach" Value="[Event PreviewMouseRightButtonUp] = [Action OnHeaderRightClick($eventArgs)]" />
+					</Style>
+				</DataGrid.ColumnHeaderStyle>
+				<DataGrid.Template>
+					<ControlTemplate TargetType="{x:Type DataGrid}">
+						<Border x:Name="border" SnapsToDevicePixels="True" BorderBrush="{TemplateBinding BorderBrush}"
+							BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+							<ScrollViewer x:Name="DG_ScrollViewer" Focusable="false" Background="Black">
+								<ScrollViewer.Template>
+									<ControlTemplate TargetType="{x:Type ScrollViewer}">
+										<Grid>
+											<Grid.ColumnDefinitions>
+												<ColumnDefinition Width="Auto" />
+												<ColumnDefinition Width="*" />
+												<ColumnDefinition Width="Auto" />
+											</Grid.ColumnDefinitions>
+											<Grid.RowDefinitions>
+												<RowDefinition Height="Auto" />
+												<RowDefinition Height="*" />
+												<RowDefinition Height="Auto" />
+											</Grid.RowDefinitions>
+											<Button Focusable="false" Command="{x:Static DataGrid.SelectAllCommand}"
+												Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}"
+												Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.All}, 
+													Converter={x:Static DataGrid.HeadersVisibilityConverter},
+													RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+												Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+											<DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1" Grid.Row="0"
+												Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Column}, 
+													Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+											<ScrollContentPresenter x:Name="PART_ScrollContentPresenter" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0"
+												CanContentScroll="{TemplateBinding CanContentScroll}" />
+											<ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="2" Grid.Row="1" Orientation="Vertical"
+												ViewportSize="{TemplateBinding ViewportHeight}" Maximum="{TemplateBinding ScrollableHeight}"
+												Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Margin="10,-39,0,0"
+												Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+												Focusable="False">
+												<ScrollBar.Template>
+													<ControlTemplate TargetType="ScrollBar">
+														<Track Name="PART_Track" IsDirectionReversed="true" ViewportSize="120">
+															<Track.Resources>
+																<system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">120</system:Double>
+															</Track.Resources>
+															<Track.DecreaseRepeatButton>
+																<RepeatButton Name="DecreaseRepeatButton" Command="ScrollBar.PageUpCommand"
+																	Background="{Binding ControlsBackgroundBrush}" Focusable="False">
+																	<RepeatButton.Template>
+																		<ControlTemplate TargetType="RepeatButton">
+																			<Grid>
+																				<Border Name="Border" Background="#00000000" BorderThickness="0" />
+																			</Grid>
+																			<ControlTemplate.Triggers>
+																				<Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+																					<Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+																				</Trigger>
+																			</ControlTemplate.Triggers>
+																		</ControlTemplate>
+																	</RepeatButton.Template>
+																</RepeatButton>
+															</Track.DecreaseRepeatButton>
+															<Track.IncreaseRepeatButton>
+																<RepeatButton Name="IncreaseRepeatButton" Command="ScrollBar.PageDownCommand"
+																	Background="{Binding ControlsBackgroundBrush}" Focusable="False">
+																	<RepeatButton.Template>
+																		<ControlTemplate TargetType="RepeatButton">
+																			<Grid>
+																				<Border Name="Border" Background="#00000000" BorderThickness="0" />
+																			</Grid>
+																			<ControlTemplate.Triggers>
+																				<Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+																					<Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+																				</Trigger>
+																			</ControlTemplate.Triggers>
+																		</ControlTemplate>
+																	</RepeatButton.Template>
+																</RepeatButton>
+															</Track.IncreaseRepeatButton>
+															<Track.Thumb>
+																<Thumb Focusable="False">
+																	<Thumb.Template>
+																		<ControlTemplate TargetType="Thumb">
+																			<Border Name="Border"  Background="{Binding FadedForegroundBrush}" BorderThickness="0" />
+																			<ControlTemplate.Triggers>
+																				<Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+																					<Setter TargetName="Border" Property="Background" Value="#99FFFFFF" />
+																				</Trigger>
+																			</ControlTemplate.Triggers>
+																		</ControlTemplate>
+																	</Thumb.Template>
+																</Thumb>
+															</Track.Thumb>
+														</Track>
+														<ControlTemplate.Triggers>
+															<Trigger SourceName="PART_Track" Property="IsEnabled" Value="false">
+																<Setter TargetName="PART_Track" Property="Visibility" Value="Hidden"/>
+															</Trigger>
+														</ControlTemplate.Triggers>
+													</ControlTemplate>
+												</ScrollBar.Template>
+											</ScrollBar>
+											<Grid Grid.Column="1" Grid.Row="2">
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" />
+													<ColumnDefinition Width="*" />
+												</Grid.ColumnDefinitions>
+												<ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Orientation="Horizontal"
+													ViewportSize="{TemplateBinding ViewportWidth}" Maximum="{TemplateBinding ScrollableWidth}"
+													Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Margin="0,10,0,0"
+													Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}"
+													Focusable="False">
+													<ScrollBar.Template>
+														<ControlTemplate TargetType="ScrollBar">
+															<Track Name="PART_Track" ViewportSize="120">
+																<Track.Resources>
+																	<system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">120</system:Double>
+																</Track.Resources>
+																<Track.DecreaseRepeatButton>
+																	<RepeatButton Name="DecreaseRepeatButton" Command="ScrollBar.PageLeftCommand"
+																		Background="{Binding ControlsBackgroundBrush}" Focusable="False">
+																		<RepeatButton.Template>
+																			<ControlTemplate TargetType="RepeatButton">
+																				<Grid>
+																					<Border Name="Border" Background="#00000000" BorderThickness="0" />
+																				</Grid>
+																				<ControlTemplate.Triggers>
+																					<Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+																						<Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+																					</Trigger>
+																				</ControlTemplate.Triggers>
+																			</ControlTemplate>
+																		</RepeatButton.Template>
+																	</RepeatButton>
+																</Track.DecreaseRepeatButton>
+																<Track.IncreaseRepeatButton>
+																	<RepeatButton Name="IncreaseRepeatButton" Command="ScrollBar.PageRightCommand"
+																		Background="{Binding ControlsBackgroundBrush}" Focusable="False">
+																		<RepeatButton.Template>
+																			<ControlTemplate TargetType="RepeatButton">
+																				<Grid>
+																					<Border Name="Border" Background="#00000000" BorderThickness="0" />
+																				</Grid>
+																				<ControlTemplate.Triggers>
+																					<Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+																						<Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+																					</Trigger>
+																				</ControlTemplate.Triggers>
+																			</ControlTemplate>
+																		</RepeatButton.Template>
+																	</RepeatButton>
+																</Track.IncreaseRepeatButton>
+																<Track.Thumb>
+																	<Thumb Focusable="False">
+																		<Thumb.Template>
+																			<ControlTemplate TargetType="Thumb">
+																				<Border Name="Border"  Background="{Binding FadedForegroundBrush}" BorderThickness="0" />
+																				<ControlTemplate.Triggers>
+																					<Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+																						<Setter TargetName="Border" Property="Background" Value="#99FFFFFF" />
+																					</Trigger>
+																				</ControlTemplate.Triggers>
+																			</ControlTemplate>
+																		</Thumb.Template>
+																	</Thumb>
+																</Track.Thumb>
+															</Track>
+															<ControlTemplate.Triggers>
+																<Trigger SourceName="PART_Track" Property="IsEnabled" Value="false">
+																	<Setter TargetName="PART_Track" Property="Visibility" Value="Hidden"/>
+																</Trigger>
+															</ControlTemplate.Triggers>
+														</ControlTemplate>
+													</ScrollBar.Template>
+												</ScrollBar>
+											</Grid>
+										</Grid>
+									</ControlTemplate>
+								</ScrollViewer.Template>
+								<ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+							</ScrollViewer>
+						</Border>
+					</ControlTemplate>
+				</DataGrid.Template>
+				<DataGrid.Resources>
+					<system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarWidthKey}">7</system:Double>
+					<system:Double x:Key="{x:Static SystemParameters.HorizontalScrollBarHeightKey}">7</system:Double>
+				</DataGrid.Resources>
+			</DataGrid>
         </Border>
     </Grid>
 </UserControl>
