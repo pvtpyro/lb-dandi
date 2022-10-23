@@ -33,7 +33,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#1F1F1F">
+    <Grid Background="#17152e">
         <Grid.Style>
             <Style TargetType="Grid">
                 <Setter Property="Margin" Value="0,0,0,0"/>

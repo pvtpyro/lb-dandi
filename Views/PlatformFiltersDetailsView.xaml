@@ -28,7 +28,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#222222">
+    <Grid Background="#17152e">
         <Grid>
             <Image Source="{Binding PlatformBackgroundImage}" Stretch="UniformToFill" HorizontalAlignment="Center" ClipToBounds="True" UseLayoutRounding="True" VerticalAlignment="Top" Width="Auto" />
         </Grid>

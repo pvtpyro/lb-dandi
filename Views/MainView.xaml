@@ -18,7 +18,7 @@
         <Style x:Key="GridSplitterStyle" TargetType="GridSplitter">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="Background" Value="#323232" />
+            <Setter Property="Background" Value="#332C63" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type GridSplitter}">
@@ -43,22 +43,16 @@
     </Window.Resources>
 
 
-    <Grid >
+    <Grid>
         <Grid.Resources>
             <local:DoubleGridLengthConverter x:Key="DoubleGridLengthConverter" />
         </Grid.Resources>
-        <!--<Grid.Background>
+        <Grid.Background>
             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,0.5">
-                <GradientStop Color="#FFDE16"/>
-                <GradientStop Color="#FFDE16" Offset="0.015"/>
-                <GradientStop Color="#FAC102" Offset="0.015"/>
-                <GradientStop Color="#FAC102" Offset="0.08"/>
-                <GradientStop Color="#F5A800" Offset="0.08"/>
-                <GradientStop Color="#F5A800" Offset="0.20"/>
-                <GradientStop Color="#FFDE16" Offset="0.20"/>
-                <GradientStop Color="#FFDE16" Offset="1"/>
+                <GradientStop Color="#17152e" Offset="0.4"/>
+                <GradientStop Color="#17152e" Offset="1"/>
             </LinearGradientBrush>
-        </Grid.Background>-->
+        </Grid.Background>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="{Binding Path=SideBarWidth, Mode=TwoWay, Converter={StaticResource DoubleGridLengthConverter}}" MinWidth="{Binding Path=SideBarMinWidth}" MaxWidth="{Binding Path=SideBarMaxWidth}" />
@@ -86,10 +80,10 @@
             </TextBlock.Effect>
         </TextBlock>-->
 
-        <!-- THEME SPECIFIC BORDERS -->
-        <Border Grid.ColumnSpan="5" Background="#323232"/>
+        <!-- top bar w/ window controls -->
+        <Border Grid.ColumnSpan="5" Background="#0e0d1d"/>
 		<!-- Top part "all games" etc -->
-        <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" CornerRadius="8,8,0,0" Background="#F95A3E">
+        <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" CornerRadius="8,8,0,0" Background="#332C63">
             <!-- <Border.Background>
                 <SolidColorBrush Color="#383838" Opacity="1"/>
             </Border.Background> -->
@@ -100,7 +94,7 @@
                 <ColumnDefinition Width="{Binding ProcessingWidth}" />
                 <ColumnDefinition Width="{Binding ProcessingWidthLeft}" />
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="#FF6728DC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Grid Grid.Column="0" Background="#FFff0099" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         </Grid>
 
         <!-- SIDE BAR VIEW -->

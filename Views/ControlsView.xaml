@@ -66,7 +66,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Padding="18, 0, 18, 0" BorderThickness="1" Background="{TemplateBinding Background}"
+                        <Border Padding="10, 5, 10, 5" BorderThickness="1" Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
@@ -76,7 +76,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#2b2b2b">
+    <Grid Background="#0e0d1d">
         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -276,6 +276,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="Add" Content="{Binding AddLabel}" Style="{StaticResource ButtonStyle}" Grid.Column="7" HorizontalAlignment="Right" Margin="10,5,8,10" />
+        <Button Name="Add" Style="{StaticResource ButtonStyle}" Grid.Column="7" HorizontalAlignment="Right" Margin="10,5,8,10">
+			<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+		</Button>
     </Grid>
 </UserControl>

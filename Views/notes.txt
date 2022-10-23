@@ -1,0 +1,7 @@
+#0e0d1d darkest blue
+#17152e dark blue
+#332C63 blue for header and bars
+
+
+#E72A29 red
+#FFE621 yellow
