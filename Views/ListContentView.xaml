@@ -17,12 +17,12 @@
         <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="True">
-                    <Setter Property="Background" Value="{Binding SelectionBackgroundBrush}" />
-                    <Setter Property="BorderBrush" Value="{Binding SelectionBackgroundBrush}" />
+                    <Setter Property="Background" Value="#7B69F0" />
+                    <Setter Property="BorderBrush" Value="transparent" />
                     <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
                 </Trigger>
             </Style.Triggers>
-            <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+            <Setter Property="Foreground" Value="#ccffffff" />
             <Setter Property="Padding" Value="10" />
             <Setter Property="FocusVisualStyle">
                 <Setter.Value>
@@ -55,12 +55,12 @@
         <Style x:Key="RightAlignDataGridCellStyle" TargetType="DataGridCell">
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="True">
-                    <Setter Property="Background" Value="{Binding SelectionBackgroundBrush}" />
-                    <Setter Property="BorderBrush" Value="{Binding SelectionBackgroundBrush}" />
-                    <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+                    <Setter Property="Background" Value="#7B69F0" />
+                    <Setter Property="BorderBrush" Value="transparent" />
+                    <Setter Property="Foreground" Value="#ccffffff" />
                 </Trigger>
             </Style.Triggers>
-            <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+            <Setter Property="Foreground" Value="#ccffffff" />
             <Setter Property="Padding" Value="10" />
             <Setter Property="FocusVisualStyle">
                 <Setter.Value>
@@ -91,17 +91,17 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid Background="pink">
+
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="66" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+		<!-- title bar -->
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Grid>
-                <Grid.Effect>
-                    <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.65" BlurRadius="4" />
-                </Grid.Effect>
-                <DockPanel Grid.Row="0" Margin="23,18,23,0" HorizontalAlignment="Stretch">
+                <DockPanel Grid.Row="0" Margin="15,18,15,0" HorizontalAlignment="Stretch">
                     <Button Name="LogoMenu" Visibility="{Binding LogoVisibility}" Focusable="True">
                         <Button.FocusVisualStyle>
                             <Style>
@@ -135,15 +135,14 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Label Name="Title" Foreground="{Binding ForegroundBrush}" FontWeight="Bold" FontSize="26" Margin="8,-2,0,0">
-                        <Label.Effect>
-                            <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.65" BlurRadius="4" />
-                        </Label.Effect>
+                    <Label Name="Title" Foreground="{Binding ForegroundBrush}" FontWeight="Bold" FontSize="26" Margin="0,-8,0,0" FontFamily="Oswald">
                     </Label>
                 </DockPanel>
             </Grid>
         </StackPanel>
-        <Label Grid.Row="1" Visibility="{Binding NoResultsVisibility}" Foreground="{Binding ForegroundBrush}" FontSize="20" Margin="36,5,0,0">
+
+		<!-- todo: test. no results.  -->
+        <Label Grid.Row="1" Visibility="{Binding NoResultsVisibility}" Foreground="{Binding ForegroundBrush}" FontSize="20" Margin="0">
             <TextBlock Text="{Binding NoResultsLabel}">
                 <TextBlock.Effect>
                     <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
@@ -153,7 +152,8 @@
                 <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
             </Label.Effect>
         </Label>
-        <Border Visibility="{Binding CollectionVisibility}" Grid.Row="1" Background="{Binding ContentBackgroundBrush}" Margin="{Binding ListMargin}">
+
+        <Border Visibility="{Binding CollectionVisibility}" Grid.Row="1" Background="#17152e" Margin="15 20 15 5">
             <Border BorderThickness="0" BorderBrush="#22FFFFFF" Background="Transparent">
                 <DataGrid Name="Items" BorderThickness="0"
                     ScrollViewer.VerticalScrollBarVisibility="{Binding ScrollBarVisibility}" ColumnWidth="Auto"
@@ -442,7 +442,8 @@
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Padding" Value="10" />
                             <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="Foreground" Value="Black" />
+                            <Setter Property="Foreground" Value="#bfffffff" />
+                            <Setter Property="Background" Value="#17152e" />
                             <Setter Property="cal:Message.Attach" Value="[Event PreviewMouseRightButtonUp] = [Action OnHeaderRightClick($eventArgs)]" />
                         </Style>
                     </DataGrid.ColumnHeaderStyle>

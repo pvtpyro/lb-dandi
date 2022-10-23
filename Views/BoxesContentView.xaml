@@ -92,6 +92,7 @@
                 [Event PreviewMouseRightButtonUp] = [Action OnRightClick($eventArgs)];">
             <ListView.ItemTemplate>
                 <DataTemplate>
+
 					<!-- game grid item -->
                     <Grid Margin="15">
                         <Grid Height="{Binding ItemHeight}">
@@ -101,38 +102,43 @@
                                     <Grid.Effect>
                                         <DropShadowEffect BlurRadius="3" Opacity="{Binding DropShadowOpacity}" ShadowDepth="3" RenderingBias="Performance" />
                                     </Grid.Effect>
+
                                     <Border CornerRadius="4" BorderThickness="3" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <Grid>
                                             <Border x:Name="ImageBorder" CornerRadius="4">
+												<!-- game title -->
                                                 <Border x:Name="ImageTextBorder" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#991F1F1F"
                                                     Visibility="Collapsed" CornerRadius="0,0,4,4">
                                                     <TextBlock x:Name="ImageText" Text="{Binding Title}" Foreground="{Binding ForegroundBrush}"
                                                         Padding="7,5,7,5" TextWrapping="Wrap" FontSize="12" FontWeight="SemiBold" />
                                                 </Border>
                                             </Border>
-                                            <Border x:Name="TextOnlyBorder" CornerRadius="4" Background="#ff0099" Visibility="{Binding BoxTextOnlyVisibility}">
+
+                                            <Border x:Name="TextOnlyBorder" CornerRadius="4" Background="#26214A" Visibility="{Binding BoxTextOnlyVisibility}">
                                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Title}" TextWrapping="Wrap" FontSize="14"
                                                     Margin="10" Foreground="{Binding ForegroundBrush}" TextAlignment="Center" TextTrimming="WordEllipsis" />
                                             </Border>
                                         </Grid>
+										<!-- bg/border behind game -->
                                         <Border.Style>
                                             <Style>
                                                 <Setter Property="Border.BorderBrush" Value="Transparent" />
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                                                        <Setter Property="Border.BorderBrush" Value="#F95A3E" />
+                                                        <Setter Property="Border.BorderBrush" Value="#7B69F0" />
                                                     </DataTrigger>
                                                     <MultiDataTrigger>
                                                         <MultiDataTrigger.Conditions>
                                                             <Condition Binding="{Binding IsSelected}" Value="True" />
                                                             <Condition Binding="{Binding BoxTextOnlyVisibility}" Value="Collapsed" />
                                                         </MultiDataTrigger.Conditions>
-                                                        <Setter Property="Border.Background" Value="#F95A3E" />
+                                                        <Setter Property="Border.Background" Value="#7B69F0" />
                                                     </MultiDataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </Border.Style>
                                     </Border>
+
 									<!-- todo: test. what is this? -->
                                     <Border x:Name="Highlight" CornerRadius="4" Background="#18FFFFFF" Visibility="Collapsed"
                                         Width="{Binding Path=ActualWidth, ElementName=ImageBorder}" Height="{Binding ActualHeight, ElementName=ImageBorder}">
@@ -314,6 +320,7 @@
                             </ListView.ItemContainerStyle>
                         </ListView>
                     </Grid>
+
                     <DataTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -322,11 +329,11 @@
                         </MultiTrigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Highlight" Property="Visibility" Value="Visible" />
-                            <Setter TargetName="TextOnlyBorder" Property="Background" Value="#66EEEEEE" />
+                            <Setter TargetName="TextOnlyBorder" Property="Background" Value="#332C63" />
                         </Trigger>
                         <DataTrigger Binding="{Binding IsSelected}" Value="True">
                             <Setter TargetName="BaseGrid" Property="ToolTipService.IsEnabled" Value="False" />
-                            <Setter TargetName="TextOnlyBorder" Property="Background" Value="#55EEEEEE" />
+                            <Setter TargetName="TextOnlyBorder" Property="Background" Value="#332C63" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding BoxTextOnlyVisibility}" Value="Visible">
                             <Setter TargetName="BaseGrid" Property="ToolTipService.IsEnabled" Value="False" />
@@ -348,6 +355,7 @@
                     </DataTemplate.Triggers>
                 </DataTemplate>
             </ListView.ItemTemplate>
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="SnapsToDevicePixels" Value="True" />
@@ -387,12 +395,14 @@
                     </Style.Triggers>
                 </Style>
             </ListView.ItemContainerStyle>
+
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <next:VirtualizingTilePanel x:Name="VirtualizingTilePanel" Margin="0,0,20,0" VirtualizingPanel.ScrollUnit="Pixel" ChildSize="{Binding BoxChildSize}"
                         cal:Message.Attach="[Event Loaded] = [Action OnVirtualizingTilePanelLoaded($source, $eventArgs)]" />
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
+
             <ListView.Resources>
                 <Style TargetType="ScrollBar">
                     <Setter Property="Template">
@@ -465,6 +475,7 @@
                     </Setter>
                 </Style>
             </ListView.Resources>
+
             <ListView.Template>
                 <ControlTemplate TargetType="ListView">
                     <Border Name="Border" BorderThickness="0" Background="Transparent">
@@ -499,6 +510,7 @@
                     </Border>
                 </ControlTemplate>
             </ListView.Template>
+			
         </ListView>
     </Grid>
 </UserControl>

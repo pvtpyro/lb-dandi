@@ -151,11 +151,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" x:Name="SelectionBorder" Background="purple" Visibility="Collapsed" />
-        <Border Grid.Row="0" x:Name="HoverSelectionBorder" Background="purple" Visibility="Collapsed" />
-        <Border Grid.Row="0" x:Name="HoverBorder" Background="MediumPurple" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="SelectionBorder" Background="#3A3170" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="HoverSelectionBorder" Background="#332C63" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="HoverBorder" Background="#332C63" Visibility="Collapsed" />
         <Border Grid.Row="0" x:Name="TreeViewToggleButtonWidthBorder" Width="{Binding TreeViewToggleButtonWidth}" Visibility="Collapsed" />
-        <Border Grid.Row="0" x:Name="ComboHoverBorder" Background="MediumPurple" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="ComboHoverBorder" Background="#332C63" Visibility="Collapsed" />
         <DockPanel Grid.Row="0" Margin="23,18,23,0" HorizontalAlignment="Stretch">
 
 
@@ -264,7 +264,7 @@
                             <Setter Property="Foreground" Value="White"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding FiltersApplied}" Value="True">
-                                    <Setter Property="Foreground" Value="#ff0099"/>
+                                    <Setter Property="Foreground" Value="#7B69F0"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>

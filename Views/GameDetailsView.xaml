@@ -278,13 +278,14 @@
                 </Button>
             </StackPanel>
             
+			<!-- gane title, platform and release date -->
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True" Margin="12 10 18 0">
-                <panel:OutlinedTextBlock Text="{Binding Title}" Fill="{Binding ForegroundBrush}" FontFamily="{Binding TitleFontFamily}"
+                <panel:OutlinedTextBlock Text="{Binding Title}" Fill="{Binding ForegroundBrush}" FontFamily="Oswald"
                     FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
-                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#F6A801" StrokeThickness="2" />
+                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#5B4DB0" StrokeThickness="2" />
                 <panel:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding PlatformReleaseDate}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap"
                     FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold"
-                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#F6A801" StrokeThickness="1" />
+                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#5B4DB0" StrokeThickness="1" />
             </StackPanel>
             
             <TabControl Grid.ColumnSpan="2" Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0 15 0 15"
