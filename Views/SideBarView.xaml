@@ -142,7 +142,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid x:Name="Grid" Background="#74777B">
+    <Grid x:Name="Grid" Background="#1F1F1F">
         <Grid.RowDefinitions>
             <RowDefinition Height="85" />
             <RowDefinition Height="Auto" />
@@ -160,7 +160,7 @@
 
             <!--<Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/small.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>-->
             <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Source="pack://application:,,,/LaunchBox;component/WpfResources/Logo.png" />
-            <TextBlock Margin="15, 8, 0, 0" Foreground="{Binding ForegroundBrush}" FontSize="20" FontFamily="Segoe UI" FontWeight="Normal" FontStyle="Normal">Dandi LaunchBox</TextBlock>
+            <TextBlock Margin="15, 8, 0, 0" Foreground="{Binding ForegroundBrush}" FontSize="20" FontFamily="Oswald" FontWeight="Normal" FontStyle="Normal">Dandi LaunchBox</TextBlock>
             <Button Name="Menu" HorizontalAlignment="Right" Focusable="True">
                 <Button.FocusVisualStyle>
                     <Style>

@@ -18,7 +18,7 @@
         <Style x:Key="GridSplitterStyle" TargetType="GridSplitter">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="Background" Value="#404041" />
+            <Setter Property="Background" Value="#323232" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type GridSplitter}">
@@ -43,7 +43,7 @@
     </Window.Resources>
 
 
-    <Grid Background="#FFDE16">
+    <Grid >
         <Grid.Resources>
             <local:DoubleGridLengthConverter x:Key="DoubleGridLengthConverter" />
         </Grid.Resources>
@@ -74,11 +74,11 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
-            <!--<Image.Effect>
+        <!-- <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
+            <Image.Effect>
                 <BlurEffect Radius="7" KernelType="Box"/>
-            </Image.Effect>-->
-        </Image>
+            </Image.Effect>
+        </Image> -->
 
         <!--<TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Path=GameDetailsWidth}" TextAlignment="Center" Foreground="red" Panel.ZIndex="999" >
             <TextBlock.Effect>
@@ -87,11 +87,12 @@
         </TextBlock>-->
 
         <!-- THEME SPECIFIC BORDERS -->
-        <Border Grid.ColumnSpan="5" Background="#404041"/>
-        <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4">
-            <Border.Background>
-                <SolidColorBrush Color="#74777B" Opacity="1"/>
-            </Border.Background>
+        <Border Grid.ColumnSpan="5" Background="#323232"/>
+		<!-- Top part "all games" etc -->
+        <Border Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" CornerRadius="8,8,0,0" Background="#F95A3E">
+            <!-- <Border.Background>
+                <SolidColorBrush Color="#383838" Opacity="1"/>
+            </Border.Background> -->
         </Border>
         <!-- PROCESSING PROGRESS. TODO: TEST -->
         <Grid Grid.Row="2" Grid.Column="2" Height="3" Panel.ZIndex="99" HorizontalAlignment="Stretch" VerticalAlignment="Top" Visibility="{Binding ProcessingVisibility}">

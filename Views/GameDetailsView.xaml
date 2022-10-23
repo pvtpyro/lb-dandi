@@ -33,7 +33,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="Orange">
+    <Grid Background="#1F1F1F">
         <Grid.Style>
             <Style TargetType="Grid">
                 <Setter Property="Margin" Value="0,0,0,0"/>
@@ -44,8 +44,8 @@
                 </Style.Triggers>
             </Style>
         </Grid.Style>
+
         <Grid Height="200" VerticalAlignment="Top">
-            
             <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">

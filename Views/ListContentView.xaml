@@ -91,7 +91,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="pink">
         <Grid.RowDefinitions>
             <RowDefinition Height="66" />
             <RowDefinition Height="*" />
