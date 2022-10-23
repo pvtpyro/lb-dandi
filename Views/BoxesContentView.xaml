@@ -23,6 +23,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <!-- title -->
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Grid>
                 <!-- <Grid.Effect>
@@ -84,16 +85,16 @@
             </Label.Effect>
         </Label>
 
+        <!-- games -->
         <ListView Grid.Row="1" Visibility="{Binding CollectionVisibility}" x:Name="Items" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-            ScrollViewer.VerticalScrollBarVisibility="{Binding ScrollBarVisibility}" BorderThickness="0" Margin="0, 30, 0, 0" SelectionMode="Extended"
+            ScrollViewer.VerticalScrollBarVisibility="{Binding ScrollBarVisibility}" BorderThickness="0" Margin="0, 10, 0, 0" SelectionMode="Extended"
             FocusVisualStyle="{x:Null}" ScrollViewer.PanningMode="VerticalOnly"
             cal:Message.Attach="
                 [Event SelectionChanged] = [Action OnSelectionChanged($source, $eventArgs)];
                 [Event PreviewMouseRightButtonUp] = [Action OnRightClick($eventArgs)];">
             <ListView.ItemTemplate>
                 <DataTemplate>
-
-					<!-- game grid item -->
+                    <!-- game grid item -->
                     <Grid Margin="15">
                         <Grid Height="{Binding ItemHeight}">
                             <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top" Visibility="{Binding BoxVisibility}">
@@ -106,7 +107,7 @@
                                     <Border CornerRadius="4" BorderThickness="3" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <Grid>
                                             <Border x:Name="ImageBorder" CornerRadius="4">
-												<!-- game title -->
+                                                <!-- game title -->
                                                 <Border x:Name="ImageTextBorder" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#991F1F1F"
                                                     Visibility="Collapsed" CornerRadius="0,0,4,4">
                                                     <TextBlock x:Name="ImageText" Text="{Binding Title}" Foreground="{Binding ForegroundBrush}"
@@ -119,7 +120,7 @@
                                                     Margin="10" Foreground="{Binding ForegroundBrush}" TextAlignment="Center" TextTrimming="WordEllipsis" />
                                             </Border>
                                         </Grid>
-										<!-- bg/border behind game -->
+                                        <!-- bg/border behind game -->
                                         <Border.Style>
                                             <Style>
                                                 <Setter Property="Border.BorderBrush" Value="Transparent" />
@@ -139,21 +140,21 @@
                                         </Border.Style>
                                     </Border>
 
-									<!-- todo: test. what is this? -->
+                                    <!-- todo: test. what is this? -->
                                     <Border x:Name="Highlight" CornerRadius="4" Background="#18FFFFFF" Visibility="Collapsed"
                                         Width="{Binding Path=ActualWidth, ElementName=ImageBorder}" Height="{Binding ActualHeight, ElementName=ImageBorder}">
                                         <Border.OpacityMask>
                                             <VisualBrush Visual="{Binding ElementName=ImageBorder}" />
                                         </Border.OpacityMask>
                                     </Border>
-									<!-- seems to cover the whole game grid item -->
+                                    <!-- seems to cover the whole game grid item -->
                                     <Grid x:Name="HoverIconsGrid" Background="Transparent" Visibility="{Binding HoverIconsVisibility}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="33*" MinHeight="90" />
                                             <RowDefinition Height="67*" />
                                         </Grid.RowDefinitions>
 
-										<!-- information, zoom icons that show on hover -->
+                                        <!-- information, zoom icons that show on hover -->
                                         <Grid Grid.Row="0" Background="Transparent" cal:Message.Attach="[Event MouseEnter] = [Action OnIconsMouseEnter()];" Margin="5">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="50*" />
@@ -290,7 +291,7 @@
                                 </StackPanel>
                             </Border>
                         </Grid>
-						<!-- badges -->
+                        <!-- badges -->
                         <ListView ItemsSource="{Binding Badges}" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"
                             HorizontalAlignment="Right" Margin="-21,2,-21,0" Visibility="{Binding BoxVisibility}">
                             <ListView.ItemTemplate>
@@ -320,7 +321,6 @@
                             </ListView.ItemContainerStyle>
                         </ListView>
                     </Grid>
-
                     <DataTemplate.Triggers>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
