@@ -36,7 +36,7 @@
     <Grid Background="#17152e">
 
         <Grid Height="200" VerticalAlignment="Top">
-            <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/bigcircle.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="None" Grid.ColumnSpan="5" Grid.RowSpan="4">
+            <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/back-1.jpg" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Grid.ColumnSpan="5" Grid.RowSpan="4">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -51,9 +51,9 @@
             <Image VerticalAlignment="Top" Source="{Binding GameBackgroundImage}" Stretch="UniformToFill" />
 			
             <Viewbox MaxHeight="200" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" StretchDirection="Both">
-                <TextBlock Margin="50,0,50,0" VerticalAlignment="Center" Text="{Binding Game.Title}" TextTrimming="CharacterEllipsis">
+                <TextBlock Margin="50,0,50,0" VerticalAlignment="Center" Text="{Binding Game.Title}" TextTrimming="CharacterEllipsis" Foreground="#ffffff" Panel.ZIndex="2">
                     <TextBlock.Effect>
-                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="1" BlurRadius="5" />
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="#7B69F0" Opacity="1" BlurRadius="2" />
                     </TextBlock.Effect>
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
@@ -144,12 +144,27 @@
 				<!-- var dump -->
 				<!-- <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding FavoriteBrush}" TextAlignment="Center" Foreground="red" Panel.ZIndex="999" ></TextBlock> -->
 
+				<TextBlock x:Name="CompleteTrigger" Visibility="Collapsed" Text="{Binding CompleteBrush}" Height="0" />
                 <Button Name="Complete" ToolTip="{Binding CompleteLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" Visibility="{Binding CompleteVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="34" Height="31" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid.Effect>
                             <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2"/>
                         </Grid.Effect>
-						<Path Width="15" Height="15" Stretch="Uniform" Fill="{Binding CompleteBrush}" Data="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z"/>
+						<Path Width="15" Height="15" Stretch="Uniform" Data="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z">
+							<Path.Style>
+								<Style> 
+									<!-- todo: might need to change back to Binding CompleteBrush for reactivity -->
+									<Style.Triggers> 
+										<DataTrigger Binding="{Binding Text, ElementName=CompleteTrigger}" Value="#FF00BB00"> 
+											<Setter Property = "Path.Fill" Value = "#CCF300"/> 
+										</DataTrigger> 
+										<DataTrigger Binding="{Binding Text, ElementName=CompleteTrigger}" Value="#FFF5EDF1"> 
+											<Setter Property = "Path.Fill" Value = "#ffffff"/> 
+										</DataTrigger> 
+									</Style.Triggers> 
+								</Style> 
+							</Path.Style>
+						</Path>
                     </Grid>
                     <Button.Style>
                         <Style TargetType="Button">
@@ -174,18 +189,23 @@
                     </Button.Effect> -->
                 </Button>
 
-				<!-- todo: if {Binding FavoriteBrush} == #FFBB000B then make it pink -->
+				<TextBlock x:Name="FavoriteTrigger" Visibility="Collapsed" Text="{Binding FavoriteBrush}" Height="0" />
                 <Button Name="Favorite" ToolTip="{Binding FavoriteLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" Visibility="{Binding FavoriteVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="34" Height="31" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid.Effect>
-                            <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
+                            <!-- <DropShadowEffect ShadowDepth="0" Color="Black" Opacity="0.75" BlurRadius="2" /> -->
+							<DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="1" Color="#ff0099" Direction="315"/>
                         </Grid.Effect>
-						<Path Width="15" Height="15" Stretch="Uniform" Fill="{Binding FavoriteBrush}" Data="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z">
+						<Path Width="15" Height="15" Stretch="Uniform" Data="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z">
 							<Path.Style>
 								<Style> 
+									<!-- todo: might need to change back to Binding FavoriteBrush for reactivity -->
 									<Style.Triggers> 
-										<DataTrigger Binding = "{Binding ElementName = FavoriteBrush}" Value = "#FFBB000B"> 
+										<DataTrigger Binding="{Binding Text, ElementName=FavoriteTrigger}" Value="#FFBB000B"> 
 											<Setter Property = "Path.Fill" Value = "#ff0099"/> 
+										</DataTrigger> 
+										<DataTrigger Binding="{Binding Text, ElementName=FavoriteTrigger}" Value="#FFF5EDF1"> 
+											<Setter Property = "Path.Fill" Value = "#ccffffff"/> 
 										</DataTrigger> 
 									</Style.Triggers> 
 								</Style> 
