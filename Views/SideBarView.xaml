@@ -462,7 +462,7 @@
             HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VirtualizingStackPanel.IsVirtualizing="True" BorderThickness="0">
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Nodes}">
-                    <DockPanel LastChildFill="True" HorizontalAlignment="Stretch">
+                    <DockPanel LastChildFill="True" HorizontalAlignment="Stretch" Background="Transparent">
                         <TextBlock Padding="12,8,12,8" Text="{Binding Count}" TextAlignment="Right" DockPanel.Dock="Right" Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.RightCountVisibility}" />
                         <TextBlock Padding="12,8,12,8" Text="{Binding Value}" TextAlignment="Left" TextTrimming="CharacterEllipsis" Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ValueWithoutCountVisibility}" />
                         <TextBlock Padding="12,8,12,8" Text="{Binding ValueWithCount}" TextAlignment="Left" TextTrimming="CharacterEllipsis" Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ValueWithCountVisibility}" />
