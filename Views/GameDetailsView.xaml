@@ -148,7 +148,7 @@
                 <Button Name="Complete" ToolTip="{Binding CompleteLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" Visibility="{Binding CompleteVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="34" Height="31" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid.Effect>
-                            <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2"/>
+							<DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="1" Color="#CCF300" Direction="315"/>
                         </Grid.Effect>
 						<Path Width="15" Height="15" Stretch="Uniform" Data="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z">
 							<Path.Style>
@@ -307,10 +307,10 @@
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True" Margin="12 10 18 0">
                 <panel:OutlinedTextBlock Text="{Binding Title}" Fill="{Binding ForegroundBrush}" FontFamily="Oswald"
                     FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
-                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#5B4DB0" StrokeThickness="2" />
+                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#4C11EE" StrokeThickness="2" />
                 <panel:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding PlatformReleaseDate}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap"
                     FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold"
-                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#5B4DB0" StrokeThickness="1" />
+                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#4C11EE" StrokeThickness="1" />
             </StackPanel>
             
             <TabControl Grid.ColumnSpan="2" Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0 15 0 15"
@@ -327,15 +327,16 @@
                                                     Margin="6,0"
                                                     Text="{TemplateBinding Header}"
                                                     FontWeight="Bold"
+													FontFamily="Oswald"
                                                     TextAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Text" Property="Fill" Value="White" />
+                                <Setter TargetName="Text" Property="Fill" Value="#7B69F0" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
-                                <Setter TargetName="Text" Property="Fill" Value="#EAEAEA" />
-                                <Setter TargetName="Text" Property="Opacity" Value="0.6" />
+                                <Setter TargetName="Text" Property="Fill" Value="#ffffff" />
+                                <Setter TargetName="Text" Property="Opacity" Value="0.8" />
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
@@ -454,7 +455,7 @@
                             </ScrollViewer.Resources>
                             <StackPanel Orientation="Vertical" Margin="15,5,15,0">
                                 <controls:Carousel Margin="0 0 0 15" Padding="0" MaxWidth="700" DataContext="{Binding Game}" VerticalAlignment="Top" HorizontalAlignment="Center"
-                                        Background="Transparent" PreviewBackground="#FF3336CE" ItemSelectionBrush="#FF3336CE" ItemMouseOverBrush="#FF1B6BED" ItemScale="0.8"
+                                        Background="Transparent" PreviewBackground="#FF30BBFE" ItemSelectionBrush="#FF30BBFE" ItemMouseOverBrush="#FF30BBFE" ItemScale="0.8"
                                         ForceVideoPreview16X9="True">
 
                                     <controls:Carousel.ScrollBarStyle>
@@ -1343,6 +1344,7 @@
                         </ScrollViewer>
                     </Grid>
                 </TabItem>
+
                 <!-- Cheeves Tab -->
                 <TabItem x:Name="AchievementsTab" Header="{Binding AchievementsLabel}" Visibility="{Binding AchievementsVisibility}">
                     <TabItem.Style>
@@ -2026,6 +2028,7 @@
                     </ScrollViewer>
                 </TabItem>
                 
+				<!-- Related Games -->
                 <TabItem Header="{Binding RelatedGamesLabel}">
                     <TabItem.Style>
                         <Style TargetType="{x:Type TabItem}">
@@ -2051,11 +2054,11 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter TargetName="Text" Property="Foreground" Value="White" />
-                                        <Setter TargetName="Border" Property="Background" Value="#FF3336CE"/>
+                                        <Setter TargetName="Border" Property="Background" Value="#332C63"/>
                                         <Setter TargetName="Border" Property="Opacity" Value="1.0"/>
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="False">
-                                        <Setter TargetName="Text" Property="Foreground" Value="#EAEAEA" />
+                                        <Setter TargetName="Text" Property="Foreground" Value="#ffffff" />
                                         <Setter TargetName="Text" Property="Opacity" Value="0.6" />
                                         <Setter TargetName="Border" Property="Background" Value="#DD333333"/>
                                     </Trigger>
@@ -2137,12 +2140,12 @@
                                                         <Border Name="Border" CornerRadius="8" RenderTransformOrigin="0.5 0.5" Margin="5 0 5 5" Cursor="Hand">
                                                             <Border.Style>
                                                                 <Style TargetType="Border">
-                                                                    <Setter Property="Background" Value="#883336CE"/>
-                                                                    <Setter Property="BorderBrush" Value="#FF3336CE"/>
+                                                                    <Setter Property="Background" Value="#0e0d1d"/>
+                                                                    <Setter Property="BorderBrush" Value="#17152e"/>
                                                                     <Setter Property="BorderThickness" Value="2" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                            <Setter Property="Background" Value="#EE222222"/>
+                                                                            <Setter Property="Background" Value="#332C63"/>
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
@@ -2208,13 +2211,13 @@
                                                                         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}"/>
                                                                         <Style.Triggers>
                                                                             <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                                <Setter Property="Foreground" Value="#AAAAAA"/>
+                                                                                <Setter Property="Foreground" Value="#7B69F0"/>
                                                                             </DataTrigger>
                                                                         </Style.Triggers>
                                                                     </Style>
                                                                 </TextBlock.Style>
                                                             </TextBlock>
-                                                            <Path Grid.Column="1" ToolTip="{Binding LaunchBoxGamesDatabaseLabel}" Margin="12 0" Stretch="Uniform" Height="15" Fill="White" Opacity="0.2" Data="M44.9246,24.5134c-0.1648-7.0623-5.9371-12.7376-13.039-12.7376c-4.9299,0-9.2199,2.735-11.4387,6.7698  c-1.0023-0.576-2.1633-0.9071-3.4024-0.9071c-3.6061,0-6.5584,2.7912-6.8195,6.3306c-3.5574,1.4606-6.0636,4.9576-6.0636,9.0415  c0,5.3968,4.3749,9.7718,9.7718,9.7718h29.396c5.0836,0,9.2047-4.1211,9.2047-9.2047  C52.5339,29.0383,49.2473,25.2693,44.9246,24.5134z">
+                                                            <Path Grid.Column="1" ToolTip="{Binding LaunchBoxGamesDatabaseLabel}" Margin="12 0" Stretch="Uniform" Height="15" Fill="White" Opacity="0.2" Data="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z">
                                                                 <Path.Style>
                                                                     <Style TargetType="Path">
                                                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -2424,12 +2427,12 @@
                                                         <Border Name="Border" CornerRadius="8" RenderTransformOrigin="0.5 0.5" Margin="5 0 5 5" Cursor="Hand">
                                                             <Border.Style>
                                                                 <Style TargetType="Border">
-                                                                    <Setter Property="Background" Value="#EE151515"/>
-                                                                    <Setter Property="BorderBrush" Value="#EE333333"/>
+                                                                    <Setter Property="Background" Value="#0e0d1d"/>
+                                                                    <Setter Property="BorderBrush" Value="#17152e"/>
                                                                     <Setter Property="BorderThickness" Value="2" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                            <Setter Property="Background" Value="#EE222222"/>
+                                                                            <Setter Property="Background" Value="#332C63"/>
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
@@ -2495,13 +2498,13 @@
                                                                         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}"/>
                                                                         <Style.Triggers>
                                                                             <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                                <Setter Property="Foreground" Value="#AAAAAA"/>
+                                                                                <Setter Property="Foreground" Value="#7B69F0"/>
                                                                             </DataTrigger>
                                                                         </Style.Triggers>
                                                                     </Style>
                                                                 </TextBlock.Style>
                                                             </TextBlock>
-                                                            <Path Grid.Column="1" ToolTip="{Binding LaunchBoxGamesDatabaseLabel}" Margin="12 0" Stretch="Uniform" Height="15" Fill="White" Opacity="0.2" Data="M44.9246,24.5134c-0.1648-7.0623-5.9371-12.7376-13.039-12.7376c-4.9299,0-9.2199,2.735-11.4387,6.7698  c-1.0023-0.576-2.1633-0.9071-3.4024-0.9071c-3.6061,0-6.5584,2.7912-6.8195,6.3306c-3.5574,1.4606-6.0636,4.9576-6.0636,9.0415  c0,5.3968,4.3749,9.7718,9.7718,9.7718h29.396c5.0836,0,9.2047-4.1211,9.2047-9.2047  C52.5339,29.0383,49.2473,25.2693,44.9246,24.5134z">
+                                                            <Path Grid.Column="1" ToolTip="{Binding LaunchBoxGamesDatabaseLabel}" Margin="12 0" Stretch="Uniform" Height="15" Fill="White" Opacity="0.2" Data="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z">
                                                                 <Path.Style>
                                                                     <Style TargetType="Path">
                                                                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -2711,12 +2714,12 @@
                                                         <Border Name="Border" CornerRadius="8" RenderTransformOrigin="0.5 0.5" Margin="5 0 5 5" Cursor="Hand">
                                                             <Border.Style>
                                                                 <Style TargetType="Border">
-                                                                    <Setter Property="Background" Value="#EE151515"/>
-                                                                    <Setter Property="BorderBrush" Value="#EE333333"/>
+                                                                    <Setter Property="Background" Value="#0e0d1d"/>
+                                                                    <Setter Property="BorderBrush" Value="#17152e"/>
                                                                     <Setter Property="BorderThickness" Value="2" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                            <Setter Property="Background" Value="#EE222222"/>
+                                                                            <Setter Property="Background" Value="#332C63"/>
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
@@ -2781,13 +2784,13 @@
                                                                         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}"/>
                                                                         <Style.Triggers>
                                                                             <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                                <Setter Property="Foreground" Value="#AAAAAA"/>
+                                                                                <Setter Property="Foreground" Value="#7B69F0"/>
                                                                             </DataTrigger>
                                                                         </Style.Triggers>
                                                                     </Style>
                                                                 </TextBlock.Style>
                                                             </TextBlock>
-                                                            <Path Grid.Column="1" ToolTip="{Binding LaunchBoxGamesDatabaseLabel}" Margin="12 0" Stretch="Uniform" Height="15" Fill="White" Opacity="0.2" Data="M44.9246,24.5134c-0.1648-7.0623-5.9371-12.7376-13.039-12.7376c-4.9299,0-9.2199,2.735-11.4387,6.7698  c-1.0023-0.576-2.1633-0.9071-3.4024-0.9071c-3.6061,0-6.5584,2.7912-6.8195,6.3306c-3.5574,1.4606-6.0636,4.9576-6.0636,9.0415  c0,5.3968,4.3749,9.7718,9.7718,9.7718h29.396c5.0836,0,9.2047-4.1211,9.2047-9.2047  C52.5339,29.0383,49.2473,25.2693,44.9246,24.5134z">
+                                                            <Path Grid.Column="1" ToolTip="{Binding LaunchBoxGamesDatabaseLabel}" Margin="12 0" Stretch="Uniform" Height="15" Fill="White" Opacity="0.2" Data="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z">
                                                                 <Path.Style>
                                                                     <Style TargetType="Path">
                                                                         <Setter Property="Visibility" Value="Collapsed"/>
