@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="600"
     Focusable="False"
-    FontFamily="{Binding FontFamily}"
+    FontFamily="Play"
     FontSize="{Binding FontSize}"
     FontWeight="{Binding FontWeight}"
     FontStyle="{Binding FontStyle}">
@@ -49,7 +49,7 @@
             <Setter Property="HorizontalContentAlignment" Value="{Binding Path=HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
             <Setter Property="VerticalContentAlignment" Value="{Binding Path=VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
             <Setter Property="Padding" Value="1,0,0,0" />
-            <Setter Property="Foreground" Value="{Binding ElementName=Items, Path=Foreground}" />
+            <Setter Property="Foreground" Value="#000000" />
             <Setter Property="FocusVisualStyle" Value="{StaticResource TreeViewItemFocusVisual}" />
             <Setter Property="IsSelected" Value="{Binding Selected, Mode=TwoWay}" />
             <Setter Property="IsExpanded" Value="{Binding Expanded, Mode=TwoWay}" />
@@ -132,7 +132,7 @@
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Rectangle StrokeThickness="1" Stroke="orange" SnapsToDevicePixels="true">
+                        <Rectangle StrokeThickness="1" Stroke="#000000" SnapsToDevicePixels="true">
                             <Rectangle.Effect>
                                 <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
                             </Rectangle.Effect>
@@ -143,7 +143,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid x:Name="Grid" Background="#0e0d1d">
+    <Grid x:Name="Grid" Background="transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -151,26 +151,26 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" x:Name="SelectionBorder" Background="#3A3170" Visibility="Collapsed" />
-        <Border Grid.Row="0" x:Name="HoverSelectionBorder" Background="#332C63" Visibility="Collapsed" />
-        <Border Grid.Row="0" x:Name="HoverBorder" Background="#332C63" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="SelectionBorder" Background="#dd2020" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="HoverSelectionBorder" Background="#dd2020" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="HoverBorder" Background="#dd2020" Visibility="Collapsed" />
         <Border Grid.Row="0" x:Name="TreeViewToggleButtonWidthBorder" Width="{Binding TreeViewToggleButtonWidth}" Visibility="Collapsed" />
-        <Border Grid.Row="0" x:Name="ComboHoverBorder" Background="#332C63" Visibility="Collapsed" />
+        <Border Grid.Row="0" x:Name="ComboHoverBorder" Background="#dd2020" Visibility="Collapsed" />
 
         <!-- logo, name, menu -->
-        <DockPanel Grid.Row="0" Margin="23,10,23,10" HorizontalAlignment="Stretch">
+        <DockPanel Grid.Row="0" Margin="0" HorizontalAlignment="Stretch" Background="transparent">
             <!--<Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/small.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>-->
             <Image HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Source="pack://application:,,,/LaunchBox;component/WpfResources/Logo.png" />
-            <TextBlock Margin="15, 0, 0, 0" Foreground="{Binding ForegroundBrush}" FontSize="24" FontFamily="Oswald" FontWeight="Normal" FontStyle="Normal">Dandi LaunchBox</TextBlock>
-            <Button Name="Menu" HorizontalAlignment="Right" Focusable="True">
+            <TextBlock Margin="15, 0, 0, 0" FontSize="24" Foreground="#0d0c0c" FontWeight="SemiBold">LaunchBox</TextBlock>
+            <Button Name="Menu" HorizontalAlignment="Right" Focusable="True" Margin="15, 0, 15, 0">
                 <Button.FocusVisualStyle>
                     <Style>
                         <Setter Property="Control.Template">
                             <Setter.Value>
                                 <ControlTemplate>
-                                    <Rectangle StrokeThickness="1" Stroke="{Binding ForegroundBrush}" SnapsToDevicePixels="true" Margin="-8,10,-8,28">
+                                    <Rectangle StrokeThickness="1" Stroke="#dd2020" SnapsToDevicePixels="true" Margin="-8,10,-8,28">
                                         <Rectangle.Effect>
-                                            <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
+                                            <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.5" BlurRadius="2" />
                                         </Rectangle.Effect>
                                     </Rectangle>
                                 </ControlTemplate>
@@ -180,13 +180,13 @@
                 </Button.FocusVisualStyle>
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+                        <Setter Property="Foreground" Value="#0d0c0c" />
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="{Binding HoverSelectionBackgroundBrush}" />
+                                <Setter Property="Foreground" Value="#dd2020" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property="Foreground" Value="{Binding SelectionBackgroundBrush}" />
+                                <Setter Property="Foreground" Value="#dd2020" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -204,21 +204,21 @@
             </Button>
         </DockPanel>
 
-        <Grid Grid.Row="1" Grid.Column="0" Margin="20, 0, 20, 0" Background="Transparent">
+		<!-- Search & Filter -->
+        <Grid Grid.Row="1" Grid.Column="0" Background="#a5a2a2" Margin="10 5 10 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="0" Background="#22FFFFFF" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-            <TextBlock Grid.Column="0" Margin="5,2" Text="{Binding SearchLabel}" Foreground="{Binding FadedSearchForegroundBrush}" Padding="9, 6, 0, 0"
+            <Border Grid.Column="0" Background="transparent" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="20" />
+            <TextBlock Grid.Column="0" Text="{Binding SearchLabel}" Foreground="#ffffff" Padding="9, 10, 0, 0"
                        Visibility="{Binding ElementName=Search, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
-            <TextBox Grid.Column="0" Name="Search" Background="Transparent" Foreground="{Binding SearchForegroundBrush}" CaretBrush="{Binding SearchForegroundBrush}"
+            <TextBox Grid.Column="0" Name="Search" Background="Transparent" Foreground="#ffffff" CaretBrush="{Binding SearchForegroundBrush}"
                      BorderThickness="0" Text="{Binding Path=SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="12, 8, 12, 8" FocusVisualStyle="{StaticResource FocusVisualStyle}" />
             <Button Grid.Column="0" Name="SearchClear" ToolTip="Clear" Width="33" Background="Transparent" BorderThickness="0"
-                    HorizontalAlignment="Right" VerticalAlignment="Stretch" Visibility="{Binding SearchClearVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
+                    HorizontalAlignment="Right" VerticalAlignment="Stretch" Visibility="{Binding SearchClearVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}" Margin="20">
                 <Grid>
-                    <Polygon Points="12,0 14,0 17,3 20,0 22,0 18,4 22,8 20,8 17,5 14,8 12,8 16,4"
-                        StrokeThickness="0" Fill="White" />
+                    <Polygon Points="12,0 14,0 17,3 20,0 22,0 18,4 22,8 20,8 17,5 14,8 12,8 16,4" StrokeThickness="0" Fill="White" />
                 </Grid>
                 <Button.Style>
                     <Style TargetType="Button">
@@ -239,8 +239,7 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button x:Name="OpenFiltersMenu" Grid.Column="1" Margin="6,0,0,0" Padding="6" Background="#22FFFFFF" Width="33" BorderThickness="0" FocusVisualStyle="{StaticResource FocusVisualStyle}"
-                    ToolTip="{Binding FilterLabel}">
+            <Button x:Name="OpenFiltersMenu" Grid.Column="1" Margin="6,0,0,0" Padding="6" Background="#a5a2a2" Width="33" BorderThickness="0" FocusVisualStyle="{StaticResource FocusVisualStyle}" ToolTip="{Binding FilterLabel}">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">
@@ -265,7 +264,7 @@
                             <Setter Property="Foreground" Value="White"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding FiltersApplied}" Value="True">
-                                    <Setter Property="Foreground" Value="#7B69F0"/>
+                                    <Setter Property="Foreground" Value="#dd2020"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -273,7 +272,8 @@
                 </TextBlock>
             </Button>
         </Grid>
-        <ComboBox Grid.Row="3" Name="ListTypeItems" Margin="20,0,20,0" ItemsSource="{Binding ListTypeItems}"
+
+        <ComboBox Grid.Row="3" Name="ListTypeItems" Margin="8 0 8 0" ItemsSource="{Binding ListTypeItems}"
             SelectedItem="{Binding Path=SelectedListTypeItem, Mode=TwoWay}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
             <ComboBox.ItemContainerStyle>
                 <Style TargetType="ComboBoxItem">
@@ -290,12 +290,14 @@
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Background" Value="{Binding ElementName=SelectionBorder, Path=Background}" />
                             <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Foreground" Value="#ffffff" />
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
                                 <Condition Property="IsMouseOver" Value="true" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" Value="{Binding ElementName=ComboHoverBorder, Path=Background}" />
+                            <Setter Property="Foreground" Value="#ffffff" />
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -303,6 +305,7 @@
                                 <Condition Property="IsSelected" Value="true" />
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" Value="{Binding ElementName=HoverSelectionBorder, Path=Background}" />
+                            <Setter Property="Foreground" Value="#ffffff" />
                         </MultiTrigger>
                     </Style.Triggers>
                 </Style>
@@ -316,7 +319,8 @@
                     <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
                     <Setter Property="MinWidth" Value="120"/>
                     <Setter Property="MinHeight" Value="20"/>
-                    <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+                    <Setter Property="Foreground" Value="#000000" />
+                    <Setter Property="Background" Value="#ffffff" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ComboBox">
@@ -331,17 +335,16 @@
                                                         <ColumnDefinition />
                                                         <ColumnDefinition Width="30" />
                                                     </Grid.ColumnDefinitions>
-                                                    <Border x:Name="Border" Grid.ColumnSpan="2" Background="#22FFFFFF" CornerRadius="4" />
-                                                    <Path x:Name="Arrow" Grid.Column="1" Fill="{Binding FadedSearchForegroundBrush}"
-                                                        HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
+                                                    <Border x:Name="Border" Grid.ColumnSpan="2" Background="#ffffff" CornerRadius="4" />
+                                                    <Path x:Name="Arrow" Grid.Column="1" Fill="#000000" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 4 4 L 8 0 Z" />
                                                 </Grid>
                                                 <ControlTemplate.Triggers>
                                                     <Trigger Property="ToggleButton.IsMouseOver" Value="true">
-                                                        <Setter TargetName="Arrow" Property="Fill" Value="{Binding ForegroundBrush}" />
-                                                        <Setter TargetName="Border" Property="Background" Value="#33FFFFFF" />
+                                                        <Setter TargetName="Arrow" Property="Fill" Value="#000000" />
+                                                        <Setter TargetName="Border" Property="Background" Value="#ffffff" />
                                                     </Trigger>
                                                     <Trigger Property="ToggleButton.IsChecked" Value="true">
-                                                        <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+                                                        <Setter TargetName="Border" Property="Background" Value="#ffffff" />
                                                     </Trigger>
                                                 </ControlTemplate.Triggers>
                                             </ControlTemplate>
@@ -364,7 +367,10 @@
                                         Focusable="False" PopupAnimation="Slide">
                                         <Grid Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}"
                                             MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                            <Border x:Name="DropDownBorder" Background="#F7111111">
+                                            <Border x:Name="DropDownBorder" Background="#ffffff">
+												<!-- <Border.Effect>
+													<DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.65" BlurRadius="4" />
+												</Border.Effect> -->
                                                 <ScrollViewer Margin="0" SnapsToDevicePixels="True">
                                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                                     <ScrollViewer.Resources>
@@ -372,7 +378,7 @@
                                                             <Setter Property="Template">
                                                                 <Setter.Value>
                                                                     <ControlTemplate TargetType="ScrollBar">
-                                                                        <Track Name="PART_Track" IsDirectionReversed="true" Margin="5,5,5,5" ViewportSize="4">
+                                                                        <Track Name="PART_Track" IsDirectionReversed="true" Margin="0" ViewportSize="4">
                                                                             <Track.Resources>
                                                                                 <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">120</system:Double>
                                                                             </Track.Resources>
@@ -381,11 +387,11 @@
                                                                                     <RepeatButton.Template>
                                                                                         <ControlTemplate TargetType="RepeatButton">
                                                                                             <Grid>
-                                                                                                <Border Name="Border" Background="#00000000" BorderThickness="0" />
+                                                                                                <Border Name="Border" Background="#ffffff" BorderThickness="0" />
                                                                                             </Grid>
                                                                                             <ControlTemplate.Triggers>
                                                                                                 <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                                    <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+                                                                                                    <Setter TargetName="Border" Property="Background" Value="#ffffff" />
                                                                                                 </Trigger>
                                                                                             </ControlTemplate.Triggers>
                                                                                         </ControlTemplate>
@@ -397,11 +403,11 @@
                                                                                     <RepeatButton.Template>
                                                                                         <ControlTemplate TargetType="RepeatButton">
                                                                                             <Grid>
-                                                                                                <Border Name="Border" Background="#00000000" />
+                                                                                                <Border Name="Border" Background="#ffffff" />
                                                                                             </Grid>
                                                                                             <ControlTemplate.Triggers>
                                                                                                 <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                                    <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+                                                                                                    <Setter TargetName="Border" Property="Background" Value="#ffffff" />
                                                                                                 </Trigger>
                                                                                             </ControlTemplate.Triggers>
                                                                                         </ControlTemplate>
@@ -412,10 +418,10 @@
                                                                                 <Thumb>
                                                                                     <Thumb.Template>
                                                                                         <ControlTemplate TargetType="Thumb">
-                                                                                            <Border Name="Border"  Background="{Binding FadedForegroundBrush}" BorderThickness="0" />
+                                                                                            <Border Name="Border" Background="#dd2020" BorderThickness="0" />
                                                                                             <ControlTemplate.Triggers>
                                                                                                 <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                                                    <Setter TargetName="Border" Property="Background" Value="#99FFFFFF" />
+                                                                                                    <Setter TargetName="Border" Property="Background" Value="#dd2020" />
                                                                                                 </Trigger>
                                                                                             </ControlTemplate.Triggers>
                                                                                         </ControlTemplate>
@@ -443,7 +449,7 @@
                                         <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
                                     </Trigger>
                                     <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
-                                        <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                                        <Setter TargetName="DropDownBorder" Property="Margin" Value="0"/>
                                     </Trigger>
                                     <Trigger Property="IsEditable" Value="true">
                                         <Setter Property="IsTabStop" Value="false"/>
@@ -457,7 +463,8 @@
                 </Style>
             </ComboBox.Style>
         </ComboBox>
-        <TreeView Grid.Row="4" Name="Items" Margin="20,20,20,20" Background="Transparent"
+
+        <TreeView Grid.Row="4" Name="Items" Margin="8" Background="transparent" Foreground="#000000"
             ItemsSource="{Binding Nodes}" cal:Message.Attach="[Event SelectedItemChanged] = [Action OnSelectedItemChanged($eventArgs)]"
             HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VirtualizingStackPanel.IsVirtualizing="True" BorderThickness="0">
             <TreeView.ItemTemplate>
@@ -472,7 +479,6 @@
             <TreeView.Style>
                 <Style TargetType="TreeView">
                     <Setter Property="BorderThickness" Value="0" />
-                    <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
                     <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
                     <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="{Binding ScrollBarVisibility}" />
                 </Style>
@@ -482,7 +488,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="ScrollBar">
-                                <Track Name="PART_Track" IsDirectionReversed="true" Margin="10,1,-7,2" ViewportSize="4">
+                                <Track Name="PART_Track" IsDirectionReversed="true" Margin="0" ViewportSize="4">
                                     <Track.Resources>
                                         <system:Double x:Key="{x:Static SystemParameters.VerticalScrollBarButtonHeightKey}">120</system:Double>
                                     </Track.Resources>
@@ -492,11 +498,11 @@
                                             <RepeatButton.Template>
                                                 <ControlTemplate TargetType="RepeatButton">
                                                     <Grid>
-                                                        <Border Name="Border" Background="#00000000" BorderThickness="0" />
+                                                        <Border Name="Border" Background="#e5e5e5" BorderThickness="0" />
                                                     </Grid>
                                                     <ControlTemplate.Triggers>
                                                         <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+                                                            <Setter TargetName="Border" Property="Background" Value="#e5e5e5" />
                                                         </Trigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
@@ -509,11 +515,11 @@
                                             <RepeatButton.Template>
                                                 <ControlTemplate TargetType="RepeatButton">
                                                     <Grid>
-                                                        <Border Name="Border" Background="#00000000" />
+                                                        <Border Name="Border" Background="#e5e5e5" />
                                                     </Grid>
                                                     <ControlTemplate.Triggers>
                                                         <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#22FFFFFF" />
+                                                            <Setter TargetName="Border" Property="Background" Value="#e5e5e5" />
                                                         </Trigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
@@ -524,10 +530,10 @@
                                         <Thumb>
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="Thumb">
-                                                    <Border Name="Border"  Background="{Binding FadedForegroundBrush}" BorderThickness="0" />
+                                                    <Border Name="Border" Background="#a5a2a2" BorderThickness="0" />
                                                     <ControlTemplate.Triggers>
                                                         <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                            <Setter TargetName="Border" Property="Background" Value="#99FFFFFF" />
+                                                            <Setter TargetName="Border" Property="Background" Value="#a5a2a2" />
                                                         </Trigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>

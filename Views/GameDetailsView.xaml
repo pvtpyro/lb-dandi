@@ -12,7 +12,7 @@
     d:DesignHeight="300"
     d:DesignWidth="300"
     Focusable="False"
-    FontFamily="{Binding LargeFontFamily}"
+    FontFamily="Play"
     FontSize="{Binding LargeFontSize}"
     FontWeight="{Binding LargeFontWeight}"
     FontStyle="{Binding LargeFontWeight}">
@@ -33,10 +33,10 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#17152e">
+    <Grid Background="#0d0c0c">
 
         <Grid Height="200" VerticalAlignment="Top">
-            <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/back-1.jpg" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Grid.ColumnSpan="5" Grid.RowSpan="4">
+            <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/arcade.jpg" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Grid.ColumnSpan="5" Grid.RowSpan="4">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -53,7 +53,7 @@
             <Viewbox MaxHeight="200" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" StretchDirection="Both">
                 <TextBlock Margin="50,0,50,0" VerticalAlignment="Center" Text="{Binding Game.Title}" TextTrimming="CharacterEllipsis" Foreground="#ffffff" Panel.ZIndex="2">
                     <TextBlock.Effect>
-                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="#7B69F0" Opacity="1" BlurRadius="2" />
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="#CB0100" Opacity="1" BlurRadius="2" />
                     </TextBlock.Effect>
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
@@ -131,9 +131,9 @@
             <!-- star rating-->
             <Grid Name="StarRatingGrid" Grid.Row="0" Grid.Column="0" Margin="0,-3,0,0" Visibility="{Binding StarRatingVisibility}" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="{Binding StarRatingText}">
                 <TextBlock Name="StarRatingFaded" HorizontalAlignment="Left" Text="★★★★★" Foreground="#33FFFFFF" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" FontStyle="Normal" />
-                <TextBlock Name="StarRating" HorizontalAlignment="Left" Text="★★★★★" Foreground="#30BBFE" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" FontStyle="Normal" Width="{Binding StarRatingWidth}">
+                <TextBlock Name="StarRating" HorizontalAlignment="Left" Text="★★★★★" Foreground="#dd2020" FontSize="24" FontFamily="Segoe UI" FontWeight="Normal" FontStyle="Normal" Width="{Binding StarRatingWidth}">
                     <TextBlock.Effect>
-                        <DropShadowEffect Color="#30BBFE" BlurRadius="10" ShadowDepth="0"/>
+                        <DropShadowEffect Color="#dd2020" BlurRadius="5" ShadowDepth="0"/>
                     </TextBlock.Effect>
                 </TextBlock>
             </Grid>
@@ -148,7 +148,7 @@
                 <Button Name="Complete" ToolTip="{Binding CompleteLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" Visibility="{Binding CompleteVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="34" Height="31" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid.Effect>
-							<DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="1" Color="#CCF300" Direction="315"/>
+							<DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="1" Color="#1FDE55" Direction="315"/>
                         </Grid.Effect>
 						<Path Width="15" Height="15" Stretch="Uniform" Data="M438.6 105.4C451.1 117.9 451.1 138.1 438.6 150.6L182.6 406.6C170.1 419.1 149.9 419.1 137.4 406.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4C21.87 220.9 42.13 220.9 54.63 233.4L159.1 338.7L393.4 105.4C405.9 92.88 426.1 92.88 438.6 105.4H438.6z">
 							<Path.Style>
@@ -156,12 +156,13 @@
 									<!-- todo: might need to change back to Binding CompleteBrush for reactivity -->
 									<Style.Triggers> 
 										<DataTrigger Binding="{Binding Text, ElementName=CompleteTrigger}" Value="#FF00BB00"> 
-											<Setter Property = "Path.Fill" Value = "#CCF300"/> 
+											<Setter Property = "Path.Fill" Value = "#1FDE55"/> 
 										</DataTrigger> 
 										<DataTrigger Binding="{Binding Text, ElementName=CompleteTrigger}" Value="#FFF5EDF1"> 
-											<Setter Property = "Path.Fill" Value = "#ffffff"/> 
+											<Setter Property = "Path.Fill" Value = "#4dffffff"/> 
 										</DataTrigger> 
 									</Style.Triggers> 
+									<Setter Property = "Path.Fill" Value = "#4dffffff"/> 
 								</Style> 
 							</Path.Style>
 						</Path>
@@ -185,7 +186,7 @@
                         </Style>
                     </Button.Style>
                     <!-- <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.6" BlurRadius="2" />
                     </Button.Effect> -->
                 </Button>
 
@@ -193,8 +194,8 @@
                 <Button Name="Favorite" ToolTip="{Binding FavoriteLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" Visibility="{Binding FavoriteVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="34" Height="31" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid.Effect>
-                            <!-- <DropShadowEffect ShadowDepth="0" Color="Black" Opacity="0.75" BlurRadius="2" /> -->
-							<DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="1" Color="#ff0099" Direction="315"/>
+                            <!-- <DropShadowEffect ShadowDepth="0" Color="Black" Opacity="0.6" BlurRadius="2" /> -->
+							<DropShadowEffect BlurRadius="5" ShadowDepth="0" Opacity="1" Color="#CB0100" Direction="315"/>
                         </Grid.Effect>
 						<Path Width="15" Height="15" Stretch="Uniform" Data="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z">
 							<Path.Style>
@@ -202,12 +203,13 @@
 									<!-- todo: might need to change back to Binding FavoriteBrush for reactivity -->
 									<Style.Triggers> 
 										<DataTrigger Binding="{Binding Text, ElementName=FavoriteTrigger}" Value="#FFBB000B"> 
-											<Setter Property = "Path.Fill" Value = "#ff0099"/> 
+											<Setter Property = "Path.Fill" Value = "#CB0100"/> 
 										</DataTrigger> 
 										<DataTrigger Binding="{Binding Text, ElementName=FavoriteTrigger}" Value="#FFF5EDF1"> 
-											<Setter Property = "Path.Fill" Value = "#ccffffff"/> 
+											<Setter Property = "Path.Fill" Value = "#4dffffff"/> 
 										</DataTrigger> 
 									</Style.Triggers> 
+									<Setter Property = "Path.Fill" Value = "#4dffffff"/> 
 								</Style> 
 							</Path.Style>
 						</Path>
@@ -238,7 +240,7 @@
                 <Button Name="Edit" ToolTip="{Binding EditLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" Visibility="{Binding EditVisibility}" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="34" Height="31" VerticalAlignment="Center" HorizontalAlignment="Center">
                         <Grid.Effect>
-                            <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
+                            <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.6" BlurRadius="2" />
                         </Grid.Effect>
 						<Path Width="15" Height="15" Stretch="Uniform" Fill="{Binding ForegroundBrush}" Data="M10.2 461L0 512l51-10.2L160 480 420.7 219.3l-128-128L32 352 10.2 461zM315.3 68.7l128 128 34.7-34.7L512 128l-16-16L478.1 94.1 417.9 33.9 400 16 384 0 350.1 33.9 315.3 68.7zM96 416h60.1l-19.8 19.8-75.1 15 15-75.1L96 355.9V416z"/>
                     </Grid>
@@ -261,14 +263,14 @@
                         </Style>
                     </Button.Style>
                     <!-- <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.6" BlurRadius="2" />
                     </Button.Effect> -->
                 </Button>
 				
                 <Button Name="Close" ToolTip="{Binding CloseLabel}" Width="34" Height="31" Background="Transparent" BorderThickness="0" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                     <Grid Width="35" Height="31" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <Grid.Effect>
-                            <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
+                            <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.6" BlurRadius="2" />
                         </Grid.Effect>
 						<Path Width="15" Height="15" Stretch="Uniform" Fill="{Binding ForegroundBrush}" Data="M294.6 166.6L317.3 144 272 98.7l-22.6 22.6L160 210.7 70.6 121.4 48 98.7 2.7 144l22.6 22.6L114.7 256 25.4 345.4 2.7 368 48 413.3l22.6-22.6L160 301.3l89.4 89.4L272 413.3 317.3 368l-22.6-22.6L205.3 256l89.4-89.4z"/>
                     </Grid>
@@ -298,19 +300,21 @@
                         </Style>
                     </Button.Style>
                     <!-- <Button.Effect>
-                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.75" BlurRadius="2" />
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="Black" Opacity="0.6" BlurRadius="2" />
                     </Button.Effect> -->
                 </Button>
             </StackPanel>
             
 			<!-- gane title, platform and release date -->
             <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True" Margin="12 10 18 0">
-                <panel:OutlinedTextBlock Text="{Binding Title}" Fill="{Binding ForegroundBrush}" FontFamily="Oswald"
+				<TextBlock Text="{Binding Title}" TextAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#ffffff" />
+                <!-- <panel:OutlinedTextBlock Text="{Binding Title}" Fill="{Binding ForegroundBrush}" FontFamily="Oswald"
                     FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
-                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#4C11EE" StrokeThickness="2" />
-                <panel:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding PlatformReleaseDate}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap"
+                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#CB0100" StrokeThickness="2" /> -->
+					<TextBlock Text="{Binding PlatformReleaseDate}" TextAlignment="Center" FontWeight="SemiBold" FontSize="{Binding SmallFontSize}" Foreground="#a5a2a2" Margin="0 3 0 0" />
+                <!-- <panel:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding PlatformReleaseDate}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap"
                     FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold"
-                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#4C11EE" StrokeThickness="1" />
+                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#CB0100" StrokeThickness="1" /> -->
             </StackPanel>
             
             <TabControl Grid.ColumnSpan="2" Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0 15 0 15"
@@ -327,12 +331,11 @@
                                                     Margin="6,0"
                                                     Text="{TemplateBinding Header}"
                                                     FontWeight="Bold"
-													FontFamily="Oswald"
                                                     TextAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Text" Property="Fill" Value="#7B69F0" />
+                                <Setter TargetName="Text" Property="Fill" Value="#CB0100" />
                             </Trigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Setter TargetName="Text" Property="Fill" Value="#ffffff" />
@@ -455,9 +458,8 @@
                             </ScrollViewer.Resources>
                             <StackPanel Orientation="Vertical" Margin="15,5,15,0">
                                 <controls:Carousel Margin="0 0 0 15" Padding="0" MaxWidth="700" DataContext="{Binding Game}" VerticalAlignment="Top" HorizontalAlignment="Center"
-                                        Background="Transparent" PreviewBackground="#FF30BBFE" ItemSelectionBrush="#FF30BBFE" ItemMouseOverBrush="#FF30BBFE" ItemScale="0.8"
+                                        Background="Transparent" PreviewBackground="#CB0100" ItemSelectionBrush="#CB0100" ItemMouseOverBrush="#CB0100" ItemScale="0.8"
                                         ForceVideoPreview16X9="True">
-
                                     <controls:Carousel.ScrollBarStyle>
                                         <!-- Horizontal ScrollBar -->
                                         <Style x:Key="DefaultScrollBarStyle" TargetType="{x:Type ScrollBar}">
@@ -507,7 +509,7 @@
                                                                     <Thumb Margin="0,1,0,1">
                                                                         <Thumb.Template>
                                                                             <ControlTemplate TargetType="Thumb">
-                                                                                <Border Name="Border"  Background="#999999" BorderThickness="0" />
+                                                                                <Border Name="Border" Background="#999999" BorderThickness="0" />
                                                                                 <ControlTemplate.Triggers>
                                                                                     <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
                                                                                         <Setter TargetName="Border" Property="Background" Value="#BBBBBB" />
@@ -557,7 +559,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Developer.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Developer.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Developer.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -570,7 +572,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Publisher.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Publisher.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Publisher.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -583,7 +585,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Genres.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Genres.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Genres.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -596,7 +598,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding PlayMode.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding PlayMode.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding PlayMode.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -609,7 +611,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding MaxPlayers.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding MaxPlayers.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding MaxPlayers.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -622,7 +624,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Rating.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Rating.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Rating.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -635,7 +637,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Series.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Series.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Series.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -648,7 +650,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Region.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Region.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Region.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -661,7 +663,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding ReleaseType.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding ReleaseType.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding ReleaseType.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -674,7 +676,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Status.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Status.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Status.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -687,7 +689,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Source.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Source.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Source.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -700,7 +702,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding PlayCount.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding PlayCount.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding PlayCount.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -713,7 +715,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding PlayTime.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding PlayTime.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding PlayTime.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -726,7 +728,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding LastPlayed.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding LastPlayed.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding LastPlayed.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -739,7 +741,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding File.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding File.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding File.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -752,7 +754,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Portable.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Portable.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Portable.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -765,7 +767,7 @@
                                             <ColumnDefinition Width="50" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Installed.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
+                                        <TextBlock Grid.Column="0" Text="{Binding Installed.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"
                                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
                                         <TextBlock Grid.Column="2" Text="{Binding Installed.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
@@ -781,7 +783,7 @@
                                                         <ColumnDefinition Width="50" />
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
-                                                    <TextBlock Grid.Column="0" Text="{Binding Header}" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Left" Opacity="0.75" />
+                                                    <TextBlock Grid.Column="0" Text="{Binding Header}" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Left" Opacity="0.6" />
                                                     <TextBlock Grid.Column="2" Text="{Binding Value}" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                                                 </Grid>
                                             </Border>
@@ -819,11 +821,11 @@
                                                         </Style.Triggers>
                                                     </Style>
                                                 </Grid.Style>
-                                                <Path Data="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,14.598V9.402c0-0.385,0.417-0.625,0.75-0.433l4.5,2.598c0.333,0.192,0.333,0.674,0,0.866l-4.5,2.598 C10.417,15.224,10,14.983,10,14.598z" Fill="#ffffff" Height="24"/>
+                                                <Path Data="M21.582,6.186c-0.23-0.86-0.908-1.538-1.768-1.768C18.254,4,12,4,12,4S5.746,4,4.186,4.418 c-0.86,0.23-1.538,0.908-1.768,1.768C2,7.746,2,12,2,12s0,4.254,0.418,5.814c0.23,0.86,0.908,1.538,1.768,1.768 C5.746,20,12,20,12,20s6.254,0,7.814-0.418c0.861-0.23,1.538-0.908,1.768-1.768C22,16.254,22,12,22,12S22,7.746,21.582,6.186z M10,14.598V9.402c0-0.385,0.417-0.625,0.6-0.433l4.5,2.598c0.333,0.192,0.333,0.674,0,0.866l-4.5,2.598 C10.417,15.224,10,14.983,10,14.598z" Fill="#ffffff" Height="24"/>
                                             </Grid>
                                         </Hyperlink>
                                     </TextBlock>
-                                    <TextBlock Text="{Binding Dates}" Opacity="0.75" VerticalAlignment="Center" Visibility="{Binding DatesVisibility}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
+                                    <TextBlock Text="{Binding Dates}" Opacity="0.6" VerticalAlignment="Center" Visibility="{Binding DatesVisibility}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
                                     FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="{Binding SmallFontWeight}"
                                     FontStyle="Italic" TextAlignment="Right" DockPanel.Dock="Right" />
                                 </DockPanel>
@@ -961,7 +963,7 @@
                                                 FontSize="{Binding SmallFontSize}" FontWeight="{Binding SmallFontWeight}" FontStyle="{Binding SmallFontStyle}"
                                                 Text="{Binding Achievements.SteamProgressLabel}" />
                                             <ProgressBar Margin="0,0,0,9" Height="10" Minimum="0" Maximum="{Binding Achievements.Steam.Count, Mode=OneWay}" 
-                                                        Value="{Binding Achievements.SteamEarned.Count, Mode=OneWay}"/>
+                                                        Value="{Binding Achievements.SteamEarned.Count, Mode=OneWay}" Background="#a5a2a2" Foreground="#dd2020" />
                                             <ItemsControl Margin="0,0,0,9" ItemsSource="{Binding Achievements.Steam}">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
@@ -999,7 +1001,7 @@
                                                                 </ControlTemplate>
                                                             </Button.Template>
                                                             <Button.ToolTip>
-                                                                <ToolTip Background="#2A2B34" BorderBrush="#2A2B34">
+                                                                <ToolTip Background="#0d0c0c" BorderBrush="#0d0c0c">
                                                                     <DockPanel Margin="3">
                                                                         <Border DockPanel.Dock="Left" Height="80" Width="80" BorderBrush="#AAFFFFFF" BorderThickness="1">
                                                                             <Image Stretch="Uniform" StretchDirection="Both" Source="{Binding Image}"/>
@@ -1095,7 +1097,7 @@
                                                 FontSize="{Binding SmallFontSize}" FontWeight="{Binding SmallFontWeight}" FontStyle="{Binding SmallFontStyle}"
                                                 Text="{Binding Achievements.GogProgressLabel}" />
                                             <ProgressBar Margin="0,0,0,9" Height="10" Minimum="0" Maximum="{Binding Achievements.Gog.Count, Mode=OneWay}" 
-                                                        Value="{Binding Achievements.GogEarned.Count, Mode=OneWay}"/>
+                                                        Value="{Binding Achievements.GogEarned.Count, Mode=OneWay}" Background="#a5a2a2" Foreground="#dd2020" />
                                             <ItemsControl Margin="0,0,0,9" ItemsSource="{Binding Achievements.Gog}">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
@@ -1248,7 +1250,7 @@
                                                 </Button>
                                             </StackPanel>
                                             <ProgressBar Margin="0,0,0,9" Height="10" Minimum="0" Maximum="{Binding Achievements.RetroAchievements.Count, Mode=OneWay}" 
-                                                Value="{Binding Achievements.RetroAchievementsEarned.Count, Mode=OneWay}"/>
+                                                Value="{Binding Achievements.RetroAchievementsEarned.Count, Mode=OneWay}" Background="#a5a2a2" Foreground="#dd2020" />
                                             <ItemsControl Margin="0,0,0,9" ItemsSource="{Binding Achievements.RetroAchievements}">
                                                 <ItemsControl.ItemsPanel>
                                                     <ItemsPanelTemplate>
@@ -2054,7 +2056,7 @@
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsSelected" Value="True">
                                         <Setter TargetName="Text" Property="Foreground" Value="White" />
-                                        <Setter TargetName="Border" Property="Background" Value="#332C63"/>
+                                        <Setter TargetName="Border" Property="Background" Value="#dd2020"/>
                                         <Setter TargetName="Border" Property="Opacity" Value="1.0"/>
                                     </Trigger>
                                     <Trigger Property="IsSelected" Value="False">
@@ -2140,12 +2142,12 @@
                                                         <Border Name="Border" CornerRadius="8" RenderTransformOrigin="0.5 0.5" Margin="5 0 5 5" Cursor="Hand">
                                                             <Border.Style>
                                                                 <Style TargetType="Border">
-                                                                    <Setter Property="Background" Value="#0e0d1d"/>
-                                                                    <Setter Property="BorderBrush" Value="#17152e"/>
+                                                                    <Setter Property="Background" Value="#000000"/>
+                                                                    <Setter Property="BorderBrush" Value="#33000000"/>
                                                                     <Setter Property="BorderThickness" Value="2" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                            <Setter Property="Background" Value="#332C63"/>
+                                                                            <Setter Property="Background" Value="#1a1818"/>
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
@@ -2211,7 +2213,7 @@
                                                                         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}"/>
                                                                         <Style.Triggers>
                                                                             <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                                <Setter Property="Foreground" Value="#7B69F0"/>
+                                                                                <Setter Property="Foreground" Value="#CB0100"/>
                                                                             </DataTrigger>
                                                                         </Style.Triggers>
                                                                     </Style>
@@ -2427,12 +2429,12 @@
                                                         <Border Name="Border" CornerRadius="8" RenderTransformOrigin="0.5 0.5" Margin="5 0 5 5" Cursor="Hand">
                                                             <Border.Style>
                                                                 <Style TargetType="Border">
-                                                                    <Setter Property="Background" Value="#0e0d1d"/>
-                                                                    <Setter Property="BorderBrush" Value="#17152e"/>
+                                                                    <Setter Property="Background" Value="#000000"/>
+                                                                    <Setter Property="BorderBrush" Value="#33000000"/>
                                                                     <Setter Property="BorderThickness" Value="2" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                            <Setter Property="Background" Value="#332C63"/>
+                                                                            <Setter Property="Background" Value="#1a1818"/>
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
@@ -2498,7 +2500,7 @@
                                                                         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}"/>
                                                                         <Style.Triggers>
                                                                             <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                                <Setter Property="Foreground" Value="#7B69F0"/>
+                                                                                <Setter Property="Foreground" Value="#CB0100"/>
                                                                             </DataTrigger>
                                                                         </Style.Triggers>
                                                                     </Style>
@@ -2714,12 +2716,12 @@
                                                         <Border Name="Border" CornerRadius="8" RenderTransformOrigin="0.5 0.5" Margin="5 0 5 5" Cursor="Hand">
                                                             <Border.Style>
                                                                 <Style TargetType="Border">
-                                                                    <Setter Property="Background" Value="#0e0d1d"/>
-                                                                    <Setter Property="BorderBrush" Value="#17152e"/>
+                                                                    <Setter Property="Background" Value="#000000"/>
+                                                                    <Setter Property="BorderBrush" Value="#33000000"/>
                                                                     <Setter Property="BorderThickness" Value="2" />
                                                                     <Style.Triggers>
                                                                         <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                            <Setter Property="Background" Value="#332C63"/>
+                                                                            <Setter Property="Background" Value="#1a1818"/>
                                                                         </DataTrigger>
                                                                     </Style.Triggers>
                                                                 </Style>
@@ -2784,7 +2786,7 @@
                                                                         <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}, Path=DataContext.ForegroundBrush}"/>
                                                                         <Style.Triggers>
                                                                             <DataTrigger Binding="{Binding LocalGame}" Value="{x:Null}">
-                                                                                <Setter Property="Foreground" Value="#7B69F0"/>
+                                                                                <Setter Property="Foreground" Value="#CB0100"/>
                                                                             </DataTrigger>
                                                                         </Style.Triggers>
                                                                     </Style>

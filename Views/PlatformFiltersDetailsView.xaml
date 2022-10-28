@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Focusable="False"
-             FontFamily="{Binding LargeFontFamily}"
+             FontFamily="Play"
              FontSize="{Binding LargeFontSize}"
              FontWeight="{Binding LargeFontWeight}"
              FontStyle="{Binding LargeFontWeight}">
@@ -28,12 +28,12 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid Background="#17152e">
+    <Grid Background="#0d0c0c">
         <Grid>
             <Image Source="{Binding PlatformBackgroundImage}" Stretch="UniformToFill" HorizontalAlignment="Center" ClipToBounds="True" UseLayoutRounding="True" VerticalAlignment="Top" Width="Auto" />
         </Grid>
 
-        <Grid Margin="5 5 5 10">
+        <Grid Margin="5 0 5 10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -126,14 +126,17 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Style>
-                    <winCon:OutlinedTextBlock Text="{Binding FilterPair}" Fill="{Binding ForegroundBrush}" FontFamily="{Binding TitleFontFamily}"
+					<TextBlock Text="{Binding FilterPair}" TextAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#ffffff" TextWrapping="Wrap"  />
+                    <!-- <winCon:OutlinedTextBlock Text="{Binding FilterPair}" Fill="{Binding ForegroundBrush}" FontFamily="{Binding TitleFontFamily}"
                                               FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
-                                              TextWrapping="Wrap" TextAlignment="Center" Stroke="#333333" StrokeThickness="2" />
-                    <winCon:OutlinedTextBlock Text="{Binding PlatformTitle}" Fill="{Binding ForegroundBrush}" FontFamily="{Binding TitleFontFamily}"
+                                              TextWrapping="Wrap" TextAlignment="Center" Stroke="#333333" StrokeThickness="2" /> -->
+											  
+					<TextBlock Text="{Binding PlatformTitle}" TextAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#ffffff" TextWrapping="Wrap"  />
+                    <!-- <winCon:OutlinedTextBlock Text="{Binding PlatformTitle}" Fill="{Binding ForegroundBrush}" FontFamily="{Binding TitleFontFamily}"
                                               FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
-                                              TextWrapping="Wrap" TextAlignment="Center" Stroke="#333333" StrokeThickness="2" />
+                                              TextWrapping="Wrap" TextAlignment="Center" Stroke="#333333" StrokeThickness="2" /> -->
                 </Grid>
-                <Image Source="{Binding PlatformClearLogoImage}" RenderOptions.BitmapScalingMode="HighQuality" StretchDirection="Both" Stretch="Uniform" MaxHeight="100" MaxWidth="250" >
+                <Image Source="{Binding PlatformClearLogoImage}" RenderOptions.BitmapScalingMode="HighQuality" StretchDirection="Both" Stretch="Uniform" MaxHeight="100" MaxWidth="250">
                     <Image.Style>
                         <Style TargetType="Image">
                             <Setter Property="Visibility" Value="Visible"/>
@@ -145,7 +148,8 @@
                         </Style>
                     </Image.Style>
                 </Image>
-                <winCon:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding ReleasedOnString}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap" FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold" FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" StrokeThickness="1" />
+				<TextBlock Text="{Binding ReleasedOnString}" TextAlignment="Center" FontSize="{Binding SmallFontSize}" Foreground="#a5a2a2" FontWeight="SemiBold" TextWrapping="Wrap"  />
+                <!-- <winCon:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding ReleasedOnString}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap" FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold" FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" StrokeThickness="1" /> -->
             </StackPanel>
 
             <Grid Grid.Row="2" Margin="0 15 0 0">
@@ -207,12 +211,12 @@
                                                 <Thumb Focusable="True" FocusVisualStyle="{StaticResource FocusVisualStyle}">
                                                     <Thumb.Template>
                                                         <ControlTemplate TargetType="Thumb">
-                                                            <Border Name="Border"  Background="{Binding FadedForegroundBrush}" BorderThickness="0" />
-                                                            <ControlTemplate.Triggers>
+                                                            <Border Name="Border" Background="#a5a2a2" BorderThickness="0" />
+                                                            <!-- <ControlTemplate.Triggers>
                                                                 <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
-                                                                    <Setter TargetName="Border" Property="Background" Value="#99FFFFFF" />
+                                                                    <Setter TargetName="Border" Property="Background" Value="#e5e5e5" />
                                                                 </Trigger>
-                                                            </ControlTemplate.Triggers>
+                                                            </ControlTemplate.Triggers> -->
                                                         </ControlTemplate>
                                                     </Thumb.Template>
                                                 </Thumb>
@@ -331,213 +335,163 @@
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Developer.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Developer.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Developer.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Developer.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding ManufacturerVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Manufacturer.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Manufacturer.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Manufacturer.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Manufacturer.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding CpuVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Cpu.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Cpu.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Cpu.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Cpu.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding MemoryVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Memory.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Memory.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Memory.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Memory.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding GraphicsVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Graphics.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Graphics.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Graphics.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Graphics.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding SoundVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Sound.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Sound.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Sound.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Sound.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding DisplayVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Display.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Display.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Display.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Display.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding MediaVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding Media.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding Media.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding Media.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding Media.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding MaxControllersVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding MaxControllers.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding MaxControllers.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding MaxControllers.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding MaxControllers.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding TotalGamesVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding TotalGames.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding TotalGames.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding TotalGames.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding TotalGames.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding GamesCompletedVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding GamesCompleted.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding GamesCompleted.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding GamesCompleted.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap"  />
+                                <TextBlock Grid.Column="1" Text="{Binding GamesCompleted.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding LastPlayedDateVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding LastPlayedDate.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding LastPlayedDate.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding LastPlayedDate.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding LastPlayedDate.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding LastPlayedGameVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding LastPlayedGamePair.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding LastPlayedGamePair.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding LastPlayedGamePair.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding LastPlayedGamePair.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding TotalPlaysVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding TotalPlays.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding TotalPlays.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding TotalPlays.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding TotalPlays.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding TotalPlayTimeVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding TotalPlayTime.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding TotalPlayTime.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding TotalPlayTime.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding TotalPlayTime.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
                         <Border Margin="0 0 0 5" BorderThickness="0 0 0 1" BorderBrush="#30FFFFFF" Visibility="{Binding MostPlayedGameVisibility}">
                             <Grid Margin="0 0 0 6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="50" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="{Binding MostPlayedGamePair.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.75" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Left" />
-                                <TextBlock Grid.Column="2" Text="{Binding MostPlayedGamePair.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                           FontFamily="{Binding SmallFontFamily}" FontStyle="{Binding SmallFontStyle}" TextAlignment="Right" />
+                                <TextBlock Grid.Column="0" Text="{Binding MostPlayedGamePair.Header, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" Opacity="0.6" TextWrapping="Wrap" />
+                                <TextBlock Grid.Column="1" Text="{Binding MostPlayedGamePair.Value, Mode=OneWay}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" TextAlignment="Right" />
                             </Grid>
                         </Border>
-                        <TextBlock Text="{Binding Platform.Notes}" Visibility="{Binding NotesVisibility}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                                    Margin="0,25,0,4" FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="{Binding SmallFontWeight}"
-                                    FontStyle="{Binding SmallFontStyle}" Opacity="1.0" TextAlignment="Left" />
+                        <TextBlock Text="{Binding Platform.Notes}" Visibility="{Binding NotesVisibility}" Foreground="{Binding ForegroundBrush}" TextWrapping="Wrap" Margin="0,25,0,4" LineHeight="16px" />
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

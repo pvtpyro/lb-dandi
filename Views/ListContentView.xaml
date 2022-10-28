@@ -9,7 +9,7 @@
     d:DesignHeight="300"
     d:DesignWidth="300"
     Focusable="False"
-    FontFamily="{Binding FontFamily}"
+    FontFamily="Play"
     FontSize="{Binding FontSize}"
     FontWeight="{Binding FontWeight}"
     FontStyle="{Binding FontStyle}">
@@ -17,12 +17,12 @@
         <Style x:Key="DataGridCellStyle" TargetType="DataGridCell">
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="True">
-                    <Setter Property="Background" Value="#7B69F0" />
-                    <Setter Property="BorderBrush" Value="transparent" />
+                    <Setter Property="Background" Value="#dd2020" />
+                    <Setter Property="BorderBrush" Value="#dd2020" />
                     <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
                 </Trigger>
             </Style.Triggers>
-            <Setter Property="Foreground" Value="#ccffffff" />
+            <Setter Property="Foreground" Value="#0d0c0c" />
             <Setter Property="Padding" Value="10" />
             <Setter Property="FocusVisualStyle">
                 <Setter.Value>
@@ -55,12 +55,12 @@
         <Style x:Key="RightAlignDataGridCellStyle" TargetType="DataGridCell">
             <Style.Triggers>
                 <Trigger Property="DataGridCell.IsSelected" Value="True">
-                    <Setter Property="Background" Value="#7B69F0" />
-                    <Setter Property="BorderBrush" Value="transparent" />
-                    <Setter Property="Foreground" Value="#ccffffff" />
+                    <Setter Property="Background" Value="#dd2020" />
+                    <Setter Property="BorderBrush" Value="#dd2020" />
+                    <Setter Property="Foreground" Value="#ffffff" />
                 </Trigger>
             </Style.Triggers>
-            <Setter Property="Foreground" Value="#ccffffff" />
+            <Setter Property="Foreground" Value="#0d0c0c" />
             <Setter Property="Padding" Value="10" />
             <Setter Property="FocusVisualStyle">
                 <Setter.Value>
@@ -101,7 +101,7 @@
 		<!-- title bar -->
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Grid>
-                <DockPanel Grid.Row="0" Margin="15,18,15,0" HorizontalAlignment="Stretch">
+                <DockPanel Grid.Row="0" Margin="15,15,15,0" HorizontalAlignment="Stretch">
                     <Button Name="LogoMenu" Visibility="{Binding LogoVisibility}" Focusable="True">
                         <Button.FocusVisualStyle>
                             <Style>
@@ -135,31 +135,23 @@
                             </ControlTemplate>
                         </Button.Template>
                     </Button>
-                    <Label Name="Title" Foreground="{Binding ForegroundBrush}" FontWeight="Bold" FontSize="26" Margin="0,-8,0,0" FontFamily="Oswald">
+                    <Label Name="Title" Foreground="#dd2020" FontWeight="Bold" FontSize="26" Margin="0,-8,0,0">
                     </Label>
                 </DockPanel>
             </Grid>
         </StackPanel>
 
-		<!-- todo: test. no results.  -->
-        <Label Grid.Row="1" Visibility="{Binding NoResultsVisibility}" Foreground="{Binding ForegroundBrush}" FontSize="20" Margin="0">
-            <TextBlock Text="{Binding NoResultsLabel}">
-                <TextBlock.Effect>
-                    <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
-                </TextBlock.Effect>
-            </TextBlock>
-            <Label.Effect>
-                <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.65" BlurRadius="3" />
-            </Label.Effect>
+        <Label Grid.Row="1" Visibility="{Binding NoResultsVisibility}" Foreground="#0d0c0c" FontSize="20" Margin="20">
+            <TextBlock Text="{Binding NoResultsLabel}" />
         </Label>
 
-        <Border Visibility="{Binding CollectionVisibility}" Grid.Row="1" Background="#17152e" Margin="15 20 15 5">
+        <Border Visibility="{Binding CollectionVisibility}" Grid.Row="1" Background="transparent" Margin="0">
 			<DataGrid Name="Items" BorderThickness="0"
 				ScrollViewer.VerticalScrollBarVisibility="{Binding ScrollBarVisibility}" ColumnWidth="Auto"
 				ScrollViewer.HorizontalScrollBarVisibility="{Binding ScrollBarVisibility}"
 				SelectionMode="Extended" VirtualizingStackPanel.VirtualizationMode="Recycling"
 				Foreground="{Binding ForegroundBrush}" GridLinesVisibility="None" IsReadOnly="True" CanUserResizeRows="False"
-				AlternatingRowBackground="{Binding ContentAlternateBackgroundBrush}" RowBackground="Transparent"
+				AlternatingRowBackground="{Binding ContentAlternateBackgroundBrush}"
 				RowHeaderWidth="0" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserResizeColumns="True" ScrollViewer.PanningMode="Both"
 				cal:Message.Attach="
 					[Event SelectionChanged] = [Action OnSelectionChanged($source, $eventArgs)];
@@ -427,9 +419,7 @@
 						<Setter Property="Template">
 							<Setter.Value>
 								<ControlTemplate TargetType="{x:Type DataGridCell}">
-									<Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}"
-										BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
-										SnapsToDevicePixels="True">
+									<Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
 										<ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
 									</Border>
 								</ControlTemplate>
@@ -437,12 +427,27 @@
 						</Setter>
 					</Style>
 				</DataGrid.CellStyle>
+				<DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="Transparent"></Setter>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="#ffffff"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#a5a2a2" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
 				<DataGrid.ColumnHeaderStyle>
 					<Style TargetType="{x:Type DataGridColumnHeader}">
 						<Setter Property="Padding" Value="10" />
-						<Setter Property="FontWeight" Value="Bold" />
-						<Setter Property="Foreground" Value="#bfffffff" />
-						<Setter Property="Background" Value="#17152e" />
+						<Setter Property="FontWeight" Value="SemiBold" />
+						<Setter Property="Foreground" Value="#ffffff" />
+						<Setter Property="Background" Value="#a5a2a2" />
 						<Setter Property="cal:Message.Attach" Value="[Event PreviewMouseRightButtonUp] = [Action OnHeaderRightClick($eventArgs)]" />
 					</Style>
 				</DataGrid.ColumnHeaderStyle>
