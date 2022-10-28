@@ -56,7 +56,8 @@
                     <Setter Property="BorderBrush" Value="#11FFFFFF" />
                 </Trigger>
             </Style.Triggers>
-            <Setter Property="Background" Value="#22FFFFFF" />
+			
+            <Setter Property="Background" Value="#e5e5e5" />
             <Setter Property="Foreground" Value="{Binding ButtonForegroundBrush}" />
             <Setter Property="BorderBrush" Value="#e5e5e5" />
             <Setter Property="FontSize" Value="14" />
@@ -66,25 +67,26 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Padding="10, 5, 10, 5" BorderThickness="1" Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border Padding="10" BorderThickness="1" Background="#dd2020" CornerRadius="50" BorderBrush="{TemplateBinding BorderBrush}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+
         </Style>
     </UserControl.Resources>
 
     <Grid Background="#a5a2a2">
         
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="190" />
             <ColumnDefinition Width="62" />
             <ColumnDefinition Width="62" />
             <ColumnDefinition Width="62" />
-            <ColumnDefinition Width="62" />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
@@ -102,38 +104,71 @@
             <Button Name="Delete" IsEnabled="{Binding DeleteEnabled}" Style="{StaticResource ButtonStyle}">
 				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
 			</Button>
-            <TextBlock Foreground="#FFCCCCCC" FontSize="14" Margin="15,5,10,10" VerticalAlignment="Center" Text="{Binding StatusText}" />
+            <TextBlock Foreground="#0d0c0c" FontSize="14" Margin="15,5,10,10" VerticalAlignment="Center" Text="{Binding StatusText}" />
         </StackPanel>
 
-        <Slider Grid.Column="1" VerticalAlignment="Center" Margin="0,0,40,5" Maximum="1.0" Minimum="0.039" Value="{Binding Path=BoxSize, Mode=TwoWay}"
-            SmallChange="0.001" LargeChange="0.01"
-            cal:Message.Attach="[Event ValueChanged] = [Action OnSliderValueChanged()];">
-            <i:Interaction.Triggers>
-                <local:RoutedEventTrigger RoutedEvent="Thumb.DragCompleted">
-                    <cal:ActionMessage MethodName="OnSliderDragCompleted" />
-                </local:RoutedEventTrigger>
-                <local:RoutedEventTrigger RoutedEvent="Thumb.DragStarted">
-                    <cal:ActionMessage MethodName="OnSliderDragStarted" />
-                </local:RoutedEventTrigger>
-            </i:Interaction.Triggers>
-            <Slider.FocusVisualStyle>
-                <Style>
-                    <Setter Property="Control.Template">
-                        <Setter.Value>
-                            <ControlTemplate>
-                                <Rectangle StrokeThickness="1" Stroke="{Binding ForegroundBrush}" SnapsToDevicePixels="true" Margin="-10">
-                                    <Rectangle.Effect>
-                                        <DropShadowEffect ShadowDepth="1" Direction="315" Color="Black" Opacity="0.9" BlurRadius="2" />
-                                    </Rectangle.Effect>
-                                </Rectangle>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Slider.FocusVisualStyle>
-        </Slider>
+		<!-- image zoom  slider -->
+		<DockPanel Grid.Column="1" VerticalAlignment="Center" Margin="10">
+			<!-- <TextBox Text="{Binding ElementName=ZoomVal, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="60" /> -->
+			<Slider VerticalAlignment="Center" Maximum="1.0" Minimum="0.039" Value="{Binding Path=BoxSize, Mode=TwoWay}" SmallChange="0.001" LargeChange="0.01" cal:Message.Attach="[Event ValueChanged] = [Action OnSliderValueChanged()];" Height="20" TickFrequency="0.01" IsSnapToTickEnabled="True" Name="ZoomVal">
+				<i:Interaction.Triggers>
+					<local:RoutedEventTrigger RoutedEvent="Thumb.DragCompleted">
+						<cal:ActionMessage MethodName="OnSliderDragCompleted" />
+					</local:RoutedEventTrigger>
+					<local:RoutedEventTrigger RoutedEvent="Thumb.DragStarted">
+						<cal:ActionMessage MethodName="OnSliderDragStarted" />
+					</local:RoutedEventTrigger>
+				</i:Interaction.Triggers>
+				<Slider.FocusVisualStyle>
+					<Style>
+						<Setter Property="Control.Template">
+							<Setter.Value>
+								<ControlTemplate>
+									<Rectangle StrokeThickness="1" Stroke="{Binding ForegroundBrush}" Background="#0d0c0c" SnapsToDevicePixels="true" Margin="-10">
+										<Rectangle.Effect>
+											<DropShadowEffect ShadowDepth="1" Direction="315" Color="#0d0c0c" Opacity="0.9" BlurRadius="2" />
+										</Rectangle.Effect>
+									</Rectangle>
+								</ControlTemplate>
+							</Setter.Value>
+						</Setter>
+					</Style>
+				</Slider.FocusVisualStyle>
+				<Slider.Background>
+					<VisualBrush>
+						<VisualBrush.Visual>
+						<Grid>
+							<Rectangle Width="1" Height="1">
+							<Rectangle.Fill>
+								<LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
+								<GradientStop Color="#0d0c0c" Offset="0" />
+								<GradientStop Color="#0d0c0c" Offset="1" />
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+							</Rectangle>
+							<Rectangle Width="1" Height="1">
+							<Rectangle.Fill>
+								<LinearGradientBrush EndPoint="0,0" StartPoint="0.1,0" SpreadMethod="Repeat">
+								<GradientStop Color="Transparent" Offset="0.5" />
+								<GradientStop Color="#e5e5e5" Offset="0.5" />
+								<GradientStop Color="#e5e5e5" Offset="0.55" />
+								<GradientStop Color="Transparent" Offset="0.55" />
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+							</Rectangle>
+						</Grid>
+						</VisualBrush.Visual>
+					</VisualBrush>
+				</Slider.Background>
+			</Slider>
+		</DockPanel>
 
-        <Button Name="Previous" Content="Previous" Grid.Column="2" IsEnabled="{Binding PreviousEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" Margin="0,0,0,5">
+		<!-- var  dump -->
+		<!-- <Grid Grid.Column="2" Background="white" Margin="10">
+	 		<TextBlock Foreground="#0d0c0c" FontSize="14" Margin="15,5,10,10" VerticalAlignment="Center" Text="{Binding PreviousEnabled}" />
+		</Grid> -->
+
+        <Button Name="Previous" Content="Previous" Grid.Column="3" IsEnabled="{Binding PreviousEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
@@ -164,7 +199,7 @@
             </Button.Template>
         </Button>
 
-        <Button Name="Play" Content="Play" Grid.Column="3" IsEnabled="{Binding PlayEnabled}" Visibility="{Binding PlayVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
+        <Button Name="Play" Content="Play" Grid.Column="4" IsEnabled="{Binding PlayEnabled}" Visibility="{Binding PlayVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
@@ -190,7 +225,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="Pause" Content="Pause" Grid.Column="3" Visibility="{Binding PauseVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
+
+        <Button Name="Pause" Content="Pause" Grid.Column="5" Visibility="{Binding PauseVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
@@ -219,7 +255,8 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Name="Next" Content="Next" Grid.Column="4" IsEnabled="{Binding NextEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" Margin="0,0,0,5">
+		
+        <Button Name="Next" Content="Next" Grid.Column="5" IsEnabled="{Binding NextEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
                     <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
@@ -249,40 +286,55 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
-		
-        <Rectangle x:Name="KeyRectangle" Grid.Column="5" Fill="{Binding SelectionBackgroundBrush, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" Visibility="Collapsed">
-            <Rectangle.Triggers>
-                <EventTrigger RoutedEvent="Binding.TargetUpdated">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation Storyboard.TargetName="brush1" Storyboard.TargetProperty="Color" To="{Binding Fill.Color, ElementName=KeyRectangle}" Duration="0:0:0.5" />
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Rectangle.Triggers>
-        </Rectangle>
-        <controls:VolumeKnobControl Grid.Column="5" FillBrush="{Binding ForegroundBrush}" Value="{Binding Path=VolumeValue, Mode=TwoWay}" HorizontalAlignment="Right" Focusable="True" IsTabStop="True" FocusVisualStyle="{StaticResource FocusVisualStyle}" Padding="10,0,10,0" Margin="0,0,0,2">
-            <controls:VolumeKnobControl.HighlightBrush>
-                <SolidColorBrush x:Name="brush1" Color="{Binding ElementName=KeyRectangle, Path=Fill.Color}" />
-            </controls:VolumeKnobControl.HighlightBrush>
-        </controls:VolumeKnobControl>
-        <Button x:Name="ToggleText" Style="{StaticResource ButtonStyle}" Grid.Column="6" Margin="21,5,0,10" Padding="0">
+
+		<!-- Volumn Conrol -->
+		<Label x:Name="VolumeExpander" Grid.Column="6" Margin="9,0" MaxWidth="200" HorizontalAlignment="Stretch"/>
+		<Grid Grid.Column="6" Margin="36,0,12,0" HorizontalAlignment="Right" Width="{Binding ElementName=VolumeExpander, Path=ActualWidth}">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="20" />
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="20" />
+			</Grid.ColumnDefinitions>
+			<Path Grid.Column="0" Width="15" Height="15" Stretch="Uniform" Fill="#0d0c0c" Data="M0 352V160H128L272 32h48V480H272L128 352H0z"/>
+			<Slider Grid.Column="1" Margin="9,0,14,0" VerticalAlignment="Center" Maximum="100" Minimum="0" Value="{Binding Path=VolumeValue, Mode=TwoWay}"
+				SmallChange="1" LargeChange="10" HorizontalAlignment="Stretch">
+				<Slider.Background>
+					<VisualBrush>
+						<VisualBrush.Visual>
+						<Grid>
+							<Rectangle Width="1" Height="1">
+							<Rectangle.Fill>
+								<LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
+								<GradientStop Color="#0d0c0c" Offset="0" />
+								<GradientStop Color="#0d0c0c" Offset="1" />
+								</LinearGradientBrush>
+							</Rectangle.Fill>
+							</Rectangle>
+						</Grid>
+						</VisualBrush.Visual>
+					</VisualBrush>
+				</Slider.Background>
+			</Slider>
+			<Path Grid.Column="2" Width="15" Height="15" Stretch="Uniform" Fill="#0d0c0c" Data="M533.6 32.5C598.5 85.3 640 165.8 640 256s-41.5 170.8-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 331.2 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C475.3 341.3 496 301.1 496 256s-20.7-85.3-53.2-111.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z"/>
+		</Grid>
+
+
+
+        <Button x:Name="ToggleText" Style="{StaticResource ButtonStyle}" Grid.Column="7" Margin="15,5,15,5" Padding="0">
             <Button.Template>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Padding="12,0,12,0" BorderThickness="1" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}">
-                        <CheckBox Foreground="{Binding ForegroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14"
-                                  IsChecked="{Binding TextEnabled}" Content="{Binding TextLabel}" IsEnabled="False" />
+                    <Border Padding="12,0,12,0" BorderThickness="1" Background="#0d0c0c" BorderBrush="#0d0c0c">
+                        <CheckBox Foreground="#e5e5e5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14" IsChecked="{Binding TextEnabled}" Content="{Binding TextLabel}" IsEnabled="False" />
                     </Border>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-		<!-- <TextBlock Grid.Column="0" Grid.Row="0" Text="{StaticResource ButtonStyle}" TextAlignment="Center" Foreground="red" Panel.ZIndex="999" >
-            <TextBlock.Effect>
-                <DropShadowEffect Color="#FFE88C1C" BlurRadius="6" ShadowDepth="6"/>
-            </TextBlock.Effect>
-        </TextBlock> -->
-        <Button Name="Add" Style="{StaticResource ButtonStyle}" Grid.Column="7" HorizontalAlignment="Right" Margin="10,5,8,10">
-			<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
-		</Button>
+
+		<StackPanel Orientation="Horizontal" Grid.Column="8" Margin="0 0 10 0">
+			<Button Name="Add" Style="{StaticResource ButtonStyle}">
+				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+			</Button>
+        </StackPanel>
+		
     </Grid>
 </UserControl>
