@@ -57,7 +57,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Border Background="#fc1f1d40">
+    <Border Background="#fc0d0c0c">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -76,7 +76,7 @@
             <Button Name="Cancel" Grid.Column="1" Grid.Row="0" Content="{Binding CancelLabel}" IsEnabled="{Binding CancelEnabled}"
                 Style="{StaticResource ButtonStyle}" HorizontalAlignment="Right" MinWidth="50" Margin="10" />
 
-			<!-- this one always shows, no matter what -->
+			<!-- this one always shows, no matter what, for now -->
             <TextBlock Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding BottomText}" Foreground="{Binding ButtonForegroundBrush}" FontSize="14" Margin="10,0,10,10" Visibility="{Binding BottomTextVisibility}" />
             <TextBlock Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" FontSize="14" Margin="10" Visibility="{Binding ErrorLinkVisibility}">
                 <Hyperlink Name="ErrorLink" Foreground="{Binding ButtonForegroundBrush}">
@@ -84,11 +84,11 @@
                 </Hyperlink>
             </TextBlock>
 
-            <ProgressBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Maximum="{Binding Maximum}" Value="{Binding Value}" Margin="0" Background="#1f1d40" IsIndeterminate="{Binding Indeterminate}" Opacity="1" Height="5" >
+            <ProgressBar Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Maximum="{Binding Maximum}" Value="{Binding Value}" Margin="0" Background="#a5a2a2" IsIndeterminate="{Binding Indeterminate}" Opacity="1" Height="5" >
                 <ProgressBar.Foreground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#7B69F0"/>
-                        <GradientStop Color="#7B69F0" Offset="1"/>
+                        <GradientStop Color="#dd2020"/>
+                        <GradientStop Color="#b01a1a" Offset="1"/>
                     </LinearGradientBrush>
                 </ProgressBar.Foreground>
             </ProgressBar>

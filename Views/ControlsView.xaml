@@ -150,8 +150,8 @@
 							<Rectangle.Fill>
 								<LinearGradientBrush EndPoint="0,0" StartPoint="0.1,0" SpreadMethod="Repeat">
 								<GradientStop Color="Transparent" Offset="0.5" />
-								<GradientStop Color="#e5e5e5" Offset="0.5" />
-								<GradientStop Color="#e5e5e5" Offset="0.55" />
+								<GradientStop Color="#a5a2a2" Offset="0.5" />
+								<GradientStop Color="#a5a2a2" Offset="0.55" />
 								<GradientStop Color="Transparent" Offset="0.55" />
 								</LinearGradientBrush>
 							</Rectangle.Fill>
