@@ -36,6 +36,18 @@
     <Grid Background="#0d0c0c">
 
         <Grid Height="200" VerticalAlignment="Top">
+            
+            <Grid Panel.ZIndex="1">
+                <Grid.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#99404041"/>
+                        <GradientStop Color="#99404041" Offset="0.20"/>
+                        <GradientStop Color="#4d404041" Offset="0.30"/>
+                        <GradientStop Color="#4d404041" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+
             <Image Source="pack://siteoforigin:,,,/LBThemes/Dandi/Images/arcade.jpg" HorizontalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Grid.ColumnSpan="5" Grid.RowSpan="4">
                 <Image.Style>
                     <Style TargetType="{x:Type Image}">
@@ -50,10 +62,10 @@
             </Image>
             <Image VerticalAlignment="Top" Source="{Binding GameBackgroundImage}" Stretch="UniformToFill" />
 			
-            <Viewbox MaxHeight="200" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" StretchDirection="Both">
-                <TextBlock Margin="50,0,50,0" VerticalAlignment="Center" Text="{Binding Game.Title}" TextTrimming="CharacterEllipsis" Foreground="#ffffff" Panel.ZIndex="2">
+            <Viewbox MaxHeight="200" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" StretchDirection="Both" Panel.ZIndex="2">
+                <TextBlock Margin="50,0,50,0" VerticalAlignment="Center" Text="{Binding Game.Title}" TextTrimming="CharacterEllipsis" Foreground="#ffffff" FontWeight="SemiBold">
                     <TextBlock.Effect>
-                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="#CB0100" Opacity="1" BlurRadius="2" />
+                        <DropShadowEffect ShadowDepth="0" Direction="315" Color="#0d0c0c" Opacity="1" BlurRadius="2" />
                     </TextBlock.Effect>
                     <TextBlock.Style>
                         <Style TargetType="{x:Type TextBlock}">
@@ -71,7 +83,7 @@
                     </TextBlock.Style>
                 </TextBlock>
             </Viewbox>
-            <Image MaxWidth="250" MaxHeight="150" Margin="0,40,0,0" HorizontalAlignment="center" Source="{Binding Game.ClearLogoImagePath}" RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="5">
+            <Image MaxWidth="250" MaxHeight="150" Margin="0,30,0,0" HorizontalAlignment="center" Source="{Binding Game.ClearLogoImagePath}" RenderOptions.BitmapScalingMode="HighQuality" Panel.ZIndex="5">
                 <!--<Image.Style>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Visibility" Value="Collapsed"/>
@@ -104,17 +116,6 @@
                 </RadialGradientBrush>
             </Grid.Background>-->
             <!--<Rectangle Fill="red" />-->
-            
-            <Grid>
-                <Grid.Background>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#99404041"/>
-                        <GradientStop Color="#99404041" Offset="0.20"/>
-                        <GradientStop Color="#4d404041" Offset="0.30"/>
-                        <GradientStop Color="#4d404041" Offset="1"/>
-                    </LinearGradientBrush>
-                </Grid.Background>
-            </Grid>
         </Grid>
         
         <Grid Margin="5 5 5 10">
@@ -306,15 +307,9 @@
             </StackPanel>
             
 			<!-- gane title, platform and release date -->
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True" Margin="12 10 18 0">
-				<TextBlock Text="{Binding Title}" TextAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#ffffff" />
-                <!-- <panel:OutlinedTextBlock Text="{Binding Title}" Fill="{Binding ForegroundBrush}" FontFamily="Oswald"
-                    FontSize="{Binding TitleFontSize}" FontWeight="{Binding TitleFontWeight}" FontStyle="{Binding TitleFontStyle}"
-                    TextWrapping="Wrap" TextAlignment="Center" Stroke="#CB0100" StrokeThickness="2" /> -->
-					<TextBlock Text="{Binding PlatformReleaseDate}" TextAlignment="Center" FontWeight="SemiBold" FontSize="{Binding SmallFontSize}" Foreground="#a5a2a2" Margin="0 3 0 0" />
-                <!-- <panel:OutlinedTextBlock Margin="0,3,0,0" Text="{Binding PlatformReleaseDate}" Fill="{Binding ForegroundBrush}" TextWrapping="Wrap"
-                    FontFamily="{Binding SmallFontFamily}" FontSize="{Binding SmallFontSize}" FontWeight="Bold"
-                    FontStyle="{Binding SmallFontStyle}" TextAlignment="Center" Stroke="#CB0100" StrokeThickness="1" /> -->
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" ClipToBounds="True" Margin="10 10 10 0">
+				<TextBlock Text="{Binding Title}" TextAlignment="Center" FontSize="20" FontWeight="SemiBold" Foreground="#ffffff" TextWrapping="Wrap" />
+				<TextBlock Text="{Binding PlatformReleaseDate}" TextAlignment="Center" FontWeight="SemiBold" FontSize="{Binding SmallFontSize}" Foreground="#a5a2a2" Margin="0 3 0 0" />
             </StackPanel>
             
             <TabControl Grid.ColumnSpan="2" Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0 15 0 15"
