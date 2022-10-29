@@ -171,16 +171,16 @@
         <Button Name="Previous" Content="Previous" Grid.Column="3" IsEnabled="{Binding PreviousEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+                    <Setter Property="Foreground" Value="#e5e5e5" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{Binding ControlsButtonHoverBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#99e5e5e5" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -202,16 +202,16 @@
         <Button Name="Play" Content="Play" Grid.Column="4" IsEnabled="{Binding PlayEnabled}" Visibility="{Binding PlayVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+                    <Setter Property="Foreground" Value="#e5e5e5" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{Binding ControlsButtonHoverBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#99e5e5e5" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -226,19 +226,19 @@
             </Button.Template>
         </Button>
 
-        <Button Name="Pause" Content="Pause" Grid.Column="5" Visibility="{Binding PauseVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
+        <Button Name="Pause" Content="Pause" Grid.Column="4" Visibility="{Binding PauseVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+                    <Setter Property="Foreground" Value="#e5e5e5" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{Binding ControlsButtonHoverBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#99e5e5e5" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -259,16 +259,16 @@
         <Button Name="Next" Content="Next" Grid.Column="5" IsEnabled="{Binding NextEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" Margin="0,0,0,5">
             <Button.Style>
                 <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="{Binding ForegroundBrush}" />
+                    <Setter Property="Foreground" Value="#e5e5e5" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{Binding ControlsButtonHoverBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#99e5e5e5" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="{Binding FadedForegroundBrush}" />
+                            <Setter Property="Foreground" Value="#dd2020" />
                         </Trigger>
                     </Style.Triggers>
                 </Style>
@@ -287,7 +287,7 @@
             </Button.Template>
         </Button>
 
-		<!-- Volumn Conrol -->
+		<!-- Volume Control -->
 		<Label x:Name="VolumeExpander" Grid.Column="6" Margin="9,0" MaxWidth="200" HorizontalAlignment="Stretch"/>
 		<Grid Grid.Column="6" Margin="36,0,12,0" HorizontalAlignment="Right" Width="{Binding ElementName=VolumeExpander, Path=ActualWidth}">
 			<Grid.ColumnDefinitions>
