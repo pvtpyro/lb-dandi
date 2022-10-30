@@ -41,33 +41,28 @@
         <Style x:Key="ButtonStyle" TargetType="Button">
             <Style.Triggers>
                 <Trigger Property="IsFocused" Value="True">
-                    <Setter Property="Background" Value="#22FFFFFF" />
-                    <Setter Property="Foreground" Value="{Binding ButtonForegroundBrush}" />
-                    <Setter Property="BorderBrush" Value="#22FFFFFF" />
+                    <Setter Property="Background" Value="#b01a1a" />
+                    <Setter Property="Foreground" Value="#ffffff" />
                 </Trigger>
                 <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#33FFFFFF" />
-                    <Setter Property="Foreground" Value="{Binding HoverButtonForegroundBrush}" />
-                    <Setter Property="BorderBrush" Value="#33FFFFFF" />
+                    <Setter Property="Foreground" Value="#ffffff" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="#11FFFFFF" />
-                    <Setter Property="Foreground" Value="{Binding DisabledButtonForegroundBrush}" />
-                    <Setter Property="BorderBrush" Value="#11FFFFFF" />
+                    <Setter Property="Background" Value="#80dd2020" />
+                    <Setter Property="Foreground" Value="#80e5e5e5" />
                 </Trigger>
             </Style.Triggers>
 			
-            <Setter Property="Background" Value="#e5e5e5" />
-            <Setter Property="Foreground" Value="{Binding ButtonForegroundBrush}" />
+            <Setter Property="Background" Value="#dd2020" />
+            <Setter Property="Foreground" Value="#e5e5e5" />
             <Setter Property="BorderBrush" Value="#e5e5e5" />
-            <Setter Property="FontSize" Value="14" />
             <Setter Property="Margin" Value="10,10,0,10" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisualStyle}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Padding="10" BorderThickness="1" Background="#dd2020" CornerRadius="50" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border Padding="10" BorderThickness="1" Background="{TemplateBinding Background}" CornerRadius="50" BorderBrush="{TemplateBinding BorderBrush}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -83,28 +78,11 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="50" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0">
-			<Button Name="PlayGame" IsEnabled="{Binding PlayGameEnabled}" Style="{StaticResource ButtonStyle}">
-				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
-			</Button>
-            <Button Name="Configure" IsEnabled="{Binding ConfigureEnabled}" Style="{StaticResource ButtonStyle}">
-				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M200 0H312l17.2 78.4c15.8 6.5 30.6 15.1 44 25.4l76.5-24.4 56 97-59.4 54.1c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l59.4 54.1-56 97-76.5-24.4c-13.4 10.3-28.2 18.9-44 25.4L312 512H200l-17.2-78.4c-15.8-6.5-30.6-15.1-44-25.4L62.3 432.5l-56-97 59.4-54.1C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L6.3 176.5l56-97 76.5 24.4c13.4-10.3 28.2-18.9 44-25.4L200 0zm56 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80z"/>
-			</Button>
-            <Button Name="Edit" IsEnabled="{Binding EditEnabled}" Style="{StaticResource ButtonStyle}">
-				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M10.2 461L0 512l51-10.2L160 480 420.7 219.3l-128-128L32 352 10.2 461zM315.3 68.7l128 128 34.7-34.7L512 128l-16-16L478.1 94.1 417.9 33.9 400 16 384 0 350.1 33.9 315.3 68.7zM96 416h60.1l-19.8 19.8-75.1 15 15-75.1L96 355.9V416z"/>
-			</Button>
-            <Button Name="Delete" IsEnabled="{Binding DeleteEnabled}" Style="{StaticResource ButtonStyle}">
-				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
-			</Button>
-            <TextBlock Foreground="#0d0c0c" FontSize="14" Margin="15,5,10,10" VerticalAlignment="Center" Text="{Binding StatusText}" />
+            <TextBlock Foreground="#0d0c0c" FontSize="14" Margin="15,0,10,0" VerticalAlignment="Center" Text="{Binding StatusText}" />
         </StackPanel>
 
 		<!-- image zoom  slider -->
@@ -163,174 +141,177 @@
 			</Slider>
 		</DockPanel>
 
-        <Button Name="Previous" Content="Previous" Grid.Column="3" IsEnabled="{Binding PreviousEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="#e5e5e5" />
-                    <Setter Property="Background" Value="#dd2020" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#80e5e5e5" />
-                    		<Setter Property="Background" Value="#80dd2020" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                   			<Setter Property="Background" Value="#b01a1a" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" />
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Path Data="M64 96V64H0V96 416v32H64V416 280L288 448V280L512 448V64L288 232V64L64 232V96z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-
-        <Button Name="Play" Content="Play" Grid.Column="4" IsEnabled="{Binding PlayEnabled}" Visibility="{Binding PlayVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="#e5e5e5" />
-                    <Setter Property="Background" Value="#dd2020" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#80e5e5e5" />
-                    		<Setter Property="Background" Value="#80dd2020" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                   			<Setter Property="Background" Value="#b01a1a" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" />
-						<Path Data="M384 256L0 32V480L384 256z" Fill="{TemplateBinding Foreground}" Height="15" Width="12" Stretch="Uniform" Margin="2 0 0 0" />
-                    </Grid>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-
-        <Button Name="Pause" Content="Pause" Grid.Column="4" Visibility="{Binding PauseVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="#e5e5e5" />
-                    <Setter Property="Background" Value="#dd2020" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#80e5e5e5" />
-                    		<Setter Property="Background" Value="#80dd2020" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                   			<Setter Property="Background" Value="#b01a1a" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" />
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Path Data="M128 64H0V448H128V64zm192 0H192V448H320V64z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-		
-        <Button Name="Next" Content="Next" Grid.Column="5" IsEnabled="{Binding NextEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Foreground" Value="#e5e5e5" />
-                    <Setter Property="Background" Value="#dd2020" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="#80e5e5e5" />
-                    		<Setter Property="Background" Value="#80dd2020" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#ffffff" />
-                   			<Setter Property="Background" Value="#b01a1a" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" />
-                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Path Data="M448 96V64h64V96 416v32H448V416 280L224 448V280L0 448V64L224 232V64L448 232V96z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
-                        </Grid>
-                    </Grid>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
-
-		<!-- Volume Control -->
-		<Label x:Name="VolumeExpander" Grid.Column="6" Margin="9,0" MaxWidth="200" HorizontalAlignment="Stretch"/>
-		<Grid Grid.Column="6" Margin="36,0,12,0" HorizontalAlignment="Right" Width="{Binding ElementName=VolumeExpander, Path=ActualWidth}">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="20" />
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="20" />
-			</Grid.ColumnDefinitions>
-			<Path Grid.Column="0" Width="12" Height="12" Stretch="Uniform" Fill="#ffffff" Data="M0 160V352H128L272 480h48V32H272L128 160H0zM409.6 332.8C432.9 315.3 448 287.4 448 256s-15.1-59.3-38.4-76.8l-28.8 38.4c11.7 8.8 19.2 22.7 19.2 38.4s-7.5 29.6-19.2 38.4l28.8 38.4z"/>
-			<Slider Grid.Column="1" Margin="9,0,14,0" VerticalAlignment="Center" Maximum="100" Minimum="0" Value="{Binding Path=VolumeValue, Mode=TwoWay}"
-				SmallChange="1" LargeChange="10" HorizontalAlignment="Stretch">
-				<Slider.Background>
-					<VisualBrush>
-						<VisualBrush.Visual>
-						<Grid>
-							<Rectangle Width="1" Height="1">
-							<Rectangle.Fill>
-								<LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
-								<GradientStop Color="#ffffff" Offset="0" />
-								<GradientStop Color="#e5e5e5" Offset="1" />
-								</LinearGradientBrush>
-							</Rectangle.Fill>
-							</Rectangle>
+		<StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+			<Button Name="Previous" Content="Previous" IsEnabled="{Binding PreviousEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}">
+				<Button.Style>
+					<Style TargetType="Button">
+						<Setter Property="Foreground" Value="#e5e5e5" />
+						<Setter Property="Background" Value="#dd2020" />
+						<Style.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="#80e5e5e5" />
+								<Setter Property="Background" Value="#80dd2020" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+								<Setter Property="Background" Value="#b01a1a" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Button.Style>
+				<Button.Template>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5"  />
+							<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+								<Path Data="M64 96V64H0V96 416v32H64V416 280L288 448V280L512 448V64L288 232V64L64 232V96z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
+							</Grid>
 						</Grid>
-						</VisualBrush.Visual>
-					</VisualBrush>
-				</Slider.Background>
-			</Slider>
-			<Path Grid.Column="2" Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M592 256c0 78.5-37.7 148.2-96 192l28.8 38.4C594.7 433.9 640 350.3 640 256.1l0-.1 0-.1c0-94.2-45.3-177.8-115.2-230.3L496 64c58.3 43.8 96 113.5 96 192zM438.4 371.2l28.8 38.4c46.6-35 76.8-90.8 76.8-153.6s-30.2-118.6-76.8-153.6l-28.8 38.4c35 26.3 57.6 68.1 57.6 115.2s-22.6 88.9-57.6 115.2zM400 256c0 15.7-7.5 29.6-19.2 38.4l28.8 38.4C432.9 315.3 448 287.4 448 256s-15.1-59.3-38.4-76.8l-28.8 38.4c11.7 8.8 19.2 22.7 19.2 38.4zM0 160V352H128L272 480h48V32H272L128 160H0z"/>
-		</Grid>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
 
-        <Button x:Name="ToggleText" Style="{StaticResource ButtonStyle}" Grid.Column="7" Margin="15,5,15,5" Padding="0">
-            <Button.Template>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Padding="12,0,12,0" BorderThickness="1" Background="#0d0c0c" BorderBrush="#0d0c0c">
-                        <CheckBox Foreground="#e5e5e5" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14" IsChecked="{Binding TextEnabled}" Content="{Binding TextLabel}" IsEnabled="False" />
-                    </Border>
-                </ControlTemplate>
-            </Button.Template>
-        </Button>
+			<Button Name="Play" Content="Play" IsEnabled="{Binding PlayEnabled}" Visibility="{Binding PlayVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="10 0 10 0">
+				<Button.Style>
+					<Style TargetType="Button">
+						<Setter Property="Foreground" Value="#e5e5e5" />
+						<Setter Property="Background" Value="#dd2020" />
+						<Style.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="#80e5e5e5" />
+								<Setter Property="Background" Value="#80dd2020" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+								<Setter Property="Background" Value="#b01a1a" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Button.Style>
+				<Button.Template>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5"  />
+							<Path Data="M384 256L0 32V480L384 256z" Fill="{TemplateBinding Foreground}" Height="15" Width="12" Stretch="Uniform" Margin="2 0 0 0" />
+						</Grid>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
 
-		<StackPanel Orientation="Horizontal" Grid.Column="8" Margin="0 0 10 0">
+			<Button Name="Pause" Content="Pause" Visibility="{Binding PauseVisibility}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}" ToolTip="{Binding PlayPauseToolTip}" Margin="10 0 10 0">
+				<Button.Style>
+					<Style TargetType="Button">
+						<Setter Property="Foreground" Value="#e5e5e5" />
+						<Setter Property="Background" Value="#dd2020" />
+						<Style.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="#80e5e5e5" />
+								<Setter Property="Background" Value="#80dd2020" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+								<Setter Property="Background" Value="#b01a1a" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Button.Style>
+				<Button.Template>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5"  />
+							<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+								<Path Data="M128 64H0V448H128V64zm192 0H192V448H320V64z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+			
+			<Button Name="Next" Content="Next" IsEnabled="{Binding NextEnabled}" Focusable="True" FocusVisualStyle="{StaticResource PlaybackFocusVisualStyle}">
+				<Button.Style>
+					<Style TargetType="Button">
+						<Setter Property="Foreground" Value="#e5e5e5" />
+						<Setter Property="Background" Value="#dd2020" />
+						<Style.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+							</Trigger>
+							<Trigger Property="IsEnabled" Value="False">
+								<Setter Property="Foreground" Value="#80e5e5e5" />
+								<Setter Property="Background" Value="#80dd2020" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter Property="Foreground" Value="#ffffff" />
+								<Setter Property="Background" Value="#b01a1a" />
+							</Trigger>
+						</Style.Triggers>
+					</Style>
+				</Button.Style>
+				<Button.Template>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5" />
+							<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+								<Path Data="M448 96V64h64V96 416v32H448V416 280L224 448V280L0 448V64L224 232V64L448 232V96z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
+							</Grid>
+						</Grid>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
+
+			<!-- Volume Control -->
+			<Grid Margin="30,0,0,0" HorizontalAlignment="Right" Width="200">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="20" />
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="20" />
+				</Grid.ColumnDefinitions>
+				<Path Grid.Column="0" Width="12" Height="12" Stretch="Uniform" Fill="#ffffff" Data="M0 160V352H128L272 480h48V32H272L128 160H0zM409.6 332.8C432.9 315.3 448 287.4 448 256s-15.1-59.3-38.4-76.8l-28.8 38.4c11.7 8.8 19.2 22.7 19.2 38.4s-7.5 29.6-19.2 38.4l28.8 38.4z"/>
+				<Slider Grid.Column="1" Margin="9,0,14,0" VerticalAlignment="Center" Maximum="100" Minimum="0" Value="{Binding Path=VolumeValue, Mode=TwoWay}"
+					SmallChange="1" LargeChange="10" HorizontalAlignment="Stretch">
+					<Slider.Background>
+						<VisualBrush>
+							<VisualBrush.Visual>
+							<Grid>
+								<Rectangle Width="1" Height="1">
+								<Rectangle.Fill>
+									<LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
+									<GradientStop Color="#ffffff" Offset="0" />
+									<GradientStop Color="#e5e5e5" Offset="1" />
+									</LinearGradientBrush>
+								</Rectangle.Fill>
+								</Rectangle>
+							</Grid>
+							</VisualBrush.Visual>
+						</VisualBrush>
+					</Slider.Background>
+				</Slider>
+				<Path Grid.Column="2" Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M592 256c0 78.5-37.7 148.2-96 192l28.8 38.4C594.7 433.9 640 350.3 640 256.1l0-.1 0-.1c0-94.2-45.3-177.8-115.2-230.3L496 64c58.3 43.8 96 113.5 96 192zM438.4 371.2l28.8 38.4c46.6-35 76.8-90.8 76.8-153.6s-30.2-118.6-76.8-153.6l-28.8 38.4c35 26.3 57.6 68.1 57.6 115.2s-22.6 88.9-57.6 115.2zM400 256c0 15.7-7.5 29.6-19.2 38.4l28.8 38.4C432.9 315.3 448 287.4 448 256s-15.1-59.3-38.4-76.8l-28.8 38.4c11.7 8.8 19.2 22.7 19.2 38.4zM0 160V352H128L272 480h48V32H272L128 160H0z"/>
+			</Grid>
+		</StackPanel>
+
+		<StackPanel Orientation="Horizontal" Grid.Column="3" Margin="0 0 10 0">
+			<Button Name="PlayGame" IsEnabled="{Binding PlayGameEnabled}" Style="{StaticResource ButtonStyle}">
+				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+			</Button>
+            <Button Name="Configure" IsEnabled="{Binding ConfigureEnabled}" Style="{StaticResource ButtonStyle}">
+				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M200 0H312l17.2 78.4c15.8 6.5 30.6 15.1 44 25.4l76.5-24.4 56 97-59.4 54.1c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l59.4 54.1-56 97-76.5-24.4c-13.4 10.3-28.2 18.9-44 25.4L312 512H200l-17.2-78.4c-15.8-6.5-30.6-15.1-44-25.4L62.3 432.5l-56-97 59.4-54.1C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L6.3 176.5l56-97 76.5 24.4c13.4-10.3 28.2-18.9 44-25.4L200 0zm56 336c44.2 0 80-35.8 80-80s-35.8-80-80-80s-80 35.8-80 80s35.8 80 80 80z"/>
+			</Button>
+            <Button Name="Edit" IsEnabled="{Binding EditEnabled}" Style="{StaticResource ButtonStyle}">
+				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M10.2 461L0 512l51-10.2L160 480 420.7 219.3l-128-128L32 352 10.2 461zM315.3 68.7l128 128 34.7-34.7L512 128l-16-16L478.1 94.1 417.9 33.9 400 16 384 0 350.1 33.9 315.3 68.7zM96 416h60.1l-19.8 19.8-75.1 15 15-75.1L96 355.9V416z"/>
+			</Button>
+            <Button Name="Delete" IsEnabled="{Binding DeleteEnabled}" Style="{StaticResource ButtonStyle}">
+				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+			</Button>
 			<Button Name="Add" Style="{StaticResource ButtonStyle}">
 				<Path Width="15" Height="15" Stretch="Uniform" Fill="#ffffff" Data="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
 			</Button>
