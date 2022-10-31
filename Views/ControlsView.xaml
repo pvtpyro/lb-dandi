@@ -12,6 +12,11 @@
              Focusable="False">
     
     <UserControl.Resources>
+		<LinearGradientBrush x:Key="RedGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+			<GradientStop Color="#E92527" Offset="0"/>
+			<!-- <GradientStop Color="#dd2020" Offset="0.6"/> -->
+			<GradientStop Color="#b01a1a" Offset="1"/>
+		</LinearGradientBrush>
         <Style x:Key="FocusVisualStyle">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -53,7 +58,7 @@
                 </Trigger>
             </Style.Triggers>
 			
-            <Setter Property="Background" Value="#dd2020" />
+            <Setter Property="Background" Value="{StaticResource RedGradient}" />
             <Setter Property="Foreground" Value="#e5e5e5" />
             <Setter Property="BorderBrush" Value="#e5e5e5" />
             <Setter Property="Margin" Value="10,10,0,10" />
@@ -62,7 +67,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Padding="10" BorderThickness="1" Background="{TemplateBinding Background}" CornerRadius="50" BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border Padding="10" BorderThickness="2" Background="{TemplateBinding Background}" CornerRadius="50" BorderBrush="{TemplateBinding BorderBrush}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </ControlTemplate>
@@ -146,7 +151,7 @@
 				<Button.Style>
 					<Style TargetType="Button">
 						<Setter Property="Foreground" Value="#e5e5e5" />
-						<Setter Property="Background" Value="#dd2020" />
+						<Setter Property="Background" Value="{StaticResource RedGradient}" />
 						<Style.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
 								<Setter Property="Foreground" Value="#ffffff" />
@@ -165,7 +170,7 @@
 				<Button.Template>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5"  />
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="2" BorderBrush="#e5e5e5"  />
 							<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 								<Path Data="M64 96V64H0V96 416v32H64V416 280L288 448V280L512 448V64L288 232V64L64 232V96z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
 							</Grid>
@@ -178,7 +183,7 @@
 				<Button.Style>
 					<Style TargetType="Button">
 						<Setter Property="Foreground" Value="#e5e5e5" />
-						<Setter Property="Background" Value="#dd2020" />
+						<Setter Property="Background" Value="{StaticResource RedGradient}" />
 						<Style.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
 								<Setter Property="Foreground" Value="#ffffff" />
@@ -197,7 +202,7 @@
 				<Button.Template>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5"  />
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="2" BorderBrush="#e5e5e5"  />
 							<Path Data="M384 256L0 32V480L384 256z" Fill="{TemplateBinding Foreground}" Height="15" Width="12" Stretch="Uniform" Margin="2 0 0 0" />
 						</Grid>
 					</ControlTemplate>
@@ -208,7 +213,7 @@
 				<Button.Style>
 					<Style TargetType="Button">
 						<Setter Property="Foreground" Value="#e5e5e5" />
-						<Setter Property="Background" Value="#dd2020" />
+						<Setter Property="Background" Value="{StaticResource RedGradient}" />
 						<Style.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
 								<Setter Property="Foreground" Value="#ffffff" />
@@ -227,7 +232,7 @@
 				<Button.Template>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5"  />
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="2" BorderBrush="#e5e5e5"  />
 							<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 								<Path Data="M128 64H0V448H128V64zm192 0H192V448H320V64z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
 							</Grid>
@@ -240,7 +245,7 @@
 				<Button.Style>
 					<Style TargetType="Button">
 						<Setter Property="Foreground" Value="#e5e5e5" />
-						<Setter Property="Background" Value="#dd2020" />
+						<Setter Property="Background" Value="{StaticResource RedGradient}" />
 						<Style.Triggers>
 							<Trigger Property="IsMouseOver" Value="True">
 								<Setter Property="Foreground" Value="#ffffff" />
@@ -259,7 +264,7 @@
 				<Button.Template>
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Grid Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="1" BorderBrush="#e5e5e5" />
+							<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{TemplateBinding Background}" CornerRadius="50" BorderThickness="2" BorderBrush="#e5e5e5" />
 							<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
 								<Path Data="M448 96V64h64V96 416v32H448V416 280L224 448V280L0 448V64L224 232V64L448 232V96z" Fill="{TemplateBinding Foreground}" Height="15" Width="15" Stretch="Uniform" />
 							</Grid>
