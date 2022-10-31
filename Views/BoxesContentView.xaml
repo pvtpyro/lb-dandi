@@ -88,7 +88,7 @@
                 <DataTemplate>
                     <Grid Margin="15 0 20 20">
 
-						<!-- <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding ItemHeight}" TextAlignment="Center" Foreground="yellow" Panel.ZIndex="999" >
+						<!-- <TextBlock x:Name="stupid" Grid.Column="0" Grid.Row="0" Text="{Binding ContentImage}" TextAlignment="Center" Foreground="yellow" Panel.ZIndex="999" TextWrapping="wrap">
 							<TextBlock.Effect>
 								<DropShadowEffect Color="black" BlurRadius="6" ShadowDepth="6"/>
 							</TextBlock.Effect>
@@ -102,24 +102,34 @@
                                         <DropShadowEffect BlurRadius="3" Opacity="{Binding DropShadowOpacity}" ShadowDepth="3" RenderingBias="Performance" />
                                     </Grid.Effect>
 
-                                    <Border CornerRadius="4" BorderThickness="3" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Border CornerRadius="4" BorderThickness="3" Width="Auto" Height="Auto" MinHeight="150" VerticalAlignment="Center" HorizontalAlignment="Center">
                                         <Grid>
-										
-                                            <Border x:Name="ImageBorder" CornerRadius="2">
-                                                <!-- game title -->
-                                                <Border x:Name="ImageTextBorder" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#b30d0c0c"
-                                                    Visibility="Collapsed" CornerRadius="0,0,2,2">
-                                                    <TextBlock x:Name="ImageText" Text="{Binding Title}" Foreground="{Binding ForegroundBrush}"
-                                                        Padding="7,5,7,5" TextWrapping="Wrap" FontSize="12" FontWeight="SemiBold" />
-                                                </Border>
-                                            </Border>
+											<!-- <Grid.Style>
+												<Style TargetType="{x:Type Grid}">
+													<Setter Property="Background" Value="#0d0c0c"/>
+													<Style.Triggers>
+														<DataTrigger Binding="{Binding Text, ElementName=NoImage}" Value="pack://application:,,,/WpfResources/NoImage.png">
+															<Setter Property="Background" Value="#ff0099" />
+														</DataTrigger>
+													</Style.Triggers>
+												</Style>
+											</Grid.Style> -->
 
-                                            <Border x:Name="TextOnlyBorder" CornerRadius="4" Background="#a5a2a2" Visibility="{Binding BoxTextOnlyVisibility}">
-												<TextBlock x:Name="GameTitle" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Title}" TextWrapping="Wrap" FontSize="14"
-													Margin="10" TextAlignment="Center" TextTrimming="WordEllipsis">
+											<!-- game image-->
+                                            <Border x:Name="ImageBorder" CornerRadius="4"></Border>
+											<!-- title, if visible or selected -->
+											<Border x:Name="ImageTextBorder" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#b30d0c0c"
+												Visibility="Collapsed" CornerRadius="0,0,2,2">
+												<TextBlock x:Name="ImageText" Text="{Binding Title}" Foreground="{Binding ForegroundBrush}"
+													Padding="7,5,7,5" TextWrapping="Wrap" FontSize="12" FontWeight="SemiBold" />
+											</Border>
+
+											<!-- no image -->
+                                            <Border x:Name="TextOnlyBorder" CornerRadius="4" Background="#0d0c0c" Visibility="{Binding BoxTextOnlyVisibility}" HorizontalAlignment="Center" VerticalAlignment="Center" MinHeight="150">
+												<TextBlock x:Name="GameTitle" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Title}" TextWrapping="Wrap" FontSize="14" Margin="10" TextAlignment="Center" TextTrimming="WordEllipsis">
 													<TextBlock.Style>
 														<Style>
-															<Setter Property="TextBlock.Foreground" Value="#0d0c0c" />
+															<Setter Property="TextBlock.Foreground" Value="#ffffff" />
 															<Style.Triggers>
 																<DataTrigger Binding="{Binding IsSelected}" Value="True">
 																	<Setter Property="TextBlock.Foreground" Value="#ffffff" />
@@ -137,14 +147,6 @@
 												</TextBlock>
                                             </Border>
 
-											
-
-											<!-- <Image x:Name="ContentImage" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" 
-												StretchDirection="Both" Source="{Binding ContentImage}" SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="HighQuality">
-												<Image.Effect>
-													<DropShadowEffect ShadowDepth="3" Direction="315" Color="Black" Opacity="0.65" BlurRadius="6" />
-												</Image.Effect>
-											</Image> -->
                                         </Grid>
                                         <!-- bg/border behind game -->
                                         <Border.Style>
@@ -319,6 +321,7 @@
                                     <TextBlock Text="{Binding SortValue}" Width="1000" Foreground="#0d0c0c" FontSize="14" />
                                 </StackPanel>
                             </Border>
+							
                         </Grid>
                         <!-- badges -->
                         <ListView ItemsSource="{Binding Badges}" Background="Transparent" BorderThickness="0" VerticalAlignment="Top"
