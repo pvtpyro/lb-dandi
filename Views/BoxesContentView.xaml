@@ -86,7 +86,7 @@
                 [Event PreviewMouseRightButtonUp] = [Action OnRightClick($eventArgs)];">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="15 0 15 0">
+                    <Grid Margin="15 0 20 20">
 
 						<!-- <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding ItemHeight}" TextAlignment="Center" Foreground="yellow" Panel.ZIndex="999" >
 							<TextBlock.Effect>
@@ -104,6 +104,7 @@
 
                                     <Border CornerRadius="4" BorderThickness="3" Width="Auto" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                                         <Grid>
+										
                                             <Border x:Name="ImageBorder" CornerRadius="2">
                                                 <!-- game title -->
                                                 <Border x:Name="ImageTextBorder" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#b30d0c0c"
@@ -135,6 +136,15 @@
 													</TextBlock.Style>
 												</TextBlock>
                                             </Border>
+
+											
+
+											<!-- <Image x:Name="ContentImage" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" 
+												StretchDirection="Both" Source="{Binding ContentImage}" SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="HighQuality">
+												<Image.Effect>
+													<DropShadowEffect ShadowDepth="3" Direction="315" Color="Black" Opacity="0.65" BlurRadius="6" />
+												</Image.Effect>
+											</Image> -->
                                         </Grid>
                                         <!-- bg/border behind game -->
                                         <Border.Style>
